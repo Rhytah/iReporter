@@ -1,0 +1,38 @@
+body {
+    /* font-family: "Lato", sans-serif; */
+    color: goldenrod;
+    transition: background-color .5s;
+    background:rgb(55, 91, 150);
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(168, 102, 16, 0.616);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+#signup{
+    display: none;
+    color:rgb(164, 164, 196);
+    background: rgba(119, 86, 2, 0.74);
+    font-size:16px;
+     
+}
+
+
+@media only screen and (max-width:600px){
+    body{
+        color: rgb(92, 112, 177);
+    } 
+
+
+} 
