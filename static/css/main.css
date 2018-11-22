@@ -20,13 +20,7 @@ body {
     transition: 0.5s;
     padding-top: 60px;
 }
-#signup{
-    display: none;
-    color:rgb(164, 164, 196);
-    background: rgba(119, 86, 2, 0.74);
-    font-size:16px;
-     
-}
+
 
 
 @media only screen and (max-width:600px){
