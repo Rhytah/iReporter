@@ -84,11 +84,30 @@ hr {
     font-weight: bold;
     color: #f1f1f1;
 }
-
+#login .close{
+    right:25px;
+    font-size:35px;
+}
 .close:hover,
 .close:focus {
     color: #f44336;
     cursor: pointer;
+}
+#signup{
+    font-size:20px;
+    background: rgba(119, 86, 2, 0.74);
+}
+#login {
+    font-size:20px;
+    background: rgba(119, 86, 2, 0.74);
+    
+}
+#login .cancelbtn{
+    width:30%;
+    float:left;
+}
+#login .psw{
+    float: right;
 }
 
 /* Clear floats */
@@ -97,6 +116,22 @@ hr {
     clear: both;
     display: table;
 }
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
