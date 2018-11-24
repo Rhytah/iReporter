@@ -13,15 +13,51 @@
     <div class="container">
         <div class="tab">
                 <button class="tablink" onclick="opentab(event,'red-flag')">create red-flag</button> 
-                <button class="tablink" onclick="opentab(event,'')">Create intervation record</button>          
+                <button class="tablink" onclick="opentab(event,'intervention')">Create intervation record</button>          
         </div>
         <div class="tabcontent" id="red-flag">
             <form id="usrform">
                 <label>Report an Incident linked to corruption</label>
                 <br>
                 <textarea type="text" placeholder="Detailed report"></textarea>
-                <input type="submit">   
+                <input type="submit" value='SUBMIT'>   
             </form>
+        </div>   
+        <div class="tabcontent" id="intervention">
+
+                <div class="container">
+                        <form>
+                          <label >Issue</label>
+                          <input type="text" id="fname" name="firstname" placeholder="What issue are you referring to?">
+                      <br>
+                          <label>Region </label>
+                         
+                          <select id="region">
+                            <option value="Eastern">Eastern Region</option>
+                            <option value="Western">Western Region</option>
+                            <option value="Central">Central Region</option>
+                            <option value="Northern">Northern Region</option>
+                            <option value="Southern">Southern Region</option>
+                          </select>
+                     
+                          <label>Agency</label>
+                          <select id="agency">
+                            <option value="works">Ministry of Works and transport</option>
+                            <option value="labour">Ministry of Labour and Gender </option>
+                            <option value="internal">Ministry of Internal Affairs</option>
+                          </select>
+                        
+                          <input type="submit" value="Submit">
+                        </form>
+                      </div>
+
+
+            <!-- <form id="usrform">
+                <label>Create an intervention record</label>
+                <br>
+                <textarea type="text" placeholder="Detailed report"></textarea>
+                <input type="submit">   
+            </form> -->
         </div>   
     </div>
         
