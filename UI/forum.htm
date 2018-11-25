@@ -15,6 +15,7 @@
                 <button class="tablink" onclick="opentab(event,'red-flag')">create red-flag</button> 
                 <button class="tablink" onclick="opentab(event,'intervention')">Create intervation record</button> 
                 <button class="tablink" onclick="opentab(event,'records')">My records</button> 
+                <button onclick="parent.location ='index.htm'">Logout</button>
          
         </div>
         <div class="tabcontent" id="red-flag">
@@ -48,7 +49,9 @@
                             <option value="labour">Ministry of Labour and Gender </option>
                             <option value="internal">Ministry of Internal Affairs</option>
                           </select>
-                        
+                          <button onclick="getLocation()">send cordinates</button>
+                          <button onclick="showPosition()">send cordinates</button>
+
                           <input type="submit" value="Submit">
                         </form>
                       </div>   
@@ -67,19 +70,21 @@
                           <a onclick="hide('edit')">Done editing</a></div> 
                         <span onclick="hide('redflag1');">Delete</span>
                         </li>
+
                         <li id="redflag2">
                         Nusrse sells free medication to desperate patients.
-                        <span onclick="show('edit');">Edit record </span>  
-                        <div class="container" id="edit"><textarea >Edit record here</textarea>
-                         <a onclick="hide('edit')">Done editing</a></div> 
+                        <span onclick="show('edit1');">Edit record </span>  
+                        <div class="container" id="edit1"><textarea >Edit record here</textarea>
+                         <a onclick="hide('edit1')">Done editing</a></div> 
                        <span onclick="hide('redflag2');">Delete</span>
                         </li>
+
                         <li id="redflag3">Town council misappropriated funds
-                            <span onclick="show('edit');">Edit record </span>  
-                            <div class="container" id="edit"><textarea >Edit record here</textarea>
-                             <a onclick="hide('edit')">Done editing</a></div> 
-                             
-                           <span onclick="hide('redflag3');">Delete</span>
+                        <span onclick="show('edit2');">Edit record </span>  
+                        <span onclick="hide('redflag3');">Delete</span>
+
+                            <div class="container" id="edit2"><textarea >Edit record here</textarea>
+                             <a onclick="hide('edit2')">Done editing</a></div> 
                         </li>
                        
                     </ol>
@@ -128,17 +133,17 @@
                             <td>Restock essential medication at Center 4(Kyotera-Rakai). </td>
                             <td>Central Region</td>
                             <td>Ministry of Health</td>
-                            <td><span onclick="show('editintervention');">Edit record </span></td>                          <td><span onclick="hide('row2');">Delete</span></td>
+                            <td><span onclick="show('editintervention');">Edit record </span></td>                         
+                             <td><span onclick="hide('row2');">Delete</span></td>
                           </tr>
                           <tr id="row3">
-                            <td>Primary schools in Lango have only 5 tachers for  over 1000 pupils</td>
+                            <td>Primary schools in Lango have only 5 teachers for  over 1000 pupils</td>
                             <td>Northern Region</td>
                             <td>Ministry of Education and Sports</td>
-                            <td><span onclick="show('editintervention');">Edit record </span></td>                          <td><span onclick="hide('row2');">Delete</span></td>
+                            <td><span onclick="show('editintervention');">Edit record </span></td>                         
                             <td><span onclick="hide('row3');">Delete</span></td>
                           </tr>
                         </table>
-                  
         </div>
     </div>
         

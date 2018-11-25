@@ -2,12 +2,12 @@ body {
     font-family: "Lato", sans-serif;
     color: goldenrod;
     transition: background-color .5s;
-    background:rgb(55, 91, 150);
+    background:rgb(3, 37, 92);
     background-repeat: no-repeat;
     background-position: center;
 
 }
-/* navigation-sidenav */
+ navigation-sidenav
 .sidenav {
     height: 100%;
     width: 0;
@@ -40,8 +40,12 @@ body {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-}
+} 
 
+blockquote{
+    font-family: cursive;
+    font-size: 20px;
+}
 #main {
     transition: margin-left .5s;
     padding: 16px;

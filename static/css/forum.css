@@ -2,7 +2,8 @@ body {
   margin: 0;
   min-width: 250px;
   font-size: 20px;
-  background:rgb(55, 91, 150);
+  background:rgb(3, 37, 92);
+
   color:rgb(66, 57, 33);
 }
 
@@ -99,12 +100,10 @@ tr{
 h2{
   font-size: 30px;
   color:goldenrod;
+  margin-inline-start: 40%;
   
 }
-.container{
-  display: flex;
 
-}
 
 /* Darker background-color on hover */
 table tr:hover {
@@ -112,13 +111,13 @@ table tr:hover {
 }
 /* Set a style for all buttons */
 button {
-  background-color: rgb(17, 94, 71);
-  color:goldenrod;
+  background-color: goldenrod;
+  color:navy;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 60%;
+  width: 50%;
   opacity: 0.9;
   font-size: 20px;
   font-style: bold;
@@ -179,10 +178,12 @@ input[type=submit]:hover {
 
 }
 
-div.container {
+.container {
   border-radius: 5px;
-  background-color: #96919165;
-  padding: 20px;
+  /* background-color: #211d271e; */
+  margin-inline-start: 10px;
+  padding-inline-end: 10px;
+  display: flex;
 }
 /* my records */
 
@@ -203,13 +204,13 @@ tr:nth-child(even) {
   background-color: #f2f2f2
 }
 #records{
-  background:teal;
+  background:rgba(29, 167, 167, 0.829);
 }
 #records label{
   background:white;
   color:green;
 }
-#edit{
+#edit ,#edit1, #edit2{
   display:none;
   height: 200px;
   
