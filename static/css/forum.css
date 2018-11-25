@@ -220,7 +220,8 @@ tr:nth-child(even) {
 span{
   float:right;
   color: tomato;
-  background-color: aqua;
+  padding: 6px;
+
 }
 #editintervention{
   display: none;
@@ -269,6 +270,7 @@ span{
 .form-inline button:hover {
   background-color: royalblue;
 }
+
 
 
 
