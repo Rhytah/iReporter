@@ -13,19 +13,122 @@
     <div class="container">
         <div class="tab">
                 <button class="tablink" onclick="opentab(event,'red-flag')">create red-flag</button> 
-                <button class="tablink" onclick="opentab(event,'')">Create intervation record</button>          
+                <button class="tablink" onclick="opentab(event,'intervention')">Create intervation record</button> 
+                <button class="tablink" onclick="opentab(event,'records')">My records</button> 
+         
         </div>
         <div class="tabcontent" id="red-flag">
             <form id="usrform">
                 <label>Report an Incident linked to corruption</label>
                 <br>
                 <textarea type="text" placeholder="Detailed report"></textarea>
-                <input type="submit">   
+                <input type="submit" value='SUBMIT'>   
             </form>
         </div>   
+        <div class="tabcontent" id="intervention">
+
+                <div class="container">
+                        <form>
+                          <label >Issue</label>
+                          <input type="text" id="fname" name="firstname" placeholder="What issue are you referring to?">
+                      <br>
+                          <label>Region </label>
+                         
+                          <select id="region">
+                            <option value="Eastern">Eastern Region</option>
+                            <option value="Western">Western Region</option>
+                            <option value="Central">Central Region</option>
+                            <option value="Northern">Northern Region</option>
+                            <option value="Southern">Southern Region</option>
+                          </select>
+                     
+                          <label>Agency</label>
+                          <select id="agency">
+                            <option value="works">Ministry of Works and transport</option>
+                            <option value="labour">Ministry of Labour and Gender </option>
+                            <option value="internal">Ministry of Internal Affairs</option>
+                          </select>
+                        
+                          <input type="submit" value="Submit">
+                        </form>
+                      </div>   
+        </div>
+
+        <div class="tabcontent" id="records">
+
+            <label onclick="show('redflagrecords');">Red-flags</label>
+            
+            <div id='redflagrecords'>
+                    <ol>
+                        <li>
+                         LC chairman asks for bribes to sign documents.
+                         <span onclick="show('edit');">Edit record </span>  
+                         <div class="container" id="edit"><textarea >Edit record here</textarea>
+                          <a onclick="hide('edit')">Done editing</a></div> 
+                        </li>
+                        
+                        
+                        <li>
+                        Nusrse sells free medication to desperate patients.
+                        </li>
+                        <li>Town council misappropriated funds</li>
+                       
+                    </ol>
+
+                    </div>
+    <br>
+                  <label onclick="show('interventionrecords');">Intervention records</label>
+            
+                  <table id='interventionrecords'>
+                          <tr>
+                            <th>Issue</th>
+                            <th>Region</th>
+                            <th>Agency</th>
+                          </tr>
+                          <tr>
+                            <td>Fix deep pot holes on jinja road</td>
+                            <td>Eastern Region</td>
+                            <td>Ministry of Works and Transport</td>
+                            <td><span onclick="show('editintervention');">Edit record </span> 
+                            <span id="editintervention">
+                        <form class="form-inline" >
+                          <label>Issue:</label>
+                          <input type="text" id="fname" placeholder="What issue are you referring to?">
+                          
+                          <label>Region:</label>
+                          <select id="region">
+                              <option value="Eastern">Eastern Region</option>
+                              <option value="Western">Western Region</option>
+                              <option value="Central">Central Region</option>
+                              <option value="Northern">Northern Region</option>
+                              <option value="Southern">Southern Region</option>
+                            </select>
+                          <label>Agency</label>
+                          <select id="region">
+                              <option value="Eastern">Eastern Region</option>
+                              <option value="Western">Western Region</option>
+                              <option value="Central">Central Region</option>
+                              <option value="Northern">Northern Region</option>
+                              <option value="Southern">Southern Region</option>
+                          </select>
+                          <button onclick="hide('editintervention')">Submit</button>
+                        </form></span></td>
+                          </tr>
+                          <tr>
+                            <td>Restock essential medication at Center 4(Kyotera-Rakai). </td>
+                            <td>Central Region</td>
+                            <td>Ministry of Health</td>
+                          </tr>
+                          <tr>
+                            <td>Primary schools in Lango have only 5 tachers for  over 1000 pupils</td>
+                            <td>Northern Region</td>
+                            <td>Ministry of Education and Sports</td>
+                          </tr>
+                        </table>
+                  
+        </div>
     </div>
         
     
     </body>
     </html>
-    
