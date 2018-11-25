@@ -3,7 +3,7 @@ body {
   min-width: 250px;
   font-size: 20px;
   background:rgb(55, 91, 150);
-  color:goldenrod;
+  color:rgb(66, 57, 33);
 }
 
 /*header*/
@@ -87,14 +87,14 @@ li input{
   float: left;
   list-style-type: none;
 }
-table td{
+/* table td{
   padding: 26px;
   margin:10px;
   align-content: center;
 }
 tr{
   box-shadow: #f9f9f94b;
-}
+} */
 
 h2{
   font-size: 30px;
@@ -140,6 +140,7 @@ button {
   border: 1px solid #ccc;
   border-top: none;
   width:60%;
+  float:right;
 
 }
 
@@ -147,9 +148,7 @@ button {
   padding: 20px;
   box-sizing: border-box;
 }
-/* #red-flag input{
-    height:300px; */
-/* } */
+
 .tabcontent input{
     width:20%;
     float: right;
@@ -159,12 +158,12 @@ button {
 textarea{
     margin-block-start: 10px;
     width:70%;
-    height:300px;
+    height:150px;
     font-size: 16px;
 }
 
 
-input[type=text], select {
+#intervention input[type=text], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -185,4 +184,103 @@ div.container {
   background-color: #96919165;
   padding: 20px;
 }
+/* my records */
 
+table {
+  display:none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+#records{
+  background:teal;
+}
+#records label{
+  background:white;
+  color:green;
+}
+#edit{
+  display:none;
+  height: 200px;
+  
+}
+#redflagrecords{
+  font-size: 16px;
+}
+span{
+  float:right;
+  color: tomato;
+  background-color: aqua;
+}
+#editintervention{
+  display: none;
+}
+#editintervention input{
+  /* float: left; */
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#editintervention button{
+  width: 30%;
+  font-size:16px;
+  height:30px;
+}
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+
+
+
+/* responsiveness */
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
