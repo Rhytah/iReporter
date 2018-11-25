@@ -60,18 +60,27 @@
             
             <div id='redflagrecords'>
                     <ol>
-                        <li>
+                        <li id="redflag1">
                          LC chairman asks for bribes to sign documents.
                          <span onclick="show('edit');">Edit record </span>  
                          <div class="container" id="edit"><textarea >Edit record here</textarea>
                           <a onclick="hide('edit')">Done editing</a></div> 
+                        <span onclick="hide('redflag1');">Delete</span>
                         </li>
-                        
-                        
-                        <li>
+                        <li id="redflag2">
                         Nusrse sells free medication to desperate patients.
+                        <span onclick="show('edit');">Edit record </span>  
+                        <div class="container" id="edit"><textarea >Edit record here</textarea>
+                         <a onclick="hide('edit')">Done editing</a></div> 
+                       <span onclick="hide('redflag2');">Delete</span>
                         </li>
-                        <li>Town council misappropriated funds</li>
+                        <li id="redflag3">Town council misappropriated funds
+                            <span onclick="show('edit');">Edit record </span>  
+                            <div class="container" id="edit"><textarea >Edit record here</textarea>
+                             <a onclick="hide('edit')">Done editing</a></div> 
+                             
+                           <span onclick="hide('redflag3');">Delete</span>
+                        </li>
                        
                     </ol>
 
@@ -85,7 +94,7 @@
                             <th>Region</th>
                             <th>Agency</th>
                           </tr>
-                          <tr>
+                          <tr id="row1">
                             <td>Fix deep pot holes on jinja road</td>
                             <td>Eastern Region</td>
                             <td>Ministry of Works and Transport</td>
@@ -113,16 +122,20 @@
                           </select>
                           <button onclick="hide('editintervention')">Submit</button>
                         </form></span></td>
+                        <td><span onclick="hide('row1');">Delete</span></td>
                           </tr>
-                          <tr>
+                          <tr id="row2">
                             <td>Restock essential medication at Center 4(Kyotera-Rakai). </td>
                             <td>Central Region</td>
                             <td>Ministry of Health</td>
+                            <td><span onclick="show('editintervention');">Edit record </span></td>                          <td><span onclick="hide('row2');">Delete</span></td>
                           </tr>
-                          <tr>
+                          <tr id="row3">
                             <td>Primary schools in Lango have only 5 tachers for  over 1000 pupils</td>
                             <td>Northern Region</td>
                             <td>Ministry of Education and Sports</td>
+                            <td><span onclick="show('editintervention');">Edit record </span></td>                          <td><span onclick="hide('row2');">Delete</span></td>
+                            <td><span onclick="hide('row3');">Delete</span></td>
                           </tr>
                         </table>
                   
