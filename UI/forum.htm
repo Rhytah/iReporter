@@ -6,17 +6,37 @@
     <title>Forum|iReporter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../static/css/forum.css" />
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="../static/js/main.js"></script>
 </head>
 <body>
-        <h2>iReporter</h2>
+        <h2>iReporter</h2> 
+        <h3 onclick="show('profile');">My profile</h3>
+        <div id="profile"class="card">
+          <img src="../static/images/Whistleblower3.png" alt="John" style="width:100%">
+         
+          <div class="dropdown">
+            <h2 class="dropbtn">Rhytah Namono</h2>
+            <div class="dropdown-content">
+              <a href="#records">5 recorded red-flags</a>
+              <a href="#records">3 interventions recorded</a>
+              <button onclick="show('records');">Details</button>
+             
+           <a href="index.htm">Logout</a>
+            </div>
+        </div>
+        </div>
+
     <div class="container">
         <div class="tab">
                 <button class="tablink" onclick="opentab(event,'red-flag')">create red-flag</button> 
                 <button class="tablink" onclick="opentab(event,'intervention')">Create intervation record</button> 
                 <button class="tablink" onclick="opentab(event,'records')">My records</button> 
+                <button onclick="parent.location ='index.htm'">Logout</button>
          
         </div>
+
+
         <div class="tabcontent" id="red-flag">
             <form id="usrform">
                 <label>Report an Incident linked to corruption</label>
@@ -30,7 +50,7 @@
                 <div class="container">
                         <form>
                           <label >Issue</label>
-                          <input type="text" id="fname" name="firstname" placeholder="What issue are you referring to?">
+                          <input type="text" id="fname"  placeholder="What issue are you referring to?">
                       <br>
                           <label>Region </label>
                          
@@ -41,19 +61,28 @@
                             <option value="Northern">Northern Region</option>
                             <option value="Southern">Southern Region</option>
                           </select>
-                     
+                          <label>Geolocation</label>
+                          <span onclick="show('map-block');">Pick cordinates</span>
+
+                          <input type="text" placeholder="Write Latitude here" id="lat" >
+                          <input type="text" placeholder="Write Longitude here" id="long"> 
+                          
+                          <br>
                           <label>Agency</label>
                           <select id="agency">
                             <option value="works">Ministry of Works and transport</option>
                             <option value="labour">Ministry of Labour and Gender </option>
                             <option value="internal">Ministry of Internal Affairs</option>
                           </select>
-                        
                           <input type="submit" value="Submit">
                         </form>
-                      </div>   
+
+                      </div> 
         </div>
 
+        <div class="container" id="map-block">  
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7469267709002!2d32.58938551425394!3d0.34276089974992735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbae66ee50d7%3A0xcb984cde3aba1954!2sAndela+Uganda+Limited!5e0!3m2!1sen!2sus!4v1543174070721" ></iframe>                          
+      </div> 
         <div class="tabcontent" id="records">
 
             <label onclick="show('redflagrecords');">Red-flags</label>
@@ -67,22 +96,29 @@
                           <a onclick="hide('edit')">Done editing</a></div> 
                         <span onclick="hide('redflag1');">Delete</span>
                         </li>
+
                         <li id="redflag2">
                         Nusrse sells free medication to desperate patients.
-                        <span onclick="show('edit');">Edit record </span>  
-                        <div class="container" id="edit"><textarea >Edit record here</textarea>
-                         <a onclick="hide('edit')">Done editing</a></div> 
+                        <span onclick="show('edit1');">Edit record </span>  
+                        <div class="container" id="edit1"><textarea >Edit record here</textarea>
+                         <a onclick="hide('edit1')">Done editing</a></div> 
                        <span onclick="hide('redflag2');">Delete</span>
                         </li>
+
                         <li id="redflag3">Town council misappropriated funds
-                            <span onclick="show('edit');">Edit record </span>  
-                            <div class="container" id="edit"><textarea >Edit record here</textarea>
-                             <a onclick="hide('edit')">Done editing</a></div> 
-                             
-                           <span onclick="hide('redflag3');">Delete</span>
-                        </li>
-                       
+                        <span onclick="show('edit2');">Edit record </span>  
+                        <span onclick="hide('redflag3');">Delete</span>
+
+                            <div class="container" id="edit2"><textarea >Edit record here</textarea>
+                             <a onclick="hide('edit2')">Done editing</a></div> 
+                        </li>  
                     </ol>
+                    <p>Summary</p>
+                    <ul>
+                      <li>3 Red-flags resolved</li>
+                      <li> 0 Red-flags rejected</li>
+                      <li>1 Red-flags under investigation</li>
+                    </ul>
 
                     </div>
     <br>
@@ -128,20 +164,19 @@
                             <td>Restock essential medication at Center 4(Kyotera-Rakai). </td>
                             <td>Central Region</td>
                             <td>Ministry of Health</td>
-                            <td><span onclick="show('editintervention');">Edit record </span></td>                          <td><span onclick="hide('row2');">Delete</span></td>
+                            <td><span onclick="show('editintervention');">Edit record </span></td>                         
+                             <td><span onclick="hide('row2');">Delete</span></td>
                           </tr>
                           <tr id="row3">
-                            <td>Primary schools in Lango have only 5 tachers for  over 1000 pupils</td>
+                            <td>Primary schools in Lango have only 5 teachers for  over 1000 pupils</td>
                             <td>Northern Region</td>
                             <td>Ministry of Education and Sports</td>
-                            <td><span onclick="show('editintervention');">Edit record </span></td>                          <td><span onclick="hide('row2');">Delete</span></td>
+                            <td><span onclick="show('editintervention');">Edit record </span></td>                         
                             <td><span onclick="hide('row3');">Delete</span></td>
                           </tr>
                         </table>
-                  
+                        
         </div>
     </div>
-        
-    
     </body>
     </html>

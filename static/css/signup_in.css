@@ -58,16 +58,18 @@ button:hover {
     height: 100%; 
     position: center;
     overflow: auto; /* Enable scroll if needed */
-    background-color: #474e5d;
+    background-color: #1a1c1f;
     padding-top: 50px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #1f0f75ab;
+    background-color: #1e48bd;
     margin: auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 60%;
+    width: 40%;
+    padding:30px;
+
 }
 
 /* Style the horizontal ruler */
@@ -84,28 +86,28 @@ hr {
     font-weight: bold;
     color: #f1f1f1;
 }
-#login .close{
+/* #login .close{
     right:25px;
     font-size:35px;
-}
-.close:hover,
+} */
+/* .close:hover,
 .close:focus {
     color: #f44336;
     cursor: pointer;
-}
+} */
 #signup{
     font-size:20px;
-    background: rgba(119, 86, 2, 0.74);
+    background: rgba(2, 72, 119, 0.37);
 }
 #login {
     font-size:20px;
-    background: rgba(119, 86, 2, 0.74);
+    background: rgba(2, 72, 119, 0.37);
     
 }
-#login .cancelbtn{
+/* #login .cancelbtn{
     width:30%;
     float:left;
-}
+} */
 #login .psw{
     float: right;
 }
@@ -115,6 +117,19 @@ hr {
     content: "";
     clear: both;
     display: table;
+}
+.panel{
+    position:center;
+    width:40%;
+    height:fit-content;
+    padding: 30px;
+    margin-left: 300px;
+    
+}
+.panel button{
+    width:37%;
+    align-content: center;
+    
 }
 /* Add Zoom Animation */
 .animate {

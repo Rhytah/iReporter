@@ -2,8 +2,9 @@ body {
   margin: 0;
   min-width: 250px;
   font-size: 20px;
-  background:rgb(55, 91, 150);
-  color:rgb(66, 57, 33);
+  background:rgb(3, 37, 92);
+
+  color:rgb(204, 171, 64);
 }
 
 /*header*/
@@ -87,24 +88,15 @@ li input{
   float: left;
   list-style-type: none;
 }
-/* table td{
-  padding: 26px;
-  margin:10px;
-  align-content: center;
-}
-tr{
-  box-shadow: #f9f9f94b;
-} */
+
 
 h2{
   font-size: 30px;
   color:goldenrod;
+  margin-inline-start: 40%;
   
 }
-.container{
-  display: flex;
 
-}
 
 /* Darker background-color on hover */
 table tr:hover {
@@ -112,13 +104,13 @@ table tr:hover {
 }
 /* Set a style for all buttons */
 button {
-  background-color: rgb(17, 94, 71);
-  color:goldenrod;
+  background-color: goldenrod;
+  color:navy;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 60%;
+  width: 50%;
   opacity: 0.9;
   font-size: 20px;
   font-style: bold;
@@ -179,10 +171,12 @@ input[type=submit]:hover {
 
 }
 
-div.container {
+.container {
   border-radius: 5px;
-  background-color: #96919165;
-  padding: 20px;
+  background-color: #211d271e;
+  margin-inline-start: 10px;
+  padding-inline-end: 10px;
+  display: flex;
 }
 /* my records */
 
@@ -200,16 +194,19 @@ th, td {
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2
+  background-color: #5a64c5
 }
 #records{
-  background:teal;
+  background:rgba(21, 64, 192, 0.658);
+  font-weight:bold;
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #records label{
   background:white;
   color:green;
 }
-#edit{
+#edit ,#edit1, #edit2{
   display:none;
   height: 200px;
   
@@ -218,8 +215,9 @@ tr:nth-child(even) {
   font-size: 16px;
 }
 span{
+  margin-inline-end: 10px;
   float:right;
-  color: tomato;
+  color:greenyellow;
   padding: 6px;
 
 }
@@ -270,9 +268,85 @@ span{
 .form-inline button:hover {
   background-color: royalblue;
 }
+ #lat #long{
+  width: 50%;
+
+}
+.map{
+  height:50%;
+}
+#map-block{
+  display: none;
+  width:450px;
+  height:300px;
+  }
+h3{
+  float: right;
+}
+#profile{
+  display:none;
+  float: right;
+}
 
 
 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 
 /* responsiveness */
