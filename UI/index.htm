@@ -13,7 +13,36 @@
     
     <h2>iReporter</h2>
 <div class="container">
-    <button onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Signup here</button>
+  <blockquote>
+      Corruption is a huge bane to Africa’s development. 
+      <br>
+      African countries must develop novel and localised solutions that will curb this menace, hence the birth of iReporter. 
+      <br>
+      iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. 
+      <br>
+      Users can also report on things that needs government intervention.
+  </blockquote>
+  
+  
+      
+        <!-- <div class="imgcontainer">
+          <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+          
+        </div> -->
+    
+        <div class="panel" id="login">
+          <form >
+          <label for="uname"><b>Email</b></label>
+          <input type="text" placeholder="Enter valid Email" name="email" required>
+    
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <button onclick="parent.location ='forum.htm'">Login</button>
+          <br>
+          <button onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Don't have an account? Signup here</button>
+
+      </form>
+    </div>
     
     <div id="signup" class="modal">
       <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -40,28 +69,7 @@
         </div>
       </form>
   
-<button onclick="document.getElementById('login').style.display='block'" style="width:auto;">Already have an account</button>
-
-<div id="login" class="modal">
-  <form class="modal-content animate">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
-      
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Email</b></label>
-      <input type="text" placeholder="Enter valid Email" name="email" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button onclick="parent.location ='forum.htm'">Login</button>
-      
-      
-  
-  </form>
-</div>
+<!-- <button onclick="document.getElementById('login').style.display='block'" style="width:auto;">Already have an account</button> -->
 </div>
 
 
