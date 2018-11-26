@@ -10,20 +10,11 @@
     <script src="../static/js/main.js"></script>
 </head>
 <body>
-    <h2>iReporter</h2> 
-    <h3 onclick="show('profile');">Admin</h3>
-    <div id="profile"class="card">
-      <img src="" alt="" style="width:80%">
-     
-      <div class="dropdown">
-        <h3 class="dropbtn">You are logged in as admin</h3>
-        <div class="dropdown-content">
-         
-       <a href="index.htm">Logout</a>
-        </div>
-    </div>
-    </div>
-</body>
+    <h2>iReporter</h2>     
+    <h3>You are logged in as admin
+        <p onclick="parent.location='index.htm'">Logout</p>
+    </h3>
+
 <div class="container" >
     <h2>Recorded Red-Flags</h2>
     <table id="allredflags">
@@ -157,3 +148,5 @@
                 </table>
 
 </div>
+</body>
+</html>
