@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Rhytah/iReporter.svg?branch=develop)](https://travis-ci.com/Rhytah/iReporter)
+[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg)](https://coveralls.io/github/Rhytah/iReporter)
 #iReporter
 
 ### Tools
