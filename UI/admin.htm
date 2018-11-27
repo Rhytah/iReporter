@@ -1,0 +1,152 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index|iReporter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/signup_in.css" />
+    <script src="../static/js/main.js"></script>
+</head>
+<body>
+    <h2>iReporter</h2>     
+    <h3>You are logged in as admin
+        <p onclick="parent.location='index.htm'">Logout</p>
+    </h3>
+
+<div class="container" >
+    <h2>Recorded Red-Flags</h2>
+    <table id="allredflags">
+        <thead>
+            <tr>
+                <td>TITLE</td>
+                <td>DESCRIPTION</td>
+                <td>REPORTER</td>
+                <td>STATUS</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Embezzlement</td>
+                <td>LC secretary misappropriates funds for village projects</td>
+                <td> Nakibinge Joel</td>
+                <td>
+                    <select id="status">
+                            <option >Resolved</option>
+                            <option >Under investigation</option>
+                            <option >Rejected</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bribe
+                </td>
+                <td>
+                    Town clerk is usually asking for bribes to do hasten work that takes  time to process
+                </td>
+                <td>
+                    Rhytah Namono
+                </td>
+                <td>
+                    <select id="status">
+                            <option >Resolved</option>
+                            <option >Under investigation</option>
+                            <option >Rejected</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Funds misuse
+                </td>
+                <td>
+                    Money meant to bring services closer to the people is never accounted for when spent
+                </td>
+                <td>
+                    Jolly Joan
+                </td>
+                <td>
+                    <select id="status">
+                            <option >Resolved</option>
+                            <option >Under investigation</option>
+                            <option >Rejected</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h2>Recorded Interventions</h2>
+        <table id="allinterventions">
+                <thead><tr>
+                    <td>ISSUE</td>
+                    <td>REGION</td>
+                    <td>AGENCY</td>
+                    <td>IMAGE</td>
+                    <td>STATUS</td>
+                </tr></thead>
+                <tr id="row1">
+                    <td>Fix deep pot holes on jinja road</td>
+                    <td>Eastern Region</td>
+                    <td>Ministry of Works and Transport</td>
+                   
+                <td><img></td>
+                <td>
+                    <select id="status">
+                            <option >Resolved</option>
+                            <option >Under investigation</option>
+                            <option >Rejected</option>
+                    </select>
+                </td>
+                </tr>
+                <tr >
+                        <td>Supply more drugs to center health center</td>
+                        <td>Central Region</td>
+                        <td>Ministry of Health</td>
+                       
+                    <td><img></td>
+                    <td>
+                        <select id="status">
+                                <option >Resolved</option>
+                                <option >Under investigation</option>
+                                <option >Rejected</option>
+                        </select>
+                    </td>
+                    </tr>
+                    <tr >
+                            <td>INcreasing number of harrassment of women in the workplae</td>
+                            <td>Western Region</td>
+                            <td>Ministry of Labor and gender issues</td>
+                           
+                        <td><img></td>
+                        <td>
+                            <select id="status">
+                                    <option >Resolved</option>
+                                    <option >Under investigation</option>
+                                    <option >Rejected</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr >
+                                <td>No teahers in public schools</td>
+                                <td>Eastern Region</td>
+                                <td>Ministry of Education and sport</td>
+                               
+                            <td><img></td>
+                            <td>
+                                <select id="status">
+                                        <option >Resolved</option>
+                                        <option >Under investigation</option>
+                                        <option >Rejected</option>
+                                </select>
+                            </td>
+                            </tr>
+                </table>
+
+</div>
+</body>
+</html>

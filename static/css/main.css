@@ -7,44 +7,17 @@ body {
     background-position: center;
 
 }
- navigation-sidenav
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+
+h3{
+    background-color: goldenrod;
+    color:blue;
+    width:10%;
+    float: right;
+    font-size: 16px;
 }
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-} 
-
 blockquote{
-    font-family: cursive;
-    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
 }
 #main {
     transition: margin-left .5s;
@@ -104,12 +77,53 @@ blockquote{
 
 .topright:hover {color: red;}
 
+thead{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration-line: underline;
+}
 
 
-@media only screen and (max-width:600px){
+#allredflags td{
+    padding: 10px;
+}
+#allinterventions td{
+    padding: 10px;
+}
+tbody{
+    border-bottom: 2px burlywood;
+}
+h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(58, 46, 46), 0 0 10px rgb(143, 141, 8), 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px rgb(41, 12, 94), 0 0 20px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+
+@media only screen and (max-width:400px){
     body{
         color: rgb(92, 112, 177);
     } 
+    .container blockquote{
+        font-size:12px;
+        width:100%;
+        padding:0;
+        margin-left: 0;
+    }
+    button{
+        width:fit-content;
+        font-size:10px;
+    }
+   
 
 
 } 

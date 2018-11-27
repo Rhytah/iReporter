@@ -2,23 +2,6 @@
 // Get the modal
 var modal = document.getElementById('');
 
-
-function onclick(event) {
-    location.href = 'forum.htm'
-  }
-
-
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "200px";
-    document.getElementById("main").style.marginLeft = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.body.style.backgroundColor = "white";
-}
 // show element on click
 function show(id){
     var a = document.getElementById(id);

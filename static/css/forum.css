@@ -90,14 +90,6 @@ li input{
 }
 
 
-h2{
-  font-size: 30px;
-  color:goldenrod;
-  margin-inline-start: 40%;
-  
-}
-
-
 /* Darker background-color on hover */
 table tr:hover {
   background: #ddd;
@@ -284,14 +276,14 @@ h3{
   float: right;
 }
 #profile{
-  display:none;
+  /* display:none; */
   float: right;
 }
 
 
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(255, 0, 255, 0.431);
   max-width: 300px;
   margin: auto;
   text-align: center;
@@ -306,15 +298,15 @@ h3{
 
 a {
   text-decoration: none;
-  font-size: 22px;
-  color: black;
+  font-size: 16px;
+  color: fuchsia;
 }
 
 button:hover, a:hover {
   opacity: 0.7;
 }
 .dropbtn {
-  background-color: #4CAF50;
+  /* background-color:rgba(99, 17, 99, 0.678); */
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -323,20 +315,22 @@ button:hover, a:hover {
 
 .dropdown {
   position: relative;
+  font-size:16px;
   display: inline-block;
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
-  background-color: #f1f1f1;
+  
+  background-color: #44333375;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(216, 162, 162, 0.2);
   z-index: 1;
+  
 }
 
 .dropdown-content a {
-  color: black;
+  color:fuchsia;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -348,9 +342,52 @@ button:hover, a:hover {
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+h2 {
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e68200, 0 0 50px #e4c2d3, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
 
 /* responsiveness */
 @media (max-width: 800px) {
+  
+}
+
+@media screen and (max-width: 400px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+  .panel{
+      position:center;
+      width:100%;
+      height: fit-content;
+      margin-left: 0;  
+      padding: 0;      
+  }
+  label{
+      font-size:14px;
+  }
+  input[type=text], input[type=password] {
+      width: 100%;
+      padding: 5px;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+  }
+}
+
+@media screen and (max-width: 800px) {
   .form-inline input {
     margin: 10px 0;
   }
@@ -358,5 +395,38 @@ button:hover, a:hover {
   .form-inline {
     flex-direction: column;
     align-items: stretch;
+  }
+  button {
+    background-color: goldenrod;
+    color:navy;
+    padding: 10px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    opacity: 0.9;
+    font-size: 15px;
+    font-style: bold;
+    display: block;
+  }
+  
+  table {
+    display:none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 05px;
+    font-size:12px;
+  }
+  .container{
+    width: fit-content;
+  }
+  #redflagrecords{
+    font-size: 12px;
   }
 }
