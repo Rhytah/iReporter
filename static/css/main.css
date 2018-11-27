@@ -109,10 +109,21 @@ h2 {
     }
   }
 
-@media only screen and (max-width:600px){
+@media only screen and (max-width:400px){
     body{
         color: rgb(92, 112, 177);
     } 
+    .container blockquote{
+        font-size:12px;
+        width:100%;
+        padding:0;
+        margin-left: 0;
+    }
+    button{
+        width:fit-content;
+        font-size:10px;
+    }
+   
 
 
 } 
