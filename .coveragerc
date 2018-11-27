@@ -4,4 +4,4 @@ omit =
     */site-packages/nose/*
     */__pycache__/*
     *.pyc
-*/venv/*
+    */venv/*
