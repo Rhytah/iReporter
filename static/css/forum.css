@@ -361,6 +361,33 @@ h2 {
 
 /* responsiveness */
 @media (max-width: 800px) {
+  
+}
+
+@media screen and (max-width: 400px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+  .panel{
+      position:center;
+      width:100%;
+      height: fit-content;
+      margin-left: 0;  
+      padding: 0;      
+  }
+  label{
+      font-size:14px;
+  }
+  input[type=text], input[type=password] {
+      width: 100%;
+      padding: 5px;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+  }
+}
+
+@media screen and (max-width: 800px) {
   .form-inline input {
     margin: 10px 0;
   }
@@ -368,5 +395,38 @@ h2 {
   .form-inline {
     flex-direction: column;
     align-items: stretch;
+  }
+  button {
+    background-color: goldenrod;
+    color:navy;
+    padding: 10px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    opacity: 0.9;
+    font-size: 15px;
+    font-style: bold;
+    display: block;
+  }
+  
+  table {
+    display:none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 05px;
+    font-size:12px;
+  }
+  .container{
+    width: fit-content;
+  }
+  #redflagrecords{
+    font-size: 12px;
   }
 }
