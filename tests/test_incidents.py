@@ -34,4 +34,5 @@ class IncidentTestCase(BaseTestCase):
         self.assertEqual(response.status_code,201)
         self.assertIn(" ", str(response.data))
         self.assertTrue(len(redflags),2)
+        self.assertNotEqual("No redflags found",str(response.data))
         

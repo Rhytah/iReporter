@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/Rhytah/iReporter.svg?branch=develop)](https://travis-ci.com/Rhytah/iReporter)
-[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg)](https://coveralls.io/github/Rhytah/iReporter)
+
+[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=ft-create-red-flag-162228526)](https://coveralls.io/github/Rhytah/iReporter?branch=ft-create-red-flag-162228526)
 #iReporter
 
 ### Tools
