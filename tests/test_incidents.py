@@ -2,7 +2,6 @@ from tests.test_base import BaseTestCase
 from reporter_api.views import incident_views
 import json
 
-redflags =[]
 class IncidentTestCase(BaseTestCase):
 
     def test_fetch_all_redflags(self):
@@ -23,6 +22,7 @@ class IncidentTestCase(BaseTestCase):
         self.assertTrue(self.incident,response.data)
 
     def test_add_redflag(self):
+        redflags =[]
         response=self.app.post(
             '/api/v1/red-flags',
             content_type='application/json',
