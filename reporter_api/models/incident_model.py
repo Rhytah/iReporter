@@ -24,7 +24,7 @@ class Incident:
     def get_incidents(self):
         return self.incidents
 
-    def get_incidents(self,_id):
+    def get_an_incident(self,_id):
         for incident in self.incidents:
             if incident['_id'] ==_id:
                 return incident

@@ -16,3 +16,5 @@ class BaseTestCase(unittest.TestCase):
             video = ["Image","Image"],
             comment = "Policeman asked for something something"
             )
+        self.incidents_empty = []
+        self.incidents=[self.incident,self.incident]

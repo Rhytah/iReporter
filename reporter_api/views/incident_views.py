@@ -5,7 +5,7 @@ from reporter_api.controllers.incidents_controllers import IncidentsController
 incidents_controller=IncidentsController()
 @app.route('/api/v1/red-flags',methods=['GET'])
 def fetch_red_flags():
-    return "all red-flags"
+    return incidents_controller.fetch_all_redflags()
 
 @app.route('/api/v1/red-flags/<int:id>', methods = ['GET'])
 def fetch_single_red_flag(id):

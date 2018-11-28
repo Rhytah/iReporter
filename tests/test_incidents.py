@@ -6,9 +6,11 @@ redflags =[]
 class IncidentTestCase(BaseTestCase):
 
     def test_fetch_all_redflags(self):
-        response= self.app.get('/api/v1/red-flags')
+        response= self.app.get('/api/v1/red-flags',
+        content_type='application/json',
+        data=json.dumps(self.incidents))
         self.assertEqual(response.status_code,200)
-        self.assertIn("all red-flags", str(response.data))
+        
         
 
     def test_fetch_single_redflag(self):
