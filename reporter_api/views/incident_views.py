@@ -7,9 +7,9 @@ incidents_controller=IncidentsController()
 def fetch_red_flags():
     return incidents_controller.fetch_all_redflags()
 
-@app.route('/api/v1/red-flags/<int:id>', methods = ['GET'])
-def fetch_single_red_flag(id):
-    return jsonify({"red-flag":"value of red flag here"})
+@app.route('/api/v1/red-flags/<int:_id>', methods = ['GET'])
+def fetch_single_red_flag(_id):
+    return incidents_controller.fetch_specific_redflag(_id)
 
 @app.route('/api/v1/red-flags',methods=['POST'])
 def add_red_flag():

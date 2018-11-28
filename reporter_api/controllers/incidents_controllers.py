@@ -29,5 +29,17 @@ class IncidentsController:
             "status":200,
             "data":incidents
         })
+    def fetch_specific_redflag(self,_id):
+        redflag=incident_model.get_an_incident(_id)
+        if not redflag:
+            return jsonify({
+                "status":200,
+                "message":"Out of range red-flag id,Try again with a valid id"
+            }),200
+
+        return jsonify({
+            "status":200,
+            "data":redflag
+        }),200
 
 
