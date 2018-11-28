@@ -10,6 +10,14 @@ class IncidentTestCase(BaseTestCase):
         content_type='application/json',
         data=json.dumps(self.incidents))
         self.assertEqual(response.status_code,200)
+
+    def test_fetch_all_redflags_empty(self):
+        response = self.app.get('/api/v1/red-flags',
+        content_type='application/json',
+        data=json.dumps(self.incidents_empty))
+        self.assertEqual(len(self.incidents_empty),0)
+    
+
         
         
 
