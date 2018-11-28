@@ -17,15 +17,12 @@ class IncidentTestCase(BaseTestCase):
         data=json.dumps(self.incidents_empty))
         self.assertEqual(len(self.incidents_empty),0)
     
-
-        
-        
-
     def test_fetch_single_redflag(self):
         response= self.app.get('/api/v1/red-flags/1',data=json.dumps(self.incident))
         self.assertEqual(response.status_code,200)
-        self.assertIn("red-flag", str(response.data))
+        self.assertTrue(self.incident,response.data)
 
+       
     def test_add_redflag(self):
         response=self.app.post(
             '/api/v1/red-flags',
