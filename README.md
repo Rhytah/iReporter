@@ -1,7 +1,10 @@
 [![Build Status](https://travis-ci.com/Rhytah/iReporter.svg?branch=API)](https://travis-ci.com/Rhytah/iReporter)
 
-[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=ft-create-red-flag-162228526)](https://coveralls.io/github/Rhytah/iReporter?branch=ft-create-red-flag-162228526)
-#iReporter
+[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=API)](https://coveralls.io/github/Rhytah/iReporter?branch=API)
+
+##iReporter
+Corruption is a huge bane to Africa’s development. African countries must develop novel and localised solutions that will curb this menace, hence the birth of iReporter. 
+iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. Users can also report on things that needs government intervention
 
 ### Tools
 
