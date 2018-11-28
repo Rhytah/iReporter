@@ -2,7 +2,6 @@ from tests.test_base import BaseTestCase
 from reporter_api.views import incident_views
 import json
 
-redflags =[]
 class IncidentTestCase(BaseTestCase):
 
     def test_fetch_all_redflags(self):
@@ -22,8 +21,8 @@ class IncidentTestCase(BaseTestCase):
         self.assertEqual(response.status_code,200)
         self.assertTrue(self.incident,response.data)
 
-       
     def test_add_redflag(self):
+        redflags =[]
         response=self.app.post(
             '/api/v1/red-flags',
             content_type='application/json',
@@ -43,3 +42,17 @@ class IncidentTestCase(BaseTestCase):
         self.assertTrue(len(redflags),2)
         self.assertNotEqual("No redflags found",str(response.data))
         
+    def test_delete_redflag(self):
+        response=self.app.delete('/api/v1/red-flags/1',
+        content_type='application/json',)
+        self.assertEqual(response.status_code,200)
+        self.assertTrue(len(self.incidents),1)
+        self.assertIn("has been deleted",str(response.data))
+
+    def test_delete_redflag_nonexistent(self):
+        response=self.app.delete('/api/v1/red-flags/1',
+        content_type='application/json',
+        data=json.dumps(self.incidents_empty))
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(len(self.incidents_empty),0)
+        self.assertIn("redflag out of range, use valid id",str(response.data))

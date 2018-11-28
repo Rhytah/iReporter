@@ -15,3 +15,7 @@ def fetch_single_red_flag(_id):
 def add_red_flag():
     request_data=request.get_json()
     return incidents_controller.add_redflag(request_data)
+
+@app.route('/api/v1/red-flags/<int:_id>',methods=['DELETE'])
+def delete_redflag(_id):
+    return incidents_controller.delete_redflag(_id)
