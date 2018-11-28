@@ -2,6 +2,7 @@ from reporter_api.models.incident_model import Incident
 from flask import jsonify, request
 
 incident_model = Incident()
+
 class IncidentsController:
     def __init__(self):
         self.incidents = []
@@ -41,5 +42,17 @@ class IncidentsController:
             "status":200,
             "data":redflag
         }),200
-
-
+    
+    def delete_redflag(self,_id):
+        redflag=incident_model.get_an_incident(_id)
+        incidents= incident_model.get_incidents()
+        if redflag:
+            incidents.remove(redflag)
+            return jsonify({
+                "status":200,
+                "data":f'{redflag} has been deleted'
+            }),200
+        return jsonify({
+            "status":200,
+            "message":"redflag out of range, use valid id"
+        }),200
