@@ -31,7 +31,7 @@ class IncidentsController:
             "data":incidents
         })
     def fetch_specific_redflag(self,_id):
-        redflag=incident_model.get_an_incident(_id)
+        redflag=incident_model.get_incident(_id)
         if not redflag:
             return jsonify({
                 "status":200,
@@ -44,7 +44,7 @@ class IncidentsController:
         }),200
     
     def delete_redflag(self,_id):
-        redflag=incident_model.get_an_incident(_id)
+        redflag=incident_model.get_incident(_id)
         incidents= incident_model.get_incidents()
         if redflag:
             incidents.remove(redflag)
@@ -56,3 +56,22 @@ class IncidentsController:
             "status":200,
             "message":"redflag out of range, use valid id"
         }),200
+
+    
+
+    def edit_location(self,_id):
+        redflag=incident_model.get_incident(_id)
+        data = request.get_json()                
+        if redflag:
+            print (redflag['location'])
+            location = data.get('location')
+            new_location = location
+                      
+            redflag['location'] = new_location
+            return jsonify({
+                "message":f"You have changed red flag's location to{location}"
+            }),200
+        return jsonify({
+            "status":200,
+            "message":"Invalid id, try again"})
+
