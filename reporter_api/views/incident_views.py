@@ -23,3 +23,7 @@ def delete_redflag(_id):
 @app.route('/api/v1/red-flags/<int:_id>/location', methods =['PATCH'])
 def edit_location(_id):
     return incidents_controller.edit_location(_id)
+
+@app.route('/api/v1/red-flags/<int:_id>/comment', methods =['PATCH'])
+def edit_comment(_id):
+    return incidents_controller.edit_comment(_id)

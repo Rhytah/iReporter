@@ -6,7 +6,7 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
         self.incident=dict(
-            
+            _id= "1",
             createdOn = "10-12-2014",
             createdBy = "sankyu",
             type = "red-flag",
