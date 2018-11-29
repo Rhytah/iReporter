@@ -22,7 +22,7 @@ class IncidentTestCase(BaseTestCase):
         self.assertTrue(self.incident,response.data)
 
     def test_add_redflag(self):
-        redflags =[]
+        
         response=self.app.post(
             '/api/v1/red-flags',
             content_type='application/json',
@@ -36,10 +36,10 @@ class IncidentTestCase(BaseTestCase):
                 video = "video goes here",
                 comment = "Policeman asked for something something"
             )))
-        redflags.append(dict)
+        self.incidents.append(dict)
         self.assertEqual(response.status_code,201)
         self.assertIn(" ", str(response.data))
-        self.assertTrue(len(redflags),2)
+        self.assertEqual(len(self.incidents),3)
         self.assertNotEqual("No redflags found",str(response.data))
         
     def test_delete_redflag(self):
@@ -56,3 +56,23 @@ class IncidentTestCase(BaseTestCase):
         self.assertEqual(response.status_code,200)
         self.assertEqual(len(self.incidents_empty),0)
         self.assertIn("redflag out of range, use valid id",str(response.data))
+
+    def test_edit_location(self):
+        location_data = "new LatLong location"
+        response=self.app.patch('/api/v1/red-flags/1/location',
+        data=json.dumps(self.incident),
+        content_type='application/json')
+        self.incident['location']=location_data
+        self.assertEqual(response.status_code,200)
+        self.assertIn("",str(response.data))
+
+    def test_edit_comment(self):
+        data = self.incident['comment'] ="some new comment"
+        response=self.app.patch('/api/v1/red-flags/1/comment',
+        data=json.dumps(data),
+        content_type='application/json')
+        self.assertEqual(response.status_code,200)
+        self.assertIn("",str(response.data))
+        self.assertTrue("Invalid id, try again",response.data)
+       
+        
