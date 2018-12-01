@@ -19,7 +19,6 @@ class IncidentTestCase(BaseTestCase):
     def test_fetch_single_redflag(self):
         response= self.app.get('/api/v1/red-flags/1')
         self.assertEqual(response.status_code,200)
-        # self.assertEqual("Out of range red-flag id",response.data)
 
     def test_add_redflag(self):
         
@@ -48,10 +47,8 @@ class IncidentTestCase(BaseTestCase):
 
     def test_delete_redflag_nonexistent(self):
         response=self.app.delete('/api/v1/red-flags/1',
-        content_type='application/json',
-        data=json.dumps(self.incidents_empty))
+        content_type='application/json')
         self.assertEqual(response.status_code,200)
-        self.assertEqual(len(self.incidents_empty),0)
         self.assertIn("redflag out of range, use valid id",str(response.data))
 
     def test_edit_location(self):
