@@ -5,12 +5,11 @@ import datetime
 import json
 
 redflag_obj = Redflag()
-incident_obj = Incident()
 validator = Validation()
 
 class IncidentsController:
     def __init__(self):
-        self.redflags=redflag_obj.get_redflags()
+        self.redflags=redflag_obj.get_incidents()
 
     def add_redflag(self,data):
         data = request.get_json()

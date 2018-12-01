@@ -7,11 +7,11 @@ class Incident:
         return self.incidents
 class Redflag(Incident):
     def __init__(self):
-        self.redflags=[]
+        super().__init__()
 
     def create_redflag(self,args):
         redflag=dict(
-            redflag_id= len(self.redflags)+1,
+            redflag_id= len(self.incidents)+1,
             created_on =datetime.datetime.now(),
             created_by=args['created_by'],
             incident_type = "redflag",
@@ -21,17 +21,11 @@ class Redflag(Incident):
             video = args['video'],
             comment = args['comment']
         )
-
-        self.redflags.append(redflag)
+        self.incidents.append(redflag)
 
         return redflag
 
-    def get_redflags(self):
-        return self.redflags
-
-
     def get_redflag(self,redflag_id):
-        for redflag in self.redflags:
+        for redflag in self.incidents:
             if redflag['redflag_id'] ==redflag_id:
                 return redflag
-    
