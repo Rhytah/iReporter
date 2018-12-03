@@ -26,3 +26,7 @@ def login():
         "message":f"{username} ,you have successfully logged in",
         "data": f"This is your token {access_token}"
     })     
+
+@app.route('/api/v1/auth/users/<int:user_id>',methods = ['GET'])
+def get_a_reporter(user_id):
+    return user_controller.fetch_reporter(user_id)

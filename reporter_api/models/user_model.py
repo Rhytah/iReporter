@@ -27,7 +27,7 @@ class Reporter(User):
 
         return reporter
 
-    def get_reporter(self,reporter_id):
+    def get_reporter(self,user_id):
         for reporter in self.users:
-            if reporter['reporter_id'] ==reporter_id:
+            if reporter['user_id'] == user_id:
                 return reporter

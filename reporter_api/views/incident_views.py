@@ -1,6 +1,9 @@
 from flask import Flask, jsonify,request,json
 from reporter_api import app
 from reporter_api.controllers.incidents_controllers import IncidentsController
+from flask_jwt_extended import JWTManager,jwt_required,create_access_token, get_jwt_identity
+
+
 
 incidents_controller=IncidentsController()
 @app.route('/api/v1/red-flags',methods=['GET'])
@@ -12,6 +15,7 @@ def fetch_single_red_flag(_id):
     return incidents_controller.fetch_specific_redflag(_id)
 
 @app.route('/api/v1/red-flags',methods=['POST'])
+@jwt_required
 def add_red_flag():
     request_data=request.get_json()
     return incidents_controller.add_redflag(request_data)
