@@ -4,14 +4,9 @@ from flask import jsonify
 class UserValidator:
     def validate_add_user(self,firstname,lastname,username,email,password,phone_number,othernames):
         if not re.match (r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",email):
-            return jsonify({
-                "status":400,
+            return jsonify({"status":400,
                 "error":"Use valid email address format. ...janedoe@int.com"
             })
-        if not email or email.isspace():
-            return jsonify({
-                "status":400,
-                "error":"email is missing"})
         if not firstname or firstname.isspace():
             return jsonify({
                 "status":400,

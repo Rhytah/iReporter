@@ -4,7 +4,7 @@ from reporter_api.views import user_views
 import json
 import re
 
-class UserTestase(BaseTestCase):
+class UserTestcase(BaseTestCase):
 
     def test_add_user(self):
         response= self.test_client.post('/api/v1/auth/signup',
@@ -65,11 +65,18 @@ class UserTestase(BaseTestCase):
         self.assertIn("sunnyk ,you have successfully logged in", str(response_out['message']))
         self.assertEqual(response_out['status'],200)
 
+    # def test_fetch_reporters(self):
+    #     response=self.test_client.get('/api/v1/auth/users')
+    #     response_out=json.loads(response.data.decode())
+    #     self.assertEqual(response_out['status'],200)
+    #     self.assertIn("You are viewing registered reporters",str(response_out['message']))
+ 
     def test_fetch_reporters(self):
         response=self.test_client.get('/api/v1/auth/users')
         response_out=json.loads(response.data.decode())
         self.assertEqual(response_out['status'],200)
         self.assertIn("You are viewing registered reporters",str(response_out['message']))
+        self.assertNotIn("No reporters registered",str(response_out['message']))
     
     def test_fetch_specific_reporter(self):
         response=self.test_client.get('/api/v1/auth/users/1',
@@ -78,12 +85,59 @@ class UserTestase(BaseTestCase):
         self.assertEqual(response_out['status'],200)
         self.assertIn("Reporter details displayed",str(response_out['message']))
 
-    def test_add_user_with_symbols(self):
-        testuser6= dict(
-            firstname="##33 3r",
-            lastname="tamale",
-            othernames = "funny",
-            phone_number =25678924556,
-            username="username",
-            password= "pass1236"
-        )       
+    def test_fetch_specific_reporter_out_of_range(self):
+        response=self.test_client.get('/api/v1/auth/users/20',
+        content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        self.assertEqual(response_out['status'],400)
+        self.assertIn("user_id out of range, try again with a valid id",str(response_out['error']))
+
+    def test_add_user_firstname_with_symbols(self):
+        self.user['firstname'] = "###$%%^&"
+        response= self.test_client.post('/api/v1/auth/signup',
+        data=json.dumps(self.user),
+        content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        self.assertEqual(response_out['status'],400)
+        self.assertIsInstance(response_out,dict)
+        self.assertIn("firstname cannot have white spaces or symbols",str(response_out['error']))
+
+    def test_add_user_lastname_with_symbols(self):
+        self.user['lastname'] = "###_  @"
+        response= self.test_client.post('/api/v1/auth/signup',
+        data=json.dumps(self.user),
+        content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        self.assertEqual(response_out['status'],400)
+        self.assertIsInstance(response_out,dict)
+        self.assertIn("lastname cannot have white spaces or symbols",str(response_out['error']))
+
+    def test_add_user_othernames_invalid(self):
+        self.user['othernames'] = "  l@st#yujn"
+        response= self.test_client.post('/api/v1/auth/signup',
+        data=json.dumps(self.user),
+        content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        self.assertEqual(response_out['status'],400)
+        self.assertIsInstance(response_out,dict)
+        self.assertIn("othernames cannot have white spaces or symbols",str(response_out['error']))
+
+    def test_add_user_invalid_password(self):
+        self.user['password'] = "pass"
+        response= self.test_client.post('/api/v1/auth/signup',
+        data=json.dumps(self.user),
+        content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        self.assertEqual(response_out['status'],400)
+        self.assertIsInstance(response_out,dict)
+        self.assertIn("['Password should be at least 6 characters longuppercase letters: A-Z', 'lowercase letters- a-z', 'numbers: 0-9', 'any of the special characters: @#$%^&+=']",str(response_out['error']))
+    
+    def test_add_user_username_invalid(self):
+        self.user['username'] = "  l@st#yujn"
+        response= self.test_client.post('/api/v1/auth/signup',
+        data=json.dumps(self.user),
+        content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        self.assertEqual(response_out['status'],400)
+        self.assertIsInstance(response_out,dict)
+        self.assertIn("username cannot have white spaces or symbols",str(response_out['error']))
