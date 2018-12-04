@@ -1,31 +1,32 @@
+import datetime
+from flask_jwt_extended import JWTManager,get_jwt_identity
 
-incidents = []
 class Incident:
     def __init__(self):
-        self.incidents =incidents
+        self.incidents =[]
 
-    def create_incident(self,args):
-        incident=dict(
-            _id= len(self.incidents)+1,
-            createdOn =args['createdOn'],
-            createdBy=args['createdBy'],
-            type = args['type'],
+    def get_incidents(self):
+        return self.incidents
+class Redflag(Incident):
+    def __init__(self):
+        super().__init__()
+
+    def create_redflag(self,args):
+        redflag=dict(
+            redflag_id= len(self.incidents)+1,
+            created_on =datetime.datetime.now(),
+            created_by=get_jwt_identity(),
+            incident_type = "redflag",
             location = args['location'],
-            status = args['status'],
+            status = "draft",
             image = args['image'],
             video = args['video'],
             comment = args['comment']
         )
+        self.incidents.append(redflag)
+        return redflag
 
-        self.incidents.append(incident)
-
-        return incident
-
-    def get_incidents(self):
-        return self.incidents
-
-    def get_incident(self,_id):
-        for incident in self.incidents:
-            if incident['_id'] ==_id:
-                return incident
-    
+    def get_redflag(self,redflag_id):
+        for redflag in self.incidents:
+            if redflag['redflag_id'] ==redflag_id:
+                return redflag
