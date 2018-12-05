@@ -65,17 +65,14 @@ class UserTestcase(BaseTestCase):
         self.assertIn("sunnyk ,you have successfully logged in", str(response_out['message']))
         self.assertEqual(response_out['status'],200)
 
-    # def test_fetch_reporters(self):
-    #     response=self.test_client.get('/api/v1/auth/users')
-    #     response_out=json.loads(response.data.decode())
-    #     self.assertEqual(response_out['status'],200)
-    #     self.assertIn("You are viewing registered reporters",str(response_out['message']))
+ 
  
     def test_fetch_reporters(self):
         response=self.test_client.get('/api/v1/auth/users')
         response_out=json.loads(response.data.decode())
         self.assertEqual(response_out['status'],200)
         self.assertIn("You are viewing registered reporters",str(response_out['message']))
+        
         self.assertNotIn("No reporters registered",str(response_out['message']))
     
     def test_fetch_specific_reporter(self):
