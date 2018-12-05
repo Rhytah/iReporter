@@ -67,7 +67,10 @@ blockquote{
     border-top: none;
     margin-left: 30px;
 }
-
+img{
+    width: 200px;
+    height:125px;
+}
 /* Style the close button */
 .topright {
     float: right;

@@ -57,10 +57,9 @@ input {
   margin: 0;
   border: none;
   border-radius: 0;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 16px;
+  width: fit-content;
+  padding: 06px;
+  font-size: 14px;
 }
 
 /* Style the "Add" button */
@@ -92,7 +91,7 @@ li input{
 
 /* Darker background-color on hover */
 table tr:hover {
-  background: #ddd;
+  background: rgba(3, 4, 71, 0.863);
 }
 /* Set a style for all buttons */
 button {
@@ -134,16 +133,22 @@ button {
 }
 
 .tabcontent input{
-    width:20%;
-    float: right;
-    height:50px;
+    width:fit-content;
+    /* float: right; */
+    height:fit-content;
     font-size:14px;
+}
+.tabcontent input[type=submit]{
+  width:30%;
+}
+#upload{
+  float: right;
 }
 textarea{
     margin-block-start: 10px;
-    width:70%;
+    width:100%;
     height:150px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 
@@ -182,7 +187,7 @@ table {
 
 th, td {
   text-align: left;
-  padding: 16px;
+  padding: 08px;
 }
 
 tr:nth-child(even) {
@@ -198,10 +203,39 @@ tr:nth-child(even) {
   background:white;
   color:green;
 }
-#edit ,#edit1, #edit2{
+#edit{
   display:none;
-  height: 200px;
+  height: fit-content;
+  width:125px;
   
+}
+#alert{
+  display:none;
+  width:fit-content;
+  padding: 10px;
+  widows: 125px;
+  background: rgba(136, 15, 15, 0.89);
+  color:wheat;
+}
+#alert1{
+  display:none;
+  width:fit-content;
+  padding: 10px;
+  widows: 125px;
+  background: rgba(165, 155, 15, 0.89);
+  color:wheat;
+}
+.closebutton{
+  margin-left:10px;
+  color: wheat;
+  font-weight:bold;
+  font-size: 14px;
+  line-height: 10px;
+  cursor:pointer;
+  transition: 0.3s;
+}
+.closebutton:hover{
+  color:black;
 }
 #redflagrecords{
   font-size: 16px;
@@ -213,23 +247,38 @@ span{
   padding: 6px;
 
 }
-#editintervention{
+#editinterventions{
+  display:none;
+}
+tr #editintervention{
+  width:90%;
+  font-size: 14px;
+  text-align: left;
+  padding: 08px;
+  text-align: left;
+  font-size:12px;
+}
+/* #editintervention input{
+  width:125px;
+} */
+
+#editinterventionresolved, #editinterventioninvestigation{
   display: none;
+  background: #e68200;
+  color:white;
+  width:125 px;
 }
-#editintervention input{
-  /* float: left; */
+/* #editintervention input{
+  float: left;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: block;
+ 
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+ 
+} */
 #editintervention button{
-  width: 30%;
-  font-size:16px;
-  height:30px;
+  width: fit-content;
+  font-size:14px;
+  height:fit-content;
 }
 .form-inline {  
   display: flex;
@@ -276,11 +325,8 @@ h3{
   float: right;
 }
 #profile{
-  /* display:none; */
   float: right;
 }
-
-
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(255, 0, 255, 0.431);
@@ -295,10 +341,9 @@ h3{
   font-size: 18px;
 }
 
-
 a {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   color: fuchsia;
 }
 

@@ -98,10 +98,7 @@ hr {
     font-size:20px;
     background: rgba(2, 72, 119, 0.37);   
 }
-/* #login .cancelbtn{
-    width:30%;
-    float:left;
-} */
+
 #login .psw{
     float: right;
 }
@@ -174,7 +171,7 @@ hr {
         position:center;
         width:50%;
         height: fit-content;
-        margin-left: 100px;  
+        margin-left:auto;  
         padding: 10px;      
     }
 }

@@ -38,16 +38,18 @@
             <form id="usrform">
                 <label>Report an Incident linked to corruption</label>
                 <br>
+                <label>Title:</label>
+                <input type="text" id="issue" placeholder="Write title here">
                 <textarea type="text" placeholder="Detailed report"></textarea>
                 <input type="submit" value='SUBMIT'>   
             </form>
         </div>   
         <div class="tabcontent" id="intervention">
 
-                <div class="container">
+                <div>
                         <form>
                           <label >Issue</label>
-                          <input type="text" id="fname"  placeholder="What issue are you referring to?">
+                          <input type="text" id="issue"  placeholder="What issue are you referring to?">
                       <br>
                           <label>Region </label>
                          
@@ -72,15 +74,18 @@
                             <option value="internal">Ministry of Internal Affairs</option>
                           </select>
                           <br>
-                          <span>
+                        
                           <label>
                           Attach Image/Video
-                          <input type="file" name="pic" accept="image/*">        
-                        </span>  
-                        <br>             
-                          <input type="submit" value="Submit">
+                          </label>
+                        
+                            <div>
+                          <input type="file" name="pic" accept="image/*">
+                          <input type="submit" id="upload" value="Upload">
+                      </div>
+                  
                         </form>
-
+                        <input type="submit" value="Submit">
                       </div> 
         </div>
 
@@ -91,31 +96,54 @@
 
             <label onclick="show('redflagrecords');">Red-flags</label>
             
-            <div id='redflagrecords'>
-                    <ol>
-                        <li id="redflag1">
-                         LC chairman asks for bribes to sign documents.
-                         <span onclick="show('edit');">Edit record </span>  
-                         <div class="container" id="edit"><textarea >Edit record here</textarea>
-                          <a onclick="hide('edit')">Done editing</a></div> 
-                        <span onclick="hide('redflag1');">Delete</span>
-                        </li>
-
-                        <li id="redflag2">
-                        Nusrse sells free medication to desperate patients.
-                        <span onclick="show('edit1');">Edit record </span>  
-                        <div class="container" id="edit1"><textarea >Edit record here</textarea>
-                         <a onclick="hide('edit1')">Done editing</a></div> 
-                       <span onclick="hide('redflag2');">Delete</span>
-                        </li>
-
-                        <li id="redflag3">Town council misappropriated funds
-                        <span onclick="show('edit2');">Edit record </span>  
-                        <span onclick="hide('redflag3');">Delete</span>
-
-                            <div class="container" id="edit2"><textarea >Edit record here</textarea>
-                             <a onclick="hide('edit2')">Done editing</a></div> 
-                        </li>  
+            <div >
+              <table id='redflagrecords'>
+                <tr>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Created on</th>
+                <th>Status</th>
+                <th></th>
+                </tr>
+                <tr id="redflag1">
+                  <td>Bribery</td>
+                  <td> LC chairman asks for bribes to sign documents.
+                      <div id="alert">
+                        <span class="closebutton" onclick="this.parentElement.style.display='none';">&times;l</span>
+                        <strong>You cannot edit a resolved red flag</strong></div>
+                  </td>
+                  
+                  <td>20/10/2017</td>
+                  <td>Resolved</td>
+                  <td><span onclick="show('alert');">Edit record </span> </td>
+                  <td> <span onclick="show('redflag1');">Delete</span></td>
+                </tr>
+                <tr id="redflag2">
+                  <td>Drug abuse</td>
+                  <td> Nusrse sells free medication to desperate patients.
+                      <div id="alert1">
+                          <span class="closebutton" onclick="this.parentElement.style.display='none';">&times;l</span>
+                          <strong>Red flag under investigation</strong></div> 
+                  </td>
+                  <td>16/06/2018</td>
+                  <td>Under Investigation</td>
+                  <td>
+                      <span onclick="show('alert1');">Edit record </span>  
+                  </td>
+                  <td><span onclick="show('redflag2');">Delete</span></td>
+                </tr>
+                <tr id="redflag3">
+                  <td>Misappropriated funds</td>
+                  <td>Town council misappropriated funds
+                  <div id="edit"><textarea>Edit record here</textarea>
+                    <a onclick="this.parentElement.style.display='none';">Done editing</a></div></td>
+                  <td>10/10/2018</td>
+                  <td>Draft</td>
+                  <td><span onclick="show('edit');">Edit record </span>
+                  </td>
+                      <td><span onclick="show('redflag3');">Delete</span></td>
+                </tr>
+              </table>        
                     </ol>
                     <p>Summary</p>
                     <ul>
@@ -127,56 +155,88 @@
                     </div>
     <br>
                   <label onclick="show('interventionrecords');">Intervention records</label>
-            
+                  <table id="editintervention">
+                      <tr>
+                          <th>Issue</th>
+                          <th>Region</th>
+                          <th>Agency</th>
+                          <th>Creation Date</th>
+                        </tr>
+                        
+                      <tr>
+                          <td> 
+                           <input type="text" id="issue" placeholder="Edit issue here">
+                           
+                           </td>
+                           <td>
+                           <select id="region">
+                               <option value="Eastern">Eastern Region</option>
+                               <option value="Western">Western Region</option>
+                               <option value="Central">Central Region</option>
+                               <option value="Northern">Northern Region</option>
+                               <option value="Southern">Southern Region</option>
+                             </select>
+                           </td>
+                           <td>
+                           
+                           <select id="agency">
+                               <option value="works">Ministry of Works and transport</option>
+                               <option value="labour">Ministry of Labour and Gender </option>
+                               <option value="internal">Ministry of Internal Affairs</option>
+                             </select>
+                             </td>
+                             <td><input type="date"></td>
+
+                           <td>
+                           <span onclick="show('editintervention');">Submit</span>
+                       </tr>
+                  </table>
                   <table id='interventionrecords'>
                           <tr>
                             <th>Issue</th>
                             <th>Region</th>
                             <th>Agency</th>
+                            <th>Creation Date</th>
+                            <th>Status</th>
                           </tr>
+                          
                           <tr id="row1">
                             <td>Fix deep pot holes on jinja road</td>
                             <td>Eastern Region</td>
                             <td>Ministry of Works and Transport</td>
-                            <td><span onclick="show('editintervention');">Edit record </span> 
-                            <span id="editintervention">
-                        <form class="form-inline" >
-                          <label>Issue:</label>
-                          <input type="text" id="fname" placeholder="What issue are you referring to?">
-                          
-                          <label>Region:</label>
-                          <select id="region">
-                              <option value="Eastern">Eastern Region</option>
-                              <option value="Western">Western Region</option>
-                              <option value="Central">Central Region</option>
-                              <option value="Northern">Northern Region</option>
-                              <option value="Southern">Southern Region</option>
-                            </select>
-                          <label>Agency</label>
-                          <select id="region">
-                              <option value="Eastern">Eastern Region</option>
-                              <option value="Western">Western Region</option>
-                              <option value="Central">Central Region</option>
-                              <option value="Northern">Northern Region</option>
-                              <option value="Southern">Southern Region</option>
-                          </select>
-                          <button onclick="hide('editintervention')">Submit</button>
-                        </form></span></td>
-                        <td><span onclick="hide('row1');">Delete</span></td>
+                            <td>06/01/2018</td>
+                            <td> <strong>Draft</strong></td>
+                            <td><span onclick="show('editintervention');">Edit record </span>
+                           
+
+                        <td><span onclick="show('row1');">Delete</span></td>
                           </tr>
+                          
                           <tr id="row2">
                             <td>Restock essential medication at Center 4(Kyotera-Rakai). </td>
                             <td>Central Region</td>
                             <td>Ministry of Health</td>
-                            <td><span onclick="show('editintervention');">Edit record </span></td>                         
-                             <td><span onclick="hide('row2');">Delete</span></td>
+                            <td>01/25/2018</td>
+                            <td><strong>Under investigation</strong></td>
+                            <td><span onclick="show('editinterventioninvestigation');">Edit record </span>
+                              <div id="editinterventioninvestigation">
+                                <span class="closebutton" onclick="this.parentElement.style.display='none';">&times;l</span>
+                                <strong>You cannot edit an intervention under investigation</strong></div>
+                        </td>                        
+                             <td><span onclick="show('row2');">Delete</span></td>
                           </tr>
                           <tr id="row3">
                             <td>Primary schools in Lango have only 5 teachers for  over 1000 pupils</td>
                             <td>Northern Region</td>
                             <td>Ministry of Education and Sports</td>
-                            <td><span onclick="show('editintervention');">Edit record </span></td>                         
-                            <td><span onclick="hide('row3');">Delete</span></td>
+                            <td>09/01/2017</td>
+                            <td><strong>Resolved</strong></td>
+                            <td><span onclick="show('editinterventionresolved');">Edit record </span>
+                              <div id="editinterventionresolved">
+                                  <span class="closebutton" onclick="this.parentElement.style.display='none';">&times;l</span>
+                                  <strong>You cannot edit a resolved intervention</strong></div>                           
+                        </td>                         
+                            <td><span onclick="show('row3');">Delete</span></td>
                           </tr>
                         </table>
                         
