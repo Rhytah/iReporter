@@ -24,21 +24,32 @@
   </blockquote>
   
   
-      
+  <div class="panel" id="admin_login">
+    <form action="admin.htm">
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" id="email" required ="required"/>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" required="required"/>
+    <button>Login</button> 
+    </form>
+</div>
       
         <div class="panel" id="login">
-          <form >
+          <form action="forum.htm">
               <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="Enter Email" name="email" required="">
+              <input type="text" placeholder="Enter Email" id="email" required ="required"/>
         
               <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required="">
-          <button onclick="parent.location ='forum.htm'">Login</button> or <button onclick="parent.location='admin.htm'">Login as Admin</button>
+              <input type="password" placeholder="Enter Password" id="psw" required="required"/>
+          <button>Login</button> 
+          <button id="adminbtn" onclick="document.getElementById('admin_login').style.display='block';document.getElementById('login').style.display='none';" > Admin Login</button>
           <br>
-          <button onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Don't have an account? Signup here</button>
-
+          <button id="signupbtn" onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Don't have an account? Signup here</button>
       </form>
+      
     </div>
+
     
     <div id="signup" class="modal">
       <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
