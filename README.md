@@ -35,13 +35,13 @@ clone the github repo to your computer:
 * launch <a href="https://rhytah.github.io/iReporter/UI/index.htm">Index</a>  to access Sign Up/ Sign In options
 * On successful login, you will be redirected to webpage that contains information relevant to your logged in account(either user or Admin).
 * <a href="https://rhytah.github.io/iReporter/UI/forum.htm">User interface</a> ;
-        -click `create red-flag` tab to display input fields.
-        -click `create intervention record` tab to display input fields.
-        -click `My records` tab to display past records.
-        -click `Logout` tab to leave page.
-        - top right corner contains brief user profile information.
-*<a href="https://rhytah.github.io/iReporter/UI/admin.htm">Admin interface</a> ;
-       -click on status to display options to change status of a record
+        ** click `create red-flag` tab to display input fields.
+        ** click `create intervention record` tab to display input fields.
+        ** click `My records` tab to display past records.
+        ** click `Logout` tab to leave page.
+        ** top right corner contains brief user profile information.
+* <a href="https://rhytah.github.io/iReporter/UI/admin.htm">Admin interface</a> ;
+       ** click on status to display options to change status of a record
 
 
 ## Known Bugs
