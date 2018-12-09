@@ -19,7 +19,7 @@ class BaseTestCase(unittest.TestCase):
             othernames = "funny",
             email = "johndoe@gmail.com",
             phone_number =25678924556,
-            username="username",
+            username="sunnyk",
             password= "pass1236"
 
         )          

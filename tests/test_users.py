@@ -56,6 +56,15 @@ class UserTestcase(BaseTestCase):
         self.assertEqual(response_out['status'],400)
         self.assertIn("user already exits",str(response_out['error']))
 
+    def test_invalid_user_login(self):
+        credentials = dict(username="Kengrow",password="pass1236")
+        response= self.test_client.post('/api/v1/auth/login',
+        content_type='application/json',
+        data=json.dumps(credentials))
+        response_out=json.loads(response.data.decode())
+        self.assertIn("invalid credentials. Use a registered username and password", str(response_out['error']))
+        self.assertEqual(response_out['status'],400)
+
     def test_user_login(self):
         credentials = dict(username="sunnyk",password="pass1236")
         response= self.test_client.post('/api/v1/auth/login',

@@ -28,11 +28,12 @@ class User_controller:
         if invalid_user:
             return invalid_user
         new_reporter = {'user_id':user_id,'registered':registered,'firstname':firstname,'lastname':lastname,'othernames':othernames,'email':email,'phone_number':phone_number,'username':username,"isadmin":isadmin,'password':password}
-        for a_reporter in range(len(self.reporters)):
-            return jsonify({
-                "status":400,
-                "error":"user already exits"
-            })
+        reporter =reporter_obj.search_reporter(username,password)
+        if reporter:
+                return jsonify({
+                    "status":400,
+                    "error":"user already exits"
+                })
         reporter_obj.create_reporter(user_data)
 
         return jsonify ({
@@ -40,6 +41,22 @@ class User_controller:
             "data":new_reporter,
             "message":"signup successful"
         })
+    def signin(self,args):
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
+        access_token = create_access_token(identity=username)
+        reporter=reporter_obj.search_reporter(username,password)
+    
+        if not reporter:
+            return jsonify({
+                "status":400,
+                "error":"invalid credentials. Use a registered username and password"})
+        return jsonify({
+            "status":200,
+            "message":f"{username} ,you have successfully logged in",
+            "data": f"This is your token {access_token}"})  
+
 
     def fetch_reporters(self):
         if len(self.reporters)<1:
