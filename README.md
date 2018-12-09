@@ -46,6 +46,16 @@ $pytest
 ```
 This is version one"v1" of the API
 ```
+## End Points(Required Features)
+|           End Point                                     |            Functionality                       |
+|   ---------------------------------------------------   | ---------------------------------------------  |
+|     POST   api/v1/auth/login                            |             Login to application               |
+|     POST   api/v1/auth/signup                           |             Register an account                |
+|     POST   api/v1/red-flags                             |             Create a red-flag                  |
+|     GET    api/v1/red-flags                             |             Fetch all red-flags                |
+|     GET    api/v1/red-flags/<int:redflag_Id>            |             Fetch a red-flag                   |
+|     PATCH  api/v1/red-flags/<int:redflag_Id>            |             Edit red-flag location             |
+|     PATCH  api/v1/red-flags/<int:redflag_Id>            |             Edit red-flag comment              |
 
 
 ## Author
