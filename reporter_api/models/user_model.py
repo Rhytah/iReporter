@@ -7,6 +7,7 @@ class User:
 
     def get_users(self):
         return self.users
+
 class Reporter(User):
     def __init__(self):
         super().__init__()
@@ -21,7 +22,8 @@ class Reporter(User):
             email = args['email'],
             phone_number = args['phone_number'],
             username = args['username'],
-            isadmin= "Not Admin"
+            password= args['password'],
+            isadmin= False
                     )
         self.users.append(reporter)
 
@@ -31,3 +33,8 @@ class Reporter(User):
         for reporter in self.users:
             if reporter['user_id'] == user_id:
                 return reporter
+
+    def search_reporter(self,username,password):
+        for a_reporter in self.users:
+            if a_reporter['username']==username and a_reporter['password']==password:
+                return a_reporter
