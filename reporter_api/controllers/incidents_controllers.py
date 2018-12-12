@@ -31,15 +31,12 @@ class IncidentsController:
         new_redflag = {"redflag_id":redflag_id,"created_on":created_on,"created_by":created_by,"incident_type":incident_type,"location":location,"status":status,"image":image,"video":video,"comment":comment}
         redflag_obj.create_redflag(data)
 
-        if not new_redflag:
-            return jsonify({
-                "message":"No redflags found"
-            }),200
+        print (new_redflag)
         return jsonify ({
             "status":201,
             "data":new_redflag,
             "message":"Successfully added red-flag"
-        }),201
+        })
 
     def fetch_all_redflags(self):
         if not self.redflags or len(self.redflags) < 1 :
