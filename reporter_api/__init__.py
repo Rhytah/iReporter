@@ -18,7 +18,7 @@ def index():
         </head>
         <body>
         <div class=maincontent>
-            <h2>Onlineshop-API<h2>
+            <h2>iReporter-API<h2>
             Currently supported endpoints
             <br>
 
