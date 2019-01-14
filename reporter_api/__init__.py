@@ -24,7 +24,7 @@ def index():
 
             <a href='https://rhytah-ireporter.herokuapp.com/api/v1/red-flags'>Fetch all red-flags data</a>
             <br>
-            <a href='https://rhytah-ireporter.herokuapp.com/api/v1/auth/users'>Add creditcard data</a>
+            <a href='https://rhytah-ireporter.herokuapp.com/api/v1/auth/users'>Fetch users</a>
             <br>
         </div>
         </body>
