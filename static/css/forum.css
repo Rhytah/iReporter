@@ -88,7 +88,9 @@ li input{
   list-style-type: none;
 }
 
-
+li{
+  font-size:16px;
+}
 /* Darker background-color on hover */
 table tr:hover {
   background: rgba(3, 4, 71, 0.863);
@@ -140,15 +142,17 @@ button {
 }
 .tabcontent input[type=submit]{
   width:30%;
+  height:50px;
 }
 #upload{
   float: right;
 }
 textarea{
-    margin-block-start: 10px;
+    margin-block-start: 06px;
     width:100%;
-    height:150px;
+    height:250px;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 
@@ -258,9 +262,7 @@ tr #editintervention{
   text-align: left;
   font-size:12px;
 }
-/* #editintervention input{
-  width:125px;
-} */
+
 
 #editinterventionresolved, #editinterventioninvestigation{
   display: none;
@@ -268,13 +270,7 @@ tr #editintervention{
   color:white;
   width:125 px;
 }
-/* #editintervention input{
-  float: left;
-  width: 100%;
- 
-  border: 1px solid #ccc;
- 
-} */
+
 #editintervention button{
   width: fit-content;
   font-size:14px;
