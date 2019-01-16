@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/Rhytah/iReporter.svg?branch=API)](https://travis-ci.com/Rhytah/iReporter)
 
-[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=API)](https://coveralls.io/github/Rhytah/iReporter?branch=API)
+[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=ch-Heroku-deploy-162362803)](https://coveralls.io/github/Rhytah/iReporter?branch=ch-Heroku-deploy-162362803)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e28b889db9f04910afe6/maintainability)](https://codeclimate.com/github/Rhytah/iReporter/maintainability)
 
