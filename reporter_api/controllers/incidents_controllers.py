@@ -114,3 +114,19 @@ class IncidentsController:
         return jsonify({
             "status":400,
             "message":"Invalid id, try again"})
+    def edit_status(self,redflag_id):
+        redflag=redflag_obj.get_redflag(redflag_id)
+        data = request.get_json()                
+        if redflag:
+            status = data.get('status')
+            invalid_status =validator.validate_status(status)
+            if invalid_status:
+                return invalid_status
+            changed_status = status
+            redflag['status'] = changed_status
+            return jsonify({
+                "message":f"You have changed red flag's status to {status}"
+            }),200
+        return jsonify({
+            "status":400,
+            "message":"Invalid id, try again"})

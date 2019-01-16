@@ -52,3 +52,24 @@ class Validation:
                 "status":400,
                 "error":"comment must be a string"
             })
+
+    def validate_status(self,status):
+        status_messages=[
+            'under investigation',
+            'rejected',
+            'resolved'
+        ]
+        if not status or status.isspace():
+            return jsonify({
+                "status":400,
+                "error":"status is missing"})
+        if not isinstance(status,str):
+            return jsonify({
+                "status":400,
+                "error":"status must be a string"
+            })
+        if status not in status_messages:
+            return jsonify({
+                "status":400,
+                "error":"status can only be changed to either under investigation or resolved"})
+        

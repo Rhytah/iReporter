@@ -31,3 +31,7 @@ def edit_location(redflag_id):
 @app.route('/api/v1/red-flags/<int:redflag_id>/comment', methods =['PATCH'])
 def edit_comment(redflag_id):
     return incidents_controller.edit_comment(redflag_id)
+
+@app.route('/api/v1/red-flags/<int:redflag_id>/status', methods =['PATCH'])
+def edit_status(redflag_id):
+    return incidents_controller.edit_status(redflag_id)
