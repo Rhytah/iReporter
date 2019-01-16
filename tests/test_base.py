@@ -68,3 +68,5 @@ class BaseTestCase(unittest.TestCase):
             username="username",
             password= "pass1236"
         )       
+        self.reporter = dict(username='sunnyk',password='pass1236')
+        self.admin_user = dict(username='admin',password='sup3rpswd')

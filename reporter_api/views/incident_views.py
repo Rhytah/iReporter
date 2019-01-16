@@ -33,5 +33,11 @@ def edit_comment(redflag_id):
     return incidents_controller.edit_comment(redflag_id)
 
 @app.route('/api/v1/red-flags/<int:redflag_id>/status', methods =['PATCH'])
+@jwt_required
 def edit_status(redflag_id):
-    return incidents_controller.edit_status(redflag_id)
+    current_user = get_jwt_identity()
+    isadmin = current_user.get("isadmin")
+    if isadmin == True:
+        return incidents_controller.edit_status(redflag_id)
+    response = jsonify({"message": "Only admins can change status of a red-flag"}), 401 
+    return response

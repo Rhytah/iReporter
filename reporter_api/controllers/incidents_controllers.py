@@ -124,9 +124,10 @@ class IncidentsController:
                 return invalid_status
             changed_status = status
             redflag['status'] = changed_status
-            return jsonify({
-                "message":f"You have changed red flag's status to {status}"
-            }),200
+            return jsonify({"status":200,
+                "message":f"You have changed red flag's status to {status}",
+                "data":status
+            })
         return jsonify({
             "status":400,
-            "message":"Invalid id, try again"})
+            "error":"Invalid id, try again"})
