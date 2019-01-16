@@ -11,8 +11,16 @@ def signup():
     return user_controller.add_reporter(request_data)
 
 @app.route('/api/v1/auth/users', methods = ['GET'])
+@jwt_required
 def fetch_users():
-    return user_controller.fetch_reporters()
+    current_user = get_jwt_identity()
+    isadmin = current_user.get("isadmin")
+    if isadmin == True:
+        return user_controller.fetch_reporters()
+    return jsonify({
+        "status":401,
+        "error": "Only admins can see users"
+        }) 
 
 @app.route('/api/v1/auth/login', methods =['POST'])
 def login():

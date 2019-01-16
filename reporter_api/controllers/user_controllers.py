@@ -7,15 +7,16 @@ import datetime
 
 reporter_obj = Reporter()
 validator = UserValidator()
+admin = {'user_id':1,'firstname':"rita",'lastname':"namono",'othernames':"none",'email':"hdh@mail.com",'phone_number':"254865268",'username':"admin",'password':"sup3rpswd","isadmin":True}
 
 class User_controller:
     def __init__(self):
         self.reporters = reporter_obj.get_users()
-    
+        self.reporters.append(admin)
     def add_reporter(self,*args):
         user_data = request.get_json()
         user_id = len(self.reporters)+1
-        isadmin = "Not Admin"
+        isadmin = False
         registered = datetime.datetime.now()
         firstname = user_data.get('firstname')
         lastname = user_data.get('lastname')
@@ -45,18 +46,23 @@ class User_controller:
         data = request.get_json()
         username = data.get('username')
         password = data.get('password')
-        access_token = create_access_token(identity=username)
-        reporter=reporter_obj.search_reporter(username,password)
-    
-        if not reporter:
-            return jsonify({
-                "status":400,
-                "error":"invalid credentials. Use a registered username and password"})
-        return jsonify({
-            "status":200,
-            "message":f"{username} ,you have successfully logged in",
-            "data": f"This is your token {access_token}"})  
 
+        returned_reporter=reporter_obj.search_reporter(username,password)
+   
+        if returned_reporter is not None:
+            token_expiry = datetime.timedelta(days=1)
+            my_identity=dict(
+                user_id=returned_reporter.get('user_id'),
+                isadmin=returned_reporter.get('isadmin')
+            )
+            return jsonify ({
+                 'token' : create_access_token(identity=my_identity, expires_delta=token_expiry),
+                 'message':f'{username} ,you have successfully logged in', 
+                 'isadmin':returned_reporter['isadmin'],
+                 'status':200})
+        return jsonify ({ 'token': "None",
+             'error': "invalid credentials. Use a registered username and password",
+             'status':400})
 
     def fetch_reporters(self):
         if len(self.reporters)<1:
@@ -67,9 +73,8 @@ class User_controller:
         return jsonify({
             "status":200,
             "data":self.reporters,
-            "message":"You are viewing registered reporters"
-        })
-    
+            "message":"You are viewing registered reporters"})
+
     def fetch_reporter(self,user_id):
         reporter=reporter_obj.get_reporter(user_id)
         if reporter:
