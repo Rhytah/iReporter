@@ -1,4 +1,4 @@
-from reporter_api.models.incident_model import Redflag
+from reporter_api.models.incident_model import Redflag,redflags
 from flask import jsonify, request
 from reporter_api.utilities.incident_validators import Validation
 from flask_jwt_extended import  get_jwt_identity
@@ -6,12 +6,12 @@ from flask_jwt_extended import  get_jwt_identity
 import datetime
 import json
 
-redflag_obj = Redflag()
+# redflag_obj = Redflag(redflag_id,created_on,created_by,incident_type,location,image,video,comment)
 validator = Validation()
 
 class IncidentsController:
     def __init__(self):
-        self.redflags=redflag_obj.get_incidents()
+        self.redflags=redflags
 
     def add_redflag(self,*args):
         current_user = get_jwt_identity()
@@ -28,10 +28,16 @@ class IncidentsController:
         invalid_redflag= validator.validate_incident(location,image,video,comment)
         if invalid_redflag:
             return invalid_redflag
-        new_redflag = {"redflag_id":redflag_id,"created_on":created_on,"created_by":created_by,"incident_type":incident_type,"location":location,"status":status,"image":image,"video":video,"comment":comment}
-        redflag_obj.create_redflag(data)
 
-        print (new_redflag)
+        new_redflag = {"redflag_id":redflag_id,"created_on":created_on,"created_by":created_by,"incident_type":incident_type,"location":location,"status":status,"image":image,"video":video,"comment":comment}
+        redflags.append(new_redflag)
+
+        # existent_redflag = redflag_obj.search_redflag(created_by,comment)
+        # if existent_redflag:
+        #     return jsonify ({
+        #     "status":409,
+        #     "error":"You already created this redflag"
+        # })
         return jsonify ({
             "status":201,
             "data":new_redflag,
@@ -50,8 +56,15 @@ class IncidentsController:
             "data":self.redflags,
             "message":"These are the recorded red-flags"
         })
+
+    
+    def get_redflag(self,redflag_id):
+        for redflag in redflags:
+            if redflag['redflag_id'] ==redflag_id:
+                return redflag
+
     def fetch_specific_redflag(self,redflag_id):
-        redflag=redflag_obj.get_redflag(redflag_id)
+        redflag=self.get_redflag(redflag_id)
         if not redflag:
             return jsonify({
                 "status":400,
@@ -65,7 +78,7 @@ class IncidentsController:
         }),200
     
     def delete_redflag(self,redflag_id):
-        redflag=redflag_obj.get_redflag(redflag_id)
+        redflag=self.get_redflag(redflag_id)
         if redflag:
             self.redflags.remove(redflag)
             return jsonify({
@@ -81,7 +94,7 @@ class IncidentsController:
     
 
     def edit_location(self,redflag_id):
-        redflag=redflag_obj.get_redflag(redflag_id)
+        redflag=self.get_redflag(redflag_id)
         data = request.get_json()                
         if redflag:
             print (redflag['location'])
@@ -99,7 +112,7 @@ class IncidentsController:
             "message":"Invalid id, try again"})
 
     def edit_comment(self,redflag_id):
-        redflag=redflag_obj.get_redflag(redflag_id)
+        redflag=self.get_redflag(redflag_id)
         data = request.get_json()                
         if redflag:
             comment = data.get('comment')
@@ -114,8 +127,9 @@ class IncidentsController:
         return jsonify({
             "status":400,
             "message":"Invalid id, try again"})
+
     def edit_status(self,redflag_id):
-        redflag=redflag_obj.get_redflag(redflag_id)
+        redflag=self.get_redflag(redflag_id)
         data = request.get_json()                
         if redflag:
             status = data.get('status')
