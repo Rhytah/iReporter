@@ -11,4 +11,5 @@ omit =
     share/
     include/
     venv/
+    tests/
     
