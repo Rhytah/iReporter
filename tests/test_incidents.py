@@ -21,11 +21,17 @@ class IncidentTestCase(BaseTestCase):
       
         response2= self.test_client.post(
             '/api/v1/red-flags/',
-            data=json.dumps(self.incident),
+            data=json.dumps(dict(
+            location = [123.01,110.36],
+            image = "image",
+            video = "image",
+            comment = "Bribery hhhhhhhki"
+            ) ),
             headers=headers,
             content_type='application/json'
             )
         response_out=json.loads(response2.data.decode())
+        print(response_out)
         self.assertEqual(response_out['status'],201)
         self.assertIsInstance(response_out,dict)
         self.assertIn("Successfully added red-flag",str(response_out['message']))

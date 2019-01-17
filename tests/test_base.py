@@ -13,6 +13,7 @@ class BaseTestCase(unittest.TestCase):
             video = "image",
             comment = "Policeman asked for something something"
             ) 
+
         self.user = dict(
             firstname="sunny",
             lastname="tamale",
@@ -21,8 +22,8 @@ class BaseTestCase(unittest.TestCase):
             phone_number =25678924556,
             username="sunnyk",
             password= "pass1236"
-
-        )          
+            )
+          
         self.testuser1 = dict(
             lastname="tamale",
             othernames = "funny",

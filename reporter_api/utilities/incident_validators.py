@@ -26,9 +26,7 @@ class Validation:
         if not comment or comment.isspace():
             return jsonify({
                 "status":400,
-                "error":"comment is missing"})
-
-        
+                "error":"comment is missing"})    
 
     def validate_location(self,location):
         if not location:
@@ -42,8 +40,6 @@ class Validation:
                 "error":"use proper format as float values,  [,] "
             })
         
-    
-
     def validate_comment(self,comment):
         if not comment or comment.isspace():
             return jsonify({
@@ -74,4 +70,3 @@ class Validation:
             return jsonify({
                 "status":400,
                 "error":"status can only be changed to either under investigation or resolved"})
-        

@@ -145,7 +145,7 @@ class UserTestcase(BaseTestCase):
         response_out=json.loads(response.data.decode())
         self.assertEqual(response_out['status'],400)
         self.assertIsInstance(response_out,dict)
-        self.assertIn("firstname cannot have white spaces or symbols",str(response_out['error']))
+        self.assertIn("firstname cannot be integers, have white spaces or symbols",str(response_out['error']))
 
     def test_add_user_lastname_with_symbols(self):
         self.user['lastname'] = "###_  @"
@@ -155,7 +155,7 @@ class UserTestcase(BaseTestCase):
         response_out=json.loads(response.data.decode())
         self.assertEqual(response_out['status'],400)
         self.assertIsInstance(response_out,dict)
-        self.assertIn("lastname cannot have white spaces or symbols",str(response_out['error']))
+        self.assertIn("lastname cannot be integers, have white spaces or symbols",str(response_out['error']))
 
     def test_add_user_othernames_invalid(self):
         self.user['othernames'] = "  l@st#yujn"
@@ -165,7 +165,7 @@ class UserTestcase(BaseTestCase):
         response_out=json.loads(response.data.decode())
         self.assertEqual(response_out['status'],400)
         self.assertIsInstance(response_out,dict)
-        self.assertIn("othernames cannot have white spaces or symbols",str(response_out['error']))
+        self.assertIn("othernames cannot be integers, have white spaces or symbols",str(response_out['error']))
 
     def test_add_user_invalid_password(self):
         self.user['password'] = "pass"
@@ -185,4 +185,4 @@ class UserTestcase(BaseTestCase):
         response_out=json.loads(response.data.decode())
         self.assertEqual(response_out['status'],400)
         self.assertIsInstance(response_out,dict)
-        self.assertIn("username cannot have white spaces or symbols",str(response_out['error']))
+        self.assertIn("username cannot be integers,have white spaces or symbols",str(response_out['error']))
