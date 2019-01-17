@@ -6,38 +6,41 @@ from flask_jwt_extended import JWTManager,jwt_required,create_access_token, get_
 
 
 incidents_controller=IncidentsController()
-@app.route('/api/v1/red-flags',methods=['GET'])
+@app.route('/api/v1/red-flags/',methods=['GET'])
 def fetch_red_flags():
     return incidents_controller.fetch_all_redflags()
 
-@app.route('/api/v1/red-flags/<int:redflag_id>', methods = ['GET'])
+@app.route('/api/v1/red-flags/<int:redflag_id>/', methods = ['GET'])
 def fetch_single_red_flag(redflag_id):
     return incidents_controller.fetch_specific_redflag(redflag_id)
 
-@app.route('/api/v1/red-flags',methods=['POST'])
+@app.route('/api/v1/red-flags/',methods=['POST'])
 @jwt_required
 def add_red_flag():
     request_data=request.get_json()
     return incidents_controller.add_redflag(request_data)
 
-@app.route('/api/v1/red-flags/<int:redflag_id>',methods=['DELETE'])
+@app.route('/api/v1/red-flags/<int:redflag_id>/',methods=['DELETE'])
 def delete_redflag(redflag_id):
     return incidents_controller.delete_redflag(redflag_id)
 
-@app.route('/api/v1/red-flags/<int:redflag_id>/location', methods =['PATCH'])
+@app.route('/api/v1/red-flags/<int:redflag_id>/location/', methods =['PATCH'])
 def edit_location(redflag_id):
     return incidents_controller.edit_location(redflag_id)
 
-@app.route('/api/v1/red-flags/<int:redflag_id>/comment', methods =['PATCH'])
+@app.route('/api/v1/red-flags/<int:redflag_id>/comment/', methods =['PATCH'])
 def edit_comment(redflag_id):
     return incidents_controller.edit_comment(redflag_id)
 
-@app.route('/api/v1/red-flags/<int:redflag_id>/status', methods =['PATCH'])
+@app.route('/api/v1/red-flags/<int:redflag_id>/status/', methods =['PATCH'])
 @jwt_required
 def edit_status(redflag_id):
     current_user = get_jwt_identity()
     isadmin = current_user.get("isadmin")
     if isadmin == True:
         return incidents_controller.edit_status(redflag_id)
-    response = jsonify({"message": "Only admins can change status of a red-flag"}), 401 
-    return response
+    
+    return jsonify({
+        "status":401,
+        "message": "Only admins can change status of a red-flag"
+        }) 

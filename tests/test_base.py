@@ -1,6 +1,6 @@
 import unittest
 from reporter_api import app
-
+import json
 
 class BaseTestCase(unittest.TestCase):
    
@@ -8,7 +8,7 @@ class BaseTestCase(unittest.TestCase):
         self.app = app
         self.test_client = app.test_client()
         self.incident=dict(
-            location = "123.01.56.78,110.36",
+            location = [123.01,110.36],
             image = "image",
             video = "image",
             comment = "Policeman asked for something something"
@@ -70,3 +70,23 @@ class BaseTestCase(unittest.TestCase):
         )       
         self.reporter = dict(username='sunnyk',password='pass1236')
         self.admin_user = dict(username='admin',password='sup3rpswd')
+    def post_redflag(self):
+        self.test_client.post('/api/v1/auth/signup/',
+                data=json.dumps(self.user),
+                content_type='application/json')
+
+        response= self.test_client.post('/api/v1/auth/login/',
+                data=json.dumps(self.user),
+                content_type='application/json')
+        response_out=json.loads(response.data.decode())
+        token = response_out['token']
+        headers = {'Authorization':f'Bearer {token}'}
+        response2= self.test_client.post(
+            '/api/v1/red-flags/',
+            data=json.dumps(self.incident),
+            headers=headers,
+            content_type='application/json'
+            )
+        response_out=json.loads(response2.data.decode())
+
+        

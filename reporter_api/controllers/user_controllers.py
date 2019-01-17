@@ -32,7 +32,7 @@ class User_controller:
         reporter =reporter_obj.search_reporter(username,password)
         if reporter:
                 return jsonify({
-                    "status":400,
+                    "status":409,
                     "error":"user already exits"
                 })
         reporter_obj.create_reporter(user_data)
@@ -60,14 +60,16 @@ class User_controller:
                  'message':f'{username} ,you have successfully logged in', 
                  'isadmin':returned_reporter['isadmin'],
                  'status':200})
-        return jsonify ({ 'token': "None",
+
+        return jsonify ({ 
+             'token': "None",
              'error': "invalid credentials. Use a registered username and password",
              'status':400})
 
     def fetch_reporters(self):
         if len(self.reporters)<1:
             return jsonify({
-                "status":200,
+                "status":404,
                 "message": "No reporters registered"
             })
         return jsonify({

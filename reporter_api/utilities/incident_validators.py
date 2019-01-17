@@ -7,10 +7,11 @@ class Validation:
             return jsonify({
                 "status":400,
                 "error":"location is missing"})
-        if not isinstance(location,list) or len(location)!=2:
-            return({
+        if not isinstance(location,list) or not len(location)==2 \
+        or not isinstance(location[0],float) or not isinstance(location[1],float):
+            return jsonify({
                 "status":400,
-                "error":"use proper format,  ["",""]"
+                "error":"use proper format as float values,  [,] "
             })
         
         if not image or image.isspace():
@@ -34,10 +35,11 @@ class Validation:
             return jsonify({
                 "status":400,
                 "error":"location is missing"})
-        if not isinstance(location,list) or len(location)!=2:
-            return({
+        if not isinstance(location,list) or not len(location)==2 \
+        or not isinstance(location[0],float) or not isinstance(location[1],float):
+            return jsonify({
                 "status":400,
-                "error":"use proper format,  ["",""]"
+                "error":"use proper format as float values,  [,] "
             })
         
     
