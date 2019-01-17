@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/Rhytah/iReporter.svg?branch=API)](https://travis-ci.com/Rhytah/iReporter)
 
-[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=API)](https://coveralls.io/github/Rhytah/iReporter?branch=API)
+[![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=ch-Heroku-deploy-162362803)](https://coveralls.io/github/Rhytah/iReporter?branch=ch-Heroku-deploy-162362803)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e28b889db9f04910afe6/maintainability)](https://codeclimate.com/github/Rhytah/iReporter/maintainability)
 
@@ -46,6 +46,16 @@ $pytest
 ```
 This is version one"v1" of the API
 ```
+## End Points(Required Features)
+|           End Point                                     |            Functionality                       |
+|   ---------------------------------------------------   | ---------------------------------------------  |
+|     POST   api/v1/auth/login                            |             Login to application               |
+|     POST   api/v1/auth/signup                           |             Register an account                |
+|     POST   api/v1/red-flags                             |             Create a red-flag                  |
+|     GET    api/v1/red-flags                             |             Fetch all red-flags                |
+|     GET    api/v1/red-flags/<int:redflag_Id>            |             Fetch a red-flag                   |
+|     PATCH  api/v1/red-flags/<int:redflag_Id>            |             Edit red-flag location             |
+|     PATCH  api/v1/red-flags/<int:redflag_Id>            |             Edit red-flag comment              |
 
 
 ## Author

@@ -1,20 +1,32 @@
 from reporter_api import app
-
 from tests.test_base import BaseTestCase
 from reporter_api.views import incident_views
 import json
 
+from flask_jwt_extended import JWTManager,create_access_token
 class IncidentTestCase(BaseTestCase):
     
     def add_redflag_with_token(self):
-        response = self.test_client.post('/api/v1/red-flags',
-        heasers=self.header,
-        data=json.dumps(self.incident),
-        content_type='application/json')
-        response_out=json.loads(response.data.decode())
+        with self.app.app_context():
+            response= self.test_client.post('/api/v1/auth/login',
+                data=json.dumps(self.reporter),
+                content_type='application/json')
+            response_out=json.loads(response.data.decode())
+            token = response_out['token']
+            headers = {'Authorization':f'Bearer {token}'}
+
+            response2= self.test_client.post(
+                '/api/v1/red-flags',
+                data=json.dumps(self.incident),
+                headers=headers,
+                content_type='application/json'
+                )
+            response_out=json.loads(response2.data.decode())
+
         self.assertEqual(response_out['status'],201)
         self.assertIsInstance(response_out,dict)
         self.assertIn("Successfully added red-flag",str(response_out['message']))
+
 
     def test_fetch_all_redflags(self):
         response= self.test_client.get('/api/v1/red-flags',
@@ -41,7 +53,7 @@ class IncidentTestCase(BaseTestCase):
                 video = "video goes here",
                 comment = "Policeman asked for something something"
             )))
-        # self.assertEqual(response.status_code,401)
+        self.assertEqual(response.status_code,401)
         self.assertIn("Missing Authorization Header",str(response.data))
        
     def test_delete_redflag(self):
@@ -66,12 +78,39 @@ class IncidentTestCase(BaseTestCase):
         self.assertIn("Invalid id, try again",str(response.data))
 
     def test_edit_comment(self):
-        data = self.incident['comment'] ="some new comment"
+        data ="some new comment"
         response=self.test_client.patch('/api/v1/red-flags/1/comment',
         data=json.dumps(data),
         content_type='application/json')
         self.assertEqual(response.status_code,200)
         self.assertIn("",str(response.data))
         self.assertTrue("Invalid id, try again")
-       
-        
+    
+    def test_edit_redflagstatus_without_token(self):
+        data ="resolved"
+        response=self.test_client.patch('/api/v1/red-flags/1/status',
+        data=json.dumps(data),
+        content_type='application/json')
+        self.assertEqual(response.status_code,401)
+        self.assertIn('b\'{"msg":"Missing Authorization Header"}\\n\'',str(response.data))
+
+    def test_edit_status_as_admin(self):
+        with self.app.app_context():
+            response= self.test_client.post('/api/v1/auth/login',
+                data=json.dumps(self.admin_user),
+                content_type='application/json')
+            response_out=json.loads(response.data.decode())
+            token = response_out['token']
+            headers = {'Authorization':f'Bearer {token}'}
+            new_status = "something"
+            response2= self.test_client.patch(
+                '/api/v1/red-flags/1/status',
+                data=json.dumps(new_status),
+                headers=headers,
+                content_type='application/json'
+                )
+            response_out=json.loads(response2.data.decode())
+
+        self.assertEqual(response_out['status'],400)
+        self.assertIsInstance(response_out,dict)
+        self.assertIn("Invalid id, try again",str(response_out['error']))

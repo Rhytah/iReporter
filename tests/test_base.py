@@ -1,6 +1,5 @@
 import unittest
 from reporter_api import app
-from flask_jwt_extended import JWTManager,jwt_required,create_access_token, get_jwt_identity
 
 
 class BaseTestCase(unittest.TestCase):
@@ -9,21 +8,18 @@ class BaseTestCase(unittest.TestCase):
         self.app = app
         self.test_client = app.test_client()
         self.incident=dict(
-            location = '123.01.56.78',
+            location = "123.01.56.78,110.36",
             image = "image",
             video = "image",
             comment = "Policeman asked for something something"
-            )
-    
-        self.token = create_access_token
-        self.header = {'Authorization':f'Bearer {self.token}'}  
+            ) 
         self.user = dict(
             firstname="sunny",
             lastname="tamale",
             othernames = "funny",
             email = "johndoe@gmail.com",
             phone_number =25678924556,
-            username="username",
+            username="sunnyk",
             password= "pass1236"
 
         )          
@@ -72,3 +68,5 @@ class BaseTestCase(unittest.TestCase):
             username="username",
             password= "pass1236"
         )       
+        self.reporter = dict(username='sunnyk',password='pass1236')
+        self.admin_user = dict(username='admin',password='sup3rpswd')

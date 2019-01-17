@@ -7,6 +7,32 @@ app=Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'super-secret'  
 jwt = JWTManager(app)
 JWT_ACCESS_TOKEN_EXPIRES = False
+@app.route('/')
+def index():
+    welcomemessage ="""
+    <!DOCTYPYE html>
+    <html>
+        <head>
+        <title> iReporter API</title>
+      
+        </head>
+        <body>
+        <div class=maincontent>
+            <h2>iReporter-API<h2>
+            Currently supported endpoints
+            <br>
+
+            <a href='https://rhytah-ireporter.herokuapp.com/api/v1/red-flags'>Fetch all red-flags data</a>
+            <br>
+            <a href='https://rhytah-ireporter.herokuapp.com/api/v1/auth/users'>Fetch users</a>
+            <br>
+        </div>
+        </body>
+        </html>
+    """
+    return welcomemessage
+    
+
 @app.errorhandler(400)
 def handle_bad_request(e):
     return jsonify({

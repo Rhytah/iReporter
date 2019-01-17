@@ -56,6 +56,15 @@ class UserTestcase(BaseTestCase):
         self.assertEqual(response_out['status'],400)
         self.assertIn("user already exits",str(response_out['error']))
 
+    def test_invalid_user_login(self):
+        credentials = dict(username="Kengrow",password="pass1236")
+        response= self.test_client.post('/api/v1/auth/login',
+        content_type='application/json',
+        data=json.dumps(credentials))
+        response_out=json.loads(response.data.decode())
+        self.assertIn("invalid credentials. Use a registered username and password", str(response_out['error']))
+        self.assertEqual(response_out['status'],400)
+
     def test_user_login(self):
         credentials = dict(username="sunnyk",password="pass1236")
         response= self.test_client.post('/api/v1/auth/login',
@@ -65,18 +74,43 @@ class UserTestcase(BaseTestCase):
         self.assertIn("sunnyk ,you have successfully logged in", str(response_out['message']))
         self.assertEqual(response_out['status'],200)
 
-    # def test_fetch_reporters(self):
-    #     response=self.test_client.get('/api/v1/auth/users')
-    #     response_out=json.loads(response.data.decode())
-    #     self.assertEqual(response_out['status'],200)
-    #     self.assertIn("You are viewing registered reporters",str(response_out['message']))
+ 
  
     def test_fetch_reporters(self):
-        response=self.test_client.get('/api/v1/auth/users')
-        response_out=json.loads(response.data.decode())
+        with self.app.app_context():
+            response= self.test_client.post('/api/v1/auth/login',
+                data=json.dumps(self.admin_user),
+                content_type='application/json')
+            response_out=json.loads(response.data.decode())
+            token = response_out['token']
+            headers = {'Authorization':f'Bearer {token}'}
+
+            response2=self.test_client.get(
+                '/api/v1/auth/users',
+                content_type='application/json',
+                headers = headers)
+            response_out=json.loads(response2.data.decode())
         self.assertEqual(response_out['status'],200)
         self.assertIn("You are viewing registered reporters",str(response_out['message']))
         self.assertNotIn("No reporters registered",str(response_out['message']))
+
+    def test_fetch_reporters_as_nonadmin(self):
+        with self.app.app_context():
+            response= self.test_client.post('/api/v1/auth/login',
+                data=json.dumps(self.reporter),
+                content_type='application/json')
+            response_out=json.loads(response.data.decode())
+            token = response_out['token']
+            headers = {'Authorization':f'Bearer {token}'}
+
+            response2=self.test_client.get(
+                '/api/v1/auth/users',
+                content_type='application/json',
+                headers = headers)
+            response_out=json.loads(response2.data.decode())
+        self.assertEqual(response_out['status'],401)
+        self.assertIn('Only admins can see users',str(response_out['error']))
+       
     
     def test_fetch_specific_reporter(self):
         response=self.test_client.get('/api/v1/auth/users/1',

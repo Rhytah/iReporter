@@ -6,39 +6,70 @@ class Validation:
         if not location:
             return jsonify({
                 "status":400,
-                "message":"location is missing"})
-        if not re.match(r"(^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$)", location):
+                "error":"location is missing"})
+        if not isinstance(location,list) or len(location)!=2:
             return({
                 "status":400,
-                "message":"use proper format"
+                "error":"use proper format,  ["",""]"
             })
         
         if not image or image.isspace():
             return jsonify({
                 "status":400,
-                "message":"image is missing"})
+                "error":"image is missing"})
             
         if not video or video.isspace():
             return jsonify({
                 "status":400,
-                "message":"video is missing"})
+                "error":"video is missing"})
         if not comment or comment.isspace():
             return jsonify({
                 "status":400,
-                "message":"comment is missing"})
+                "error":"comment is missing"})
 
         
 
     def validate_location(self,location):
-        if not location or location.isspace():
+        if not location:
             return jsonify({
                 "status":400,
-                "message":"location is missing"})
+                "error":"location is missing"})
+        if not isinstance(location,list) or len(location)!=2:
+            return({
+                "status":400,
+                "error":"use proper format,  ["",""]"
+            })
+        
     
 
     def validate_comment(self,comment):
         if not comment or comment.isspace():
             return jsonify({
                 "status":400,
-                "message":"comment is missing"})
-        return isinstance(comment,str)
+                "error":"comment is missing"})
+        if not isinstance(comment,str):
+            return jsonify({
+                "status":400,
+                "error":"comment must be a string"
+            })
+
+    def validate_status(self,status):
+        status_messages=[
+            'under investigation',
+            'rejected',
+            'resolved'
+        ]
+        if not status or status.isspace():
+            return jsonify({
+                "status":400,
+                "error":"status is missing"})
+        if not isinstance(status,str):
+            return jsonify({
+                "status":400,
+                "error":"status must be a string"
+            })
+        if status not in status_messages:
+            return jsonify({
+                "status":400,
+                "error":"status can only be changed to either under investigation or resolved"})
+        

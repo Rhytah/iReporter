@@ -11,21 +11,21 @@ def signup():
     return user_controller.add_reporter(request_data)
 
 @app.route('/api/v1/auth/users', methods = ['GET'])
+@jwt_required
 def fetch_users():
-    return user_controller.fetch_reporters()
+    current_user = get_jwt_identity()
+    isadmin = current_user.get("isadmin")
+    if isadmin == True:
+        return user_controller.fetch_reporters()
+    return jsonify({
+        "status":401,
+        "error": "Only admins can see users"
+        }) 
 
 @app.route('/api/v1/auth/login', methods =['POST'])
 def login():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
-    if username==data.get('username') and password==data.get('password'):
-        access_token = create_access_token(identity=username)
-    return jsonify({
-        "status":200,
-        "message":f"{username} ,you have successfully logged in",
-        "data": f"This is your token {access_token}"
-    })     
+    user_data=request.get_json()
+    return user_controller.signin(user_data)  
 
 @app.route('/api/v1/auth/users/<int:user_id>',methods = ['GET'])
 def get_a_reporter(user_id):

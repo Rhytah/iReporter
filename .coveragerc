@@ -5,3 +5,10 @@ omit =
     */__pycache__/*
     *.pyc
     */venv/*
+    */home/travis/virtualenv/*
+    bin/
+    lib/
+    share/
+    include/
+    venv/
+    
