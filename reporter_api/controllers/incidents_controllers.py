@@ -39,12 +39,6 @@ class IncidentsController:
                        "location": location, "status": status, "image": image, "video": video, "comment": comment}
         redflags.append(new_redflag)
 
-        # existent_redflag = self.search_redflag(comment)
-        # if existent_redflag:
-        #     return jsonify ({
-        #     "status":409,
-        #     "error":"You already created this redflag"
-        # })
         if new_redflag:
             return jsonify({
                 "status": 201,
