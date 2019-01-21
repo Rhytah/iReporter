@@ -35,8 +35,17 @@ class IncidentsController:
         if invalid_redflag:
             return invalid_redflag
 
-        new_redflag = {"redflag_id": redflag_id, "created_on": created_on, "created_by": created_by, "incident_type": incident_type,
-                       "location": location, "status": status, "image": image, "video": video, "comment": comment}
+        new_redflag = {
+            "redflag_id": redflag_id,
+            "created_on": created_on,
+            "created_by": created_by,
+            "incident_type": incident_type,
+            "location": location,
+            "status": status,
+            "image": image,
+            "video": video,
+            "comment": comment
+            }
         redflags.append(new_redflag)
 
         if new_redflag:
@@ -52,7 +61,7 @@ class IncidentsController:
     def fetch_all_redflags(self):
         if not self.redflags or len(self.redflags) < 1:
             return jsonify({
-                "status": 200,
+                "status": 404,
                 "message": "No red-flags found"
             }), 200
 
@@ -110,7 +119,7 @@ class IncidentsController:
                 "message": f"You have changed red flag's location to{location}"
             }), 200
         return jsonify({
-            "status": 200,
+            "status": 404,
             "message": "Invalid id, try again"})
 
     def edit_comment(self, redflag_id):
@@ -140,9 +149,10 @@ class IncidentsController:
                 return invalid_status
             changed_status = status
             redflag['status'] = changed_status
-            return jsonify({"status": 200,
-                            "message": f"You have changed red flag's status to {status}",
-                            "data": status
+            return jsonify({
+                "status": 200,
+                "message": f"You have changed red flag's  status to {status}",
+                "data": status
                             })
         return jsonify({
             "status": 400,

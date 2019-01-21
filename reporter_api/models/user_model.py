@@ -3,7 +3,9 @@ users = []
 
 
 class Reporter:
-    def __init__(self, user_id, registered, firstname, lastname, othernames, email, phone_number, username, password, isadmin):
+    def __init__(self, user_id, registered, firstname,
+                 lastname, othernames, email, phone_number,
+                 username, password, isadmin):
 
         self.user_id = len(users)+1
         self.registered = datetime.datetime.now()
@@ -17,5 +19,12 @@ class Reporter:
         self.isadmin = False
 
 
-admin = {'user_id': 1, 'firstname': "rita", 'lastname': "namono", 'othernames': "none", 'email': "hdh@mail.com",
-         'phone_number': "254865268", 'username': "admin", 'password': "sup3rpswd", "isadmin": True}
+admin = {'user_id': 1,
+         'firstname': "rita",
+         'lastname': "namono",
+         'othernames': "none",
+         'email': "hdh@mail.com",
+         'phone_number': "254865268",
+         'username': "admin",
+         'password': "sup3rpswd",
+         "isadmin": True}

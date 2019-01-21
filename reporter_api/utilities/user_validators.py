@@ -3,10 +3,21 @@ from flask import jsonify
 
 
 class UserValidator:
-    def validate_add_user(self, firstname, lastname, username, email, password, phone_number, othernames):
-        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
+    def validate_add_user(
+            self,
+            firstname,
+            lastname,
+            username,
+            email,
+            password,
+            phone_number,
+            othernames):
+        if not re.match(
+            r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
+                email):
             return jsonify({"status": 400,
-                            "error": "Use valid email address format. ...janedoe@int.com"
+                            "error": "Use valid email address format.\
+                             ...janedoe@int.com"
                             })
         if not firstname or firstname.isspace():
             return jsonify({
@@ -20,10 +31,15 @@ class UserValidator:
             return jsonify({
                 "status": 400,
                 "error": "othernames is missing"})
-        if not re.match(r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$", firstname) or not isinstance(firstname, str):
+        if not re.match(
+                r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$",
+                firstname) or not isinstance(
+                firstname,
+                str):
             return jsonify({
                 "status": 400,
-                "error": "firstname cannot be integers, have white spaces or symbols"
+                "error": "firstname cannot be integers, \
+                have white spaces or symbols"
             })
         if not re.match(r'[A-Za-z0-9@#$%^&+=]{6,}', password):
             return jsonify({
@@ -34,18 +50,33 @@ class UserValidator:
                           "numbers: 0-9",
                           "any of the special characters: @#$%^&+="]
             })
-        if not re.match(r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$", username) or not isinstance(username, str):
+        if not re.match(
+                r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$",
+                username) or not isinstance(
+                username,
+                str):
             return jsonify({
                 "status": 400,
-                "error": "username cannot be integers,have white spaces or symbols"
+                "error": "username cannot be integers,\
+                have white spaces or symbols"
             })
-        if not re.match(r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$", lastname) or not isinstance(lastname, str):
+        if not re.match(
+                r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$",
+                lastname) or not isinstance(
+                lastname,
+                str):
             return jsonify({
                 "status": 400,
-                "error": "lastname cannot be integers, have white spaces or symbols"
+                "error": "lastname cannot be integers, \
+                have white spaces or symbols"
             })
-        if not re.match(r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$", othernames) or not isinstance(othernames, str):
+        if not re.match(
+                r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$",
+                othernames) or not isinstance(
+                othernames,
+                str):
             return jsonify({
                 "status": 400,
-                "error": "othernames cannot be integers, have white spaces or symbols"
+                "error": "othernames cannot be integers, \
+                have white spaces or symbols"
             })

@@ -9,8 +9,13 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(location, list) or not len(location) == 2 \
-                or not isinstance(location[0], float) or not isinstance(location[1], float):
+        if not isinstance(
+                location,
+                list) or not len(location) == 2 or not isinstance(
+                location[0],
+                float) or not isinstance(
+                location[1],
+                float):
             return jsonify({
                 "status": 400,
                 "error": "use proper format as float values,  [,] "
@@ -35,8 +40,13 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(location, list) or not len(location) == 2 \
-                or not isinstance(location[0], float) or not isinstance(location[1], float):
+        if not isinstance(
+                location,
+                list) or not len(location) == 2 or not isinstance(
+                location[0],
+                float) or not isinstance(
+                location[1],
+                float):
             return jsonify({
                 "status": 400,
                 "error": "use proper format as float values,  [,] "
@@ -71,4 +81,5 @@ class Validation:
         if status not in status_messages:
             return jsonify({
                 "status": 400,
-                "error": "status can only be changed to either under investigation or resolved"})
+                "error": "status can only be changed to \
+                either under investigation or resolved"})
