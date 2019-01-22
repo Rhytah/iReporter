@@ -144,7 +144,7 @@ class IncidentTestCase(BaseTestCase):
                                           content_type='application/json')
         self.assertEqual(response.status_code, 401)
         self.assertIn(
-            'b\'{"msg":"Missing Authorization Header"}\\n\'', str(response.data))
+            'b\'{\\n  "msg": "Missing Authorization Header"\\n}\\n\'', str(response.data))
 
     def test_edit_status_as_user(self):
         response = self.test_client.post('/api/v1/auth/login/',
