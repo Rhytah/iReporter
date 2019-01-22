@@ -11,14 +11,14 @@ function show(id){
     a.style.display= 'none';
 }
 
-// hide element on click
-function hide(id){
-    var a = document.getElementById(id);
-    if(a.style.display == 'block')
-    a.style.display= 'none';
-    else
-    a.style.display= 'block';
-}
+// // hide element on click
+// function hide(id){
+//     var a = document.getElementById(id);
+//     if(a.style.display == 'block')
+//     a.style.display= 'none';
+//     else
+//     a.style.display= 'block';
+// }
 
 //open tab 
 function opentab(evt, tabName ){
