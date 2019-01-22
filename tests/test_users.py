@@ -23,9 +23,9 @@ class UserTestcase(BaseTestCase):
                                          content_type='application/json')
         response_out = json.loads(response.data.decode())
         print(response_out)
-        self.assertEqual(response_out['status'], 201)
+        self.assertEqual(response_out['status'], 400)
         self.assertIsInstance(response_out, dict)
-        self.assertIn("signup successful", str(response_out['message']))
+        self.assertIn("signup failed", str(response_out['message']))
 
     def test_add_user_without_firstname(self):
 
@@ -73,8 +73,7 @@ class UserTestcase(BaseTestCase):
     def test_invalid_user_login(self):
         credentials = dict(username="Kengrow", password="pass1236")
         response = self.test_client.post('/api/v1/auth/login/',
-                                         content_type='application/json',
-                                         data=json.dumps(credentials))
+                                         content_type='application/json')
         response_out = json.loads(response.data.decode())
         self.assertIn("invalid credentials. \
              Use a registered username and password", str(
@@ -87,7 +86,7 @@ class UserTestcase(BaseTestCase):
                                          content_type='application/json',
                                          data=json.dumps(credentials))
         response_out = json.loads(response.data.decode())
-        self.assertIn("sunnyk ,you have successfully logged in",
+        self.assertIn("You have successfully logged in",
                       str(response_out['message']))
         self.assertEqual(response_out['status'], 200)
 
@@ -140,7 +139,7 @@ class UserTestcase(BaseTestCase):
         response = self.test_client.get('/api/v1/auth/users/20/',
                                         content_type='application/json')
         response_out = json.loads(response.data.decode())
-        self.assertEqual(response_out['status'], 400)
+        self.assertEqual(response_out['status'], 404)
         self.assertIn("user_id out of range, try again with a valid id",
                       str(response_out['error']))
 

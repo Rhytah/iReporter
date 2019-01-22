@@ -4,10 +4,26 @@ from flask_jwt_extended import (JWTManager, create_access_token,
                                 get_jwt_identity, jwt_required)
 
 
-app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = 'super-secret'
-jwt = JWTManager(app)
-JWT_ACCESS_TOKEN_EXPIRES = False
+def create_app(mode):
+    app = Flask(__name__)
+    with app.app_context():
+        app.config.from_object(app_configuration)
+
+        app.config['JWT_SECRET_KEY'] = 'super-secret'
+        jwt = JWTManager(app)
+
+        from reporter_api.views.user_views import auth
+        from reporter_api.views.incident_views import incident
+
+        app.register_blueprint(auth)
+        app.register_blueprint(incident)
+
+    return app
+
+app = create_app(mode='development')
+
+
+
 
 
 @app.route('/')
