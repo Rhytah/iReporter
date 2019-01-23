@@ -30,20 +30,7 @@ class DatabaseConnect:
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
 
-        try:
-            self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
-            self.conn.autocommit = True
-            self.cursor = self.conn.cursor()
-
-
-            for command in sqlcommands:
-                self.cursor.execute(command)
-                print(f"connection successful on {self.credentials}")
-
-
-        except Exception as error:
-            print(f"error: {error}")
-
+        print("error:Failed to connect ")
 
     def drop_table(self,tablename):
         command = f"""
