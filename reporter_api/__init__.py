@@ -42,12 +42,16 @@ def index():
             Currently supported endpoints
             <br>
 
-            <a href='https://rhytah-ireporter.herokuapp.com/api/v1/red-flags'>
+            <a href='https://rhytah-ireporter.herokuapp.com/api/v2/red-flags'>
             Fetch all red-flags data
             </a>
             <br>
-            <a href='https://rhytah-ireporter.herokuapp.com/api/v1/auth/users'>
+            <a href='https://rhytah-ireporter.herokuapp.com/api/v2/auth/users'>
             Fetch users
+            </a>
+            <br>
+            <a href='https://rhytah-ireporter.herokuapp.com/api/v2/red-flags'>
+            Fetch all intervention records
             </a>
             <br>
         </div>

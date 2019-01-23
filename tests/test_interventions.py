@@ -60,10 +60,54 @@ class IncidentTestCase(BaseTestCase):
                       str(response_out['message']))
 
     def test_fetch_an_intervention(self):
+        self.test_client.post('/api/v2/auth/signup/',
+                              data=json.dumps(self.user),
+                              content_type='application/json')
+
+        response = self.test_client.post('/api/v2/auth/login/',
+                                         data=json.dumps(self.user),
+                                         content_type='application/json')
+        response_out = json.loads(response.data.decode())
+        token = response_out['token']
+        headers = {'Authorization': f'Bearer {token}'}
+
+        response = self.test_client.post(
+            '/api/v2/interventions/',
+            data=json.dumps(self.incident),
+            headers=headers,
+            content_type='application/json'
+        )
+
         response = self.test_client.get('/api/v2/interventions/1/',
                                         content_type='application/json')
     
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Successfully fetched intervention record",str(response.data))
+    def test_fetch_an_out_of_range_intervention(self):
+        self.test_client.post('/api/v2/auth/signup/',
+                              data=json.dumps(self.user),
+                              content_type='application/json')
+
+        response = self.test_client.post('/api/v2/auth/login/',
+                                         data=json.dumps(self.user),
+                                         content_type='application/json')
+        response_out = json.loads(response.data.decode())
+        token = response_out['token']
+        headers = {'Authorization': f'Bearer {token}'}
+
+        response = self.test_client.post(
+            '/api/v2/interventions/',
+            data=json.dumps(self.incident),
+            headers=headers,
+            content_type='application/json'
+        )
+
+        response = self.test_client.get('/api/v2/interventions/20/',
+                                        content_type='application/json')
+        res=json.loads(response.data.decode())
+        self.assertEqual(res['status'], 404)
+        self.assertIn("Invalid id. Try again with valid id",res['error'])
+
 
     def test_add_intervention_without_token(self):
         response = self.test_client.post(

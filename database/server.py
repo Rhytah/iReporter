@@ -34,6 +34,7 @@ class DatabaseConnect:
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
 
+
         print("error:Failed to connect ")
 
     def drop_table(self,tablename):

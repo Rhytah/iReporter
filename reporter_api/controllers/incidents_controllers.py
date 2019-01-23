@@ -154,3 +154,15 @@ class IncidentsController:
             "status":404,
             "error":"Interventions not found"
         })
+    def fetch_specific_intervention(self,intervention_id):
+        result = intervention_obj.get_intervention(intervention_id)
+        if result:
+            return jsonify({
+                "status":200,
+                "data":result,
+                "message":"Successfully fetched intervention record"
+            })
+        return jsonify({
+            "status":404,
+            "error":"Invalid id. Try again with valid id"
+        })
