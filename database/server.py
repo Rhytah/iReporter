@@ -16,9 +16,9 @@ class DatabaseConnect:
                 host='localhost',
                 port = 5432
             )
-        self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
-        self.conn.autocommit = True
-        self.cursor = self.conn.cursor()
+        # self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
+        # self.conn.autocommit = True
+        # self.cursor = self.conn.cursor()
 
         if app.config.get('ENV') == 'development':
             dbname = app_configuration['development'].DATABASE
@@ -44,8 +44,13 @@ class DatabaseConnect:
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
 
-
-        print("error:Failed to connect ")
+        try:
+            self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
+            self.conn.autocommit = True
+            self.cursor = self.conn.cursor()
+        except Exception as error:
+            print(f"error: {error}")
+        # print("error:Failed to connect ")
 
     def drop_table(self,tablename):
         command = f"""
