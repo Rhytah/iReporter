@@ -18,7 +18,8 @@ sqlcommands = (
                     redflag_id SERIAL PRIMARY KEY,
                     created_by INT REFERENCES users(userid),
                     created_on TIMESTAMP,
-                    incident_type VARCHAR (30) NOT NULL,
+                    image VARCHAR(30),
+                    video VARCHAR (30),
                     location FLOAT8, 
                     status VARCHAR (15),
                     comment VARCHAR (225)
@@ -29,8 +30,9 @@ sqlcommands = (
                     intervention_id SERIAL PRIMARY KEY,
                     created_by INT REFERENCES users(userid),
                     created_on TIMESTAMP,
-                    incident_type VARCHAR (30) NOT NULL,
-                    location FLOAT8, 
+                    location FLOAT8,
+                    image VARCHAR(30),
+                    video VARCHAR (30),
                     status VARCHAR(15),
                     comment VARCHAR (225)
                     )

@@ -9,18 +9,11 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(
-                location,
-                list) or not len(location) == 2 or not isinstance(
-                location[0],
-                float) or not isinstance(
-                location[1],
-                float):
+        if not isinstance(location,float):
             return jsonify({
                 "status": 400,
-                "error": "use proper format as float values,  [,] "
+                "error": "use proper format as float values, 12.368 "
             })
-
         if not image or image.isspace():
             return jsonify({
                 "status": 400,
@@ -40,20 +33,10 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(
-                location,
-                list) or not len(location) == 2 or not isinstance(
-                location[0],
-                float) or not isinstance(
-                location[1],
-                float):
-            return jsonify({
-                "status": 400,
-                "error": "use proper format as float values,  [,] "
-            })
+
 
     def validate_comment(self, comment):
-        if not comment or comment.isspace():
+        if not comment:
             return jsonify({
                 "status": 400,
                 "error": "comment is missing"})

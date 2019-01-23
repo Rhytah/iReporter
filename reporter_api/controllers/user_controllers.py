@@ -35,10 +35,12 @@ class User_controller:
             phone_number, othernames)
         if invalid_user:
             return invalid_user
-        new_user = user_obj.create_user(firstname, lastname, username, password, email, phone_number)
         existent_reporter = user_obj.signup_search_user(email)
+        
         if existent_reporter:
             return existent_reporter
+        new_user = user_obj.create_user(firstname, lastname, username, password, email, phone_number)
+
         if new_user:
             return jsonify({
                 "status": 201,
@@ -55,6 +57,7 @@ class User_controller:
         username  = data.get('username')
         password = data.get('password')
         returned_user = user_obj.login_search_user(username)
+        print(returned_user)
         if not username:
             return jsonify({"msg" : "Provide Valid username"}),400
 

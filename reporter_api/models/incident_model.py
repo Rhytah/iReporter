@@ -11,11 +11,10 @@ class Redflag:
         all_users = db.cursor.fetchall()
         return all_users
 
-    def create_redflag (self, created_by,
-                 incident_type, status, location, image, video, comment):
-        add_user_cmd ="INSERT INTO redflags(redflag_id, created_on, created_by,incident_type, status, location, image, video, comment)\
-        VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,incident_type, status, location, image, video, comment)
-        db.cursor.execute(add_user_cmd)
+    def create_redflag (self, created_by,created_on,status, location, image, video, comment):
+        add_cmd ="INSERT INTO redflags(created_by,created_on,status, location, image, video, comment)\
+        VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on, status, location, image, video, comment)
+        db.cursor.execute(add_cmd)
 
     def get_redflag(self, redflag_id):
         cmd = "SELECT * FROM redflags WHERE redflag_id='{}';".format(redflag_id)
@@ -56,10 +55,10 @@ class Intervention:
         all_users = db.cursor.fetchall()
         return all_users
 
-    def create_intervention(self,intervention_id, created_on, created_by,
-                 incident_type, status, location, image, video, comment):
-        add_user_cmd = "INSERT INTO interventions(self, intervention_id, created_on, created_by,incident_type,status, location, image, video, comment)VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}');".format(intervention_id, created_on, created_by,incident_type, status, location, image, video, comment)
-        db.cursor.execute(add_user_cmd)
+    def create_intervention(self,created_by,created_on,status, location, image, video, comment):
+        add_intervention_cmd = "INSERT INTO interventions(created_by,created_on,status, location, image, video, comment)\
+        VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on,status, location, image, video, comment)
+        db.cursor.execute(add_intervention_cmd)
 
     def get_intervention(self, intervention_id):
         cmd = "SELECT * FROM interventions WHERE intervention_id='{}'".format(intervention_id)
