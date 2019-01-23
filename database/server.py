@@ -44,8 +44,6 @@ class DatabaseConnect:
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
 
-            restrict_connection = "ALTER ROLE wkmnrsrpffhfpr CONNECTION LIMIT -1;"
-            self.cursor.execute(restrict_connection)
 
         print("error:Failed to connect ")
 
