@@ -79,3 +79,8 @@ def add_intervention():
 @incident.route('/api/v2/interventions', methods=['GET'])
 def fetch_interventions():
     return incidents_controller.fetch_interventions()
+
+@incident.route('/api/v2/interventions/<int:intervention_id>/', methods=['GET'])
+@incident.route('/api/v2/interventions/<int:intervention_id>', methods=['GET'])
+def fetch_intervention(intervention_id):
+    return incidents_controller.fetch_specific_intervention(intervention_id)
