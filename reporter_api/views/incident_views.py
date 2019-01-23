@@ -39,6 +39,7 @@ def delete_redflag(redflag_id):
 def edit_location(redflag_id):
     data = request.get_json()
     location = data.get('location')
+
     return incidents_controller.edit_location(location,redflag_id)
 
 
@@ -55,9 +56,9 @@ def edit_comment(redflag_id):
 @jwt_required
 def edit_status(redflag_id):
     current_user = get_jwt_identity()
-    isadmin = current_user.get("isadmin")
-    data = request.get_json()
-    status = data.get('status')
+    isadmin = current_user.get('isadmin')
+    request_data = request.get_json()
+    status = request_data.get('status')
     if isadmin is True:
         return incidents_controller.edit_status(status,redflag_id)
 

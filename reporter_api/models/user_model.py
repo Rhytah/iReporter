@@ -18,20 +18,15 @@ class User:
        VALUES ('{}','{}','{}','{}','{}','{}');".format( firstname, lastname, username, password, email, phone_number)
         db.cursor.execute(add_user_cmd)
 
-    def get_user(self, userid):
-        cmd = "SELECT * FROM users WHERE userid='{}'".format(userid)
-        db.cursor.execute(cmd)
-        result = db.cursor.fetchone()
-        return result
 
     def signup_search_user(self, email):
         cmd = "SELECT * FROM users WHERE email='{}'".format(email)
         db.cursor.execute(cmd)
         result = db.cursor.fetchone()
         if result:
-            return jsonify({"status": 400,
+            return jsonify({"status": 409,
                             "data": (email),
-                            "message": "User already exists"})
+                            "error": "User already exists"})
     def login_search_user(self, username):
         cmd = "SELECT * FROM users WHERE username='{}'".format(username)
         db.cursor.execute(cmd)

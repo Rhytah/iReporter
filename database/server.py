@@ -8,6 +8,7 @@ import os
 class DatabaseConnect:
 
     def __init__(self):
+        
         self.credentials = dict(
                 dbname ='',
                 user = 'postgres',

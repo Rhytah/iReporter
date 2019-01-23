@@ -79,6 +79,7 @@ class IncidentsController:
 
     def edit_location(self,location,redflag_id):
         location = redflag_obj.modify_location(location,redflag_id)
+        
         invalid_location = validator.validate_location(location)
         if invalid_location:
             return invalid_location
@@ -104,10 +105,11 @@ class IncidentsController:
             "message":"Invalid id, try again"})
 
     def edit_status(self,status,redflag_id):
-        status = redflag_obj.modify_location(status,redflag_id)
+        response = redflag_obj.modify_location(status,redflag_id)
         invalid_status = validator.validate_status(status)
         if invalid_status:
             return invalid_status
+        status=json.dumps(response)
         if status:
             return jsonify({
                 "message":f"You have changed red flag's status to{status}"
@@ -137,7 +139,7 @@ class IncidentsController:
         return jsonify ({
             "status":201,
             "data":new_intervention,
-            "message":"Successfully added red-flag"
+            "message":"Successfully added intervention"
         })
 
     def fetch_interventions(self):
