@@ -104,9 +104,9 @@ class IncidentTestCase(BaseTestCase):
 
         response = self.test_client.get('/api/v2/interventions/20/',
                                         content_type='application/json')
-    
-        self.assertEqual(response.status_code, 404)
-        self.assertIn("Successfully fetched intervention record",str(response.data))
+        res=json.loads(response.data.decode())
+        self.assertEqual(res['status'], 404)
+        self.assertIn("Invalid id. Try again with valid id",res['error'])
 
 
     def test_add_intervention_without_token(self):
