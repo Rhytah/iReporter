@@ -9,13 +9,15 @@ auth = Blueprint("auth",__name__)
 user_controller = User_controller()
 
 
-@auth.route('/api/v1/auth/signup/', methods=['POST'])
+@auth.route('/api/v2/auth/signup/', methods=['POST'])
+@auth.route('/api/v2/auth/signup', methods=['POST'])
 def signup():
     request_data = request.get_json()
     return user_controller.add_reporter(request_data)
 
 
-@auth.route('/api/v1/auth/users/', methods=['GET'])
+@auth.route('/api/v2/auth/users/', methods=['GET'])
+@auth.route('/api/v2/auth/users', methods=['GET'])
 @jwt_required
 def fetch_users():
     current_user = get_jwt_identity()
@@ -28,12 +30,13 @@ def fetch_users():
     })
 
 
-@auth.route('/api/v1/auth/login/', methods=['POST'])
+@auth.route('/api/v2/auth/login/', methods=['POST'])
+@auth.route('/api/v2/auth/login', methods=['POST'])
 def login():
     user_data = request.get_json()
     return user_controller.signin(user_data)
 
-
-@auth.route('/api/v1/auth/users/<int:userid>/', methods=['GET'])
+@auth.route('/api/v2/auth/users/<int:userid>/', methods=['GET'])
+@auth.route('/api/v2/auth/users/<int:userid>', methods=['GET'])
 def get_a_reporter(userid):
     return user_controller.fetch_user(userid)
