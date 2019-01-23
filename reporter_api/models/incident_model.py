@@ -67,7 +67,7 @@ class Intervention:
         return result
 
     def delete_intervention(self,intervention_id):
-        del_cmd="DELETE FROM redflags WHERE intervention_id={}".format(intervention_id)
+        del_cmd="DELETE FROM interventions WHERE intervention_id={}".format(intervention_id)
         deleted=db.cursor.rowcount
         db.cursor.execute(del_cmd)
         return deleted

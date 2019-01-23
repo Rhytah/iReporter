@@ -174,9 +174,9 @@ class IncidentsController:
             return jsonify({
                 "status":200,
                 "data":result,
-                "message":"This displayed red-flag has been deleted"
+                "message":"This intervention has been deleted"
             })
         return jsonify({
             "status":404,
-            "message":"redflag out of range, use valid id"
+            "error":"intervention out of range, use valid id"
         })
