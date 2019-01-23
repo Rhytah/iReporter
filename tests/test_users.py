@@ -73,7 +73,8 @@ class UserTestcase(BaseTestCase):
     def test_invalid_user_login(self):
         credentials = dict(username="Kengrow", password="pass1236")
         response = self.test_client.post('/api/v2/auth/login/',
-                                         content_type='application/json')
+                                         content_type='application/json',
+                                         data= json.dumps(credentials))
         response_out = json.loads(response.data.decode())
         self.assertIn("invalid credentials. \
              Use a registered username and password", str(

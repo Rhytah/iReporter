@@ -16,10 +16,10 @@ class IncidentsController:
 
 
     def add_redflag(self,*args):
-        # current_user = get_jwt_identity()
+        current_user = get_jwt_identity()
         data = request.get_json()
         status = "draft"
-        created_by = 266
+        created_by = current_user
         created_on =datetime.datetime.now()
         location = data.get('location')
         image = data.get ('image')
@@ -29,8 +29,8 @@ class IncidentsController:
         if invalid_redflag:
             return invalid_redflag
         
-        new_redflag=db.create_redflag(created_by,created_on,status, location, image,video,comment)
-        
+        new_redflag=redflag_obj.create_redflag(created_by,created_on,status, location, image,video,comment)
+        print(new_redflag)
         return jsonify ({
             "status":201,
             "data":new_redflag,
@@ -119,9 +119,10 @@ class IncidentsController:
     # interventions controllers
     def add_intervention(self,*args):
         current_user = get_jwt_identity()
-        print (current_user)
         data = request.get_json()
-        created_by = 265
+        created_by = current_user
+        print (f"CURRENT USER{current_user}")
+
         created_on =datetime.datetime.now()
         status = "draft"
         location = data.get('location')
@@ -137,4 +138,17 @@ class IncidentsController:
             "status":201,
             "data":new_intervention,
             "message":"Successfully added red-flag"
+        })
+
+    def fetch_interventions(self):
+        result = intervention_obj.get_interventions()
+        if result :
+            return jsonify({
+                "status":200,
+                "data":result,
+                "message":"These are the Intervention records"
+            })
+        return jsonify({
+            "status":404,
+            "error":"Interventions not found"
         })
