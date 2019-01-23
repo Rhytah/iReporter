@@ -64,8 +64,4 @@ class Intervention:
         cmd = "SELECT * FROM interventions WHERE intervention_id='{}'".format(intervention_id)
         db.cursor.execute(cmd)
         result = db.cursor.fetchone()
-        if result:
-            return result
-        else:
-            return jsonify ({"status":404,
-                "message": "Intervention doesn't exist"})
+        return result
