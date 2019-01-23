@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Rhytah/iReporter.svg?branch=API)](https://travis-ci.com/Rhytah/iReporter) [![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=API)](https://coveralls.io/github/Rhytah/iReporter?branch=API) [![Maintainability](https://api.codeclimate.com/v1/badges/e28b889db9f04910afe6/maintainability)](https://codeclimate.com/github/Rhytah/iReporter/maintainability)
+[![Build Status](https://travis-ci.org/Rhytah/iReporter.svg?branch=API-Version2)](https://travis-ci.org/Rhytah/iReporter) [![Coverage Status](https://coveralls.io/repos/github/Rhytah/iReporter/badge.svg?branch=API-Version2)](https://coveralls.io/github/Rhytah/iReporter?branch=API-Version2) [![Maintainability](https://api.codeclimate.com/v1/badges/e28b889db9f04910afe6/maintainability)](https://codeclimate.com/github/Rhytah/iReporter/maintainability)
 
 # iReporter
 
