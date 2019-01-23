@@ -166,3 +166,17 @@ class IncidentsController:
             "status":404,
             "error":"Invalid id. Try again with valid id"
         })
+
+    def delete_specific_intervention(self,intervention_id):
+        result=intervention_obj.get_intervention(intervention_id)
+        response = intervention_obj.delete_intervention(intervention_id) 
+        if response:
+            return jsonify({
+                "status":200,
+                "data":result,
+                "message":"This displayed red-flag has been deleted"
+            })
+        return jsonify({
+            "status":404,
+            "message":"redflag out of range, use valid id"
+        })

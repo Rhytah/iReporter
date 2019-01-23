@@ -84,3 +84,8 @@ def fetch_interventions():
 @incident.route('/api/v2/interventions/<int:intervention_id>', methods=['GET'])
 def fetch_intervention(intervention_id):
     return incidents_controller.fetch_specific_intervention(intervention_id)
+
+@incident.route('/api/v2/interventions/<int:intervention_id>/', methods=['DELETE'])
+@incident.route('/api/v2/interventions/<int:intervention_id>', methods=['DELETE'])
+def delete_intervention(intervention_id):
+    return incidents_controller.delete_specific_intervention(intervention_id)
