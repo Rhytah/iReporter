@@ -50,3 +50,7 @@ class DatabaseConnect:
         DROP TABLE IF EXISTS {tablename} CASCADE
         """
         return self.cursor.execute(command)
+    def create_redflag (self, created_by,created_on,status, location, image, video, comment):
+        add_user_cmd ="INSERT INTO redflags(created_by,created_on,status, location, image, video, comment)\
+        VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on, status, location, image, video, comment)
+        self.cursor.execute(add_user_cmd)

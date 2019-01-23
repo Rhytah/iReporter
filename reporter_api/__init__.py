@@ -22,10 +22,6 @@ def create_app(mode):
 
 app = create_app(mode='development')
 
-
-
-
-
 @app.route('/')
 def index():
     welcomemessage = """

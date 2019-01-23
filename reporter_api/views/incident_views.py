@@ -22,7 +22,7 @@ def fetch_single_red_flag(redflag_id):
 
 @incident.route('/api/v1/red-flags/', methods=['POST'])
 @incident.route('/api/v1/red-flags', methods=['POST'])
-@jwt_required
+# @jwt_required
 def add_red_flag():
     request_data = request.get_json()
     return incidents_controller.add_redflag(request_data)
@@ -42,22 +42,34 @@ def edit_location(redflag_id):
     return incidents_controller.edit_location(location,redflag_id)
 
 
-# @incident.route('/api/v1/red-flags/<int:redflag_id>/comment/', methods=['PATCH'])
-# @incident.route('/api/v1/red-flags/<int:redflag_id>/comment', methods=['PATCH'])
-# def edit_comment(redflag_id):
-#     return incidents_controller.edit_comment(redflag_id)
+@incident.route('/api/v1/red-flags/<int:redflag_id>/comment/', methods=['PATCH'])
+@incident.route('/api/v1/red-flags/<int:redflag_id>/comment', methods=['PATCH'])
+def edit_comment(redflag_id):
+    data = request.get_json()
+    comment = data.get('comment')
+    return incidents_controller.edit_comment(comment,redflag_id)
 
 
-# @incident.route('/api/v1/red-flags/<int:redflag_id>/status/', methods=['PATCH'])
-# @incident.route('/api/v1/red-flags/<int:redflag_id>/status', methods=['PATCH'])
-# # @jwt_required
-# def edit_status(redflag_id):
-#     current_user = get_jwt_identity()
-#     isadmin = current_user.get("isadmin")
-#     if isadmin is True:
-#         return incidents_controller.edit_status(redflag_id)
+@incident.route('/api/v1/red-flags/<int:redflag_id>/status/', methods=['PATCH'])
+@incident.route('/api/v1/red-flags/<int:redflag_id>/status', methods=['PATCH'])
+@jwt_required
+def edit_status(redflag_id):
+    current_user = get_jwt_identity()
+    isadmin = current_user.get("isadmin")
+    data = request.get_json()
+    status = data.get('status')
+    if isadmin is True:
+        return incidents_controller.edit_status(status,redflag_id)
 
-#     return jsonify({
-#         "status": 401,
-#         "message": "Only admins can change status of a red-flag"
-#         })
+    return jsonify({
+        "status": 401,
+        "message": "Only admins can change status of a red-flag"
+        })
+
+# intervention routes
+@incident.route('/api/v2/interventions/', methods=['POST'])
+@incident.route('/api/v2/interventions', methods=['POST'])
+# @jwt_required
+def add_intervention():
+    request_data = request.get_json()
+    return incidents_controller.add_intervention(request_data)
