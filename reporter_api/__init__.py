@@ -2,6 +2,8 @@ from flask import Flask, jsonify
 from config import app_configuration
 from flask_jwt_extended import (JWTManager, create_access_token,
                                 get_jwt_identity, jwt_required)
+from database.relations_commands import sqlcommands
+from database.server import DatabaseConnect
 
 
 def create_app(mode):
@@ -11,7 +13,10 @@ def create_app(mode):
 
         app.config['JWT_SECRET_KEY'] = 'super-secret'
         jwt = JWTManager(app)
-
+        db = DatabaseConnect()
+        for command in sqlcommands:
+            db.cursor.execute(command)
+        print(f"connection successful on {db.credentials}")
         from reporter_api.views.user_views import auth
         from reporter_api.views.incident_views import incident
 

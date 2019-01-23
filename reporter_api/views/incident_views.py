@@ -22,7 +22,7 @@ def fetch_single_red_flag(redflag_id):
 
 @incident.route('/api/v2/red-flags/', methods=['POST'])
 @incident.route('/api/v2/red-flags', methods=['POST'])
-# @jwt_required
+@jwt_required
 def add_red_flag():
     request_data = request.get_json()
     return incidents_controller.add_redflag(request_data)
@@ -39,6 +39,7 @@ def delete_redflag(redflag_id):
 def edit_location(redflag_id):
     data = request.get_json()
     location = data.get('location')
+
     return incidents_controller.edit_location(location,redflag_id)
 
 
@@ -55,9 +56,9 @@ def edit_comment(redflag_id):
 @jwt_required
 def edit_status(redflag_id):
     current_user = get_jwt_identity()
-    isadmin = current_user.get("isadmin")
-    data = request.get_json()
-    status = data.get('status')
+    isadmin = current_user.get('isadmin')
+    request_data = request.get_json()
+    status = request_data.get('status')
     if isadmin is True:
         return incidents_controller.edit_status(status,redflag_id)
 
@@ -69,7 +70,12 @@ def edit_status(redflag_id):
 # intervention routes
 @incident.route('/api/v2/interventions/', methods=['POST'])
 @incident.route('/api/v2/interventions', methods=['POST'])
-# @jwt_required
+@jwt_required
 def add_intervention():
     request_data = request.get_json()
     return incidents_controller.add_intervention(request_data)
+
+@incident.route('/api/v2/interventions/', methods=['GET'])
+@incident.route('/api/v2/interventions', methods=['GET'])
+def fetch_interventions():
+    return incidents_controller.fetch_interventions()

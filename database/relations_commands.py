@@ -39,12 +39,7 @@ sqlcommands = (
                 """,
                 
                 """
-                INSERT INTO users(username, password, isadmin)      
-                VALUES('admin','sup3rpsW' ,True)
-                """,
-                """
-                INSERT INTO users(username, password, isadmin)
-                VALUES('nonadmin','in1tial', False)
-                
+                INSERT INTO users(firstname,lastname,username, password,email,phone_number, isadmin)      
+                VALUES('Rhytah','Namono','admin','sup3rpsW','girl@world.com',8562438 ,True)                
                 """
 )

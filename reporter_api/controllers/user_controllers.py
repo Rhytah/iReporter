@@ -41,23 +41,19 @@ class User_controller:
             return existent_reporter
         new_user = user_obj.create_user(firstname, lastname, username, password, email, phone_number)
 
-        if new_user:
-            return jsonify({
-                "status": 201,
-                "data": new_user,
-                "message": "signup successful"
-            })
         return jsonify({
-                        "status": 400,
-                        "message": "signup failed"
-                    })
-
+            "status": 201,
+            "data": new_user,
+            "message": "signup successful"
+        })
+        
     def signin(self, args):
         data = request.get_json()
         username  = data.get('username')
         password = data.get('password')
+        # user_id = data.get('user_id')
         returned_user = user_obj.login_search_user(username)
-        print(returned_user)
+        print(f"RETURNED USER{returned_user}")
         if not username:
             return jsonify({"msg" : "Provide Valid username"}),400
 
@@ -65,15 +61,12 @@ class User_controller:
             return jsonify({"msg" : "Provide password"}),400
         
         if username==returned_user.get('username') and password==returned_user.get('password'):
-            token_expiry = datetime.timedelta(days=1)
-            user_id=returned_user.get('user_id')
+            # token_expiry = datetime.timedelta(days=1)
+            userid=returned_user['userid']
 
-            my_identity = user_id
-
+            token=create_access_token(identity=userid)
             return jsonify({
-                'token': create_access_token(
-                    identity=my_identity,
-                    expires_delta=token_expiry),
+                'token': token,
                 'message': 'You have successfully logged in',
                 'isadmin': returned_user['isadmin'],
                 'status': 200})
