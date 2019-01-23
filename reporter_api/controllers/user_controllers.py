@@ -11,16 +11,6 @@ user_obj = User()
 
 class User_controller:
       
-    def get_single_user(self, user_id):
-        result = user_obj.get_user(user_id)
-        if result:
-            return jsonify({"status":200,
-            "data":result,
-            "message":"You have fetched user"})
-        return jsonify({"status":200,
-            "error":"User doesnot exist.Retry with valid Id"})
-
-
     def add_reporter(self, *args):
         user_data = request.get_json()
         firstname = user_data.get('firstname')

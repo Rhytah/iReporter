@@ -12,6 +12,11 @@ class User:
         db.cursor.execute(cmd)
         all_users = db.cursor.fetchall()
         return all_users
+    def get_user(self,userid):
+        cmd = "SELECT * FROM users WHERE userid='{}';".format(userid)
+        db.cursor.execute(cmd)
+        user = db.cursor.fetchone()
+        return user
 
     def create_user(self,firstname, lastname, username, password, email, phone_number):
         add_user_cmd = "INSERT INTO users(firstname,lastname, username, password, email,phone_number)\
