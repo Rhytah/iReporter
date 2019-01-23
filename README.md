@@ -45,17 +45,12 @@ clone the github repo to your computer:
 * <a href="https://rhytah.github.io/iReporter/UI/admin.htm">Admin interface</a> ;
        ** click on status to display options to change status of a record
 
-
-## Known Bugs
-The App does not have a database and doesn't save data entered in it.
-
 ## GH-Pages.
 my site is published at https://rhytah.github.io/iReporter/UI/index.htm
 
-```
-# API 
 
-```
+# API-VERSION2 
+
 
 ## Tools
 
@@ -92,15 +87,30 @@ $pytest
 ```
 ## Versioning
 ```
-This is version one"v1" of the API
+This is version one"v2" of the API
 ```
 ## End Points(Required Features)
-|           End Point                                     |            Functionality                       |
-|   ---------------------------------------------------   | ---------------------------------------------  |
-|     POST   api/v1/auth/login/                           |             Login to application               |
-|     POST   api/v1/auth/signup/                          |             Register an account                |
-|     POST   api/v1/red-flags/                            |             Create a red-flag                  |
-|     GET    api/v1/red-flags/                            |             Fetch all red-flags                |
-|     GET    api/v1/red-flags/<int:redflag_Id>            |             Fetch a red-flag                   |
-|     PATCH  api/v1/red-flags/<int:redflag_Id>            |             Edit red-flag location             |
-|     PATCH  api/v1/red-flags/<int:redflag_Id>            |             Edit red-flag comment              |
+|           End Point                                           |            Functionality                       |
+|   --------------------------------------------------------    | ---------------------------------------------  |
+|     POST   api/v2/auth/login/                                 |             Login to application               |
+|     POST   api/v2/auth/signup/                                |             Register an account                |
+|     POST   api/v2/red-flags/                                  |             Create a red-flag                  |
+|     GET    api/v2/red-flags/                                  |             Fetch all red-flags                |
+|     GET    api/v2/red-flags/<int:redflag_Id>                  |             Fetch a red-flag                   |
+|     PATCH  api/v2/red-flags/<int:redflag_Id>/location         |             Edit red-flag location             |
+|     PATCH  api/v2/red-flags/<int:redflag_Id>/comment          |             Edit red-flag comment              |
+|     PATCH  api/v2/red-flags/<int:redflag_Id>/status           |             Edit red-flag status               |
+|     POST   api/v2/interventions/                              |             Create a intervention              |
+|     GET    api/v2/interventions/                              |             Fetch all interventions            |
+|     GET    api/v2/interventions/<int:intervention_Id>         |             Fetch a intervention               |
+|     DELETE api/v2/interventions/<int:intervention_Id>         |             Fetch a intervention               |
+|     PATCH  api/v2/interventions/<int:intervention_Id>/location|             Edit intervention location         |
+|     PATCH  api/v2/interventions/<int:intervention_Id>/comment |             Edit intervention comment          |
+|     PATCH  api/v2/red-flags/<int:intervention_Id>/status      |             Edit red-flag status               |
+
+
+
+## Hosted application link
+```
+https://rhytah-ireporter.herokuapp.com/
+```
