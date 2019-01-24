@@ -17,20 +17,21 @@ class DatabaseConnect:
             password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125'
         )
             
-
+        self.conn = psycopg2.connect(self.credentials)
+        self.conn.autocommit = True
+        self.cursor = self.conn.cursor(cursor_factory=RealDictCursor)
+        
         if app.config.get('ENV') == 'testing':
             dbname = app_configuration['testing'].DATABASE
             self.credentials['dbname'] = dbname
-
-        try:        
             self.conn = psycopg2.connect(self.credentials)
             self.conn.autocommit = True
             self.cursor = self.conn.cursor(cursor_factory=RealDictCursor)
-            
-            for command in sqlcommands:
-                self.cursor.execute(command)
-        except:
-            print("connection failed")
+        
+
+        for command in sqlcommands:
+            self.cursor.execute(command)
+        
     def drop_table(self,tablename):
         command = f"""
         DROP TABLE IF EXISTS {tablename} CASCADE
