@@ -34,18 +34,25 @@ class DatabaseConnect:
  
             # self.credentials_heroku ="""
             # dbname='degbph26bv6m4i' user= 'wkmnrsrpffhfpr' host='ec2-54-227-246-152.compute-1.amazonaws.com' port =5432 password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' 
-            # """
-            self.credentials_heroku= dict(dbname='degbph26bv6m4i',
-             user= 'wkmnrsrpffhfpr',
-              host='ec2-54-227-246-152.compute-1.amazonaws.com',
-             port =5432 ,
-             password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' )
-            self.credentials =self.credentials_heroku
+            # # """
+            # self.credentials_heroku= dict(dbname='degbph26bv6m4i',
+            #  user= 'wkmnrsrpffhfpr',
+            #   host='ec2-54-227-246-152.compute-1.amazonaws.com',
+            #  port =5432 ,
+            #  password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' )
+            # self.credentials =self.credentials_heroku
+            dbname = app_configuration['production'].DATABASE
+            self.credentials['dbname'] = app_configuration['production'].DATABASE
+            self.credentials['user'] = app_configuration['production'].USER
+            self.credentials['password'] = app_configuration['production'].PASSWORD
+            self.credentials['host'] = app_configuration['production'].HOST
+            self.credentials['port'] = app_configuration['production'].PORT
         
         try:
             self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
+            print(dbname)
         except:
             print("failed to connect")
     def drop_table(self,tablename):

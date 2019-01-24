@@ -32,6 +32,7 @@ class ProductionConfig(Config):
     HOST = "ec2-54-227-246-152.compute-1.amazonaws.com" 
     PASSWORD ="dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125"
     USER = "wkmnrsrpffhfpr"
+    PORT = 5432
     TESTING= False
 
 app_configuration = {
