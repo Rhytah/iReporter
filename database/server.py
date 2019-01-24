@@ -16,10 +16,10 @@ class DatabaseConnect:
                 host='localhost',
                 port = 5432
             )
-        # self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
-        # self.conn.autocommit = True
-        # self.cursor = self.conn.cursor()
-        # self.cursor.close()
+        self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
+        self.conn.autocommit = True
+        self.cursor = self.conn.cursor()
+        
 
         if app.config.get('ENV') == 'development':
             dbname = app_configuration['development'].DATABASE
