@@ -9,20 +9,6 @@ class DatabaseConnect:
 
     def __init__(self):
         
-        # self.credentials_heroku ="""
-        #     dbname='degbph26bv6m4i' user= 'wkmnrsrpffhfpr' host='ec2-54-227-246-152.compute-1.amazonaws.com' port = '5432' password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' 
-        #     """
-            
-        # self.conn = psycopg2.connect(self.credentials_heroku)
-        # self.conn.autocommit = True
-        # self.cursor = self.conn.cursor(cursor_factory=RealDictCursor)
-        
-        # for command in sqlcommands:
-        #     self.cursor.execute(command)
-
-
-    
-        
         self.credentials = dict(
                 dbname ='',
                 user = 'postgres',
@@ -45,8 +31,7 @@ class DatabaseConnect:
             self.credentials['dbname'] = dbname
     
         if app.config.get('ENV') == 'production':
-            # dbname = app_configuration['testing'].DATABASE
-            # self.credentials['dbname'] = dbname
+ 
             self.credentials_heroku ="""
             dbname='degbph26bv6m4i' user= 'wkmnrsrpffhfpr' host='ec2-54-227-246-152.compute-1.amazonaws.com' port = '5432' password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' 
             """
