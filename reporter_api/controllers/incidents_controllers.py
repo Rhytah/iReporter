@@ -180,3 +180,29 @@ class IncidentsController:
             "status":404,
             "error":"intervention out of range, use valid id"
         })
+    def edit_interventionlocation(self,location,intervention_id):
+        location = intervention_obj.modify_interventionlocation(location,intervention_id)
+        
+        invalid_location = validator.validate_location(location)
+        if invalid_location:
+            return invalid_location
+        if location:
+            return jsonify({
+                "message":f"You have changed intervention's location to{location}"
+            }),200
+        return jsonify({
+            "status":404,
+            "message":"Invalid id, try again"})
+
+    def edit_interventioncomment(self,comment,intervention_id):
+        comment = intervention_obj.modify_interventioncomment(comment,intervention_id)
+        invalid_comment = validator.validate_comment(comment)
+        if invalid_comment:
+            return invalid_comment
+        if comment:
+            return jsonify({
+                "message":f"You have changed intervention's comment to{comment}"
+            }),200
+        return jsonify({
+            "status":404,
+            "message":"Invalid id, try again"})

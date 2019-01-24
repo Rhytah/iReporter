@@ -89,3 +89,19 @@ def fetch_intervention(intervention_id):
 @incident.route('/api/v2/interventions/<int:intervention_id>', methods=['DELETE'])
 def delete_intervention(intervention_id):
     return incidents_controller.delete_specific_intervention(intervention_id)
+
+@incident.route('/api/v2/interventions/<int:intervention_id>/location/', methods=['PATCH'])
+@incident.route('/api/v2/interventions/<int:intervention_id>/location', methods=['PATCH'])
+def edit_interventionlocation(intervention_id):
+    data = request.get_json(force=True)
+    location = data['location']
+
+    return incidents_controller.edit_interventionlocation(location,intervention_id)
+
+
+@incident.route('/api/v2/interventions/<int:intervention_id>/comment/', methods=['PATCH'])
+@incident.route('/api/v2/interventions/<int:intervention_id>/comment', methods=['PATCH'])
+def edit_interventioncomment(intervention_id):
+    data = request.get_json()
+    comment = data.get('comment')
+    return incidents_controller.edit_interventioncomment(comment,intervention_id)

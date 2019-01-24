@@ -71,3 +71,17 @@ class Intervention:
         deleted=db.cursor.rowcount
         db.cursor.execute(del_cmd)
         return deleted
+
+    def modify_interventionlocation(self,location,intervention_id):
+        sql = "UPDATE redflags SET location = '{}' WHERE intervention_id = '{}';".format(location,intervention_id)
+        updated_rows = 0    
+        db.cursor.execute(sql)
+        updated_rows = db.cursor.rowcount
+        return updated_rows
+
+    def modify_interventioncomment(self,comment,intervention_id):
+        sql = "UPDATE redflags SET comment = '{}' WHERE intervention_id = '{}';".format(comment,intervention_id)
+        updated_rows = 0    
+        db.cursor.execute(sql)
+        updated_rows = db.cursor.rowcount
+        return updated_rows
