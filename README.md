@@ -115,7 +115,7 @@ This is version one"v2" of the API
 
 ## Hosted application link
 ```
-https://rhytah-ireporter.herokuapp.com/
+https://rhytah-ireporterv2.herokuapp.com/
 ```
 ## API Documentation link
 ```
