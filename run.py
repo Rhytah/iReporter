@@ -3,4 +3,4 @@ from reporter_api import app
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=5432)
+    app.run(debug=True, host='localhost')
