@@ -41,18 +41,19 @@ class DatabaseConnect:
             #  port =5432 ,
             #  password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' )
             # self.credentials =self.credentials_heroku
-            dbname = app_configuration['production'].DATABASE
-            self.credentials['dbname'] = app_configuration['production'].DATABASE
-            self.credentials['user'] = app_configuration['production'].USER
-            self.credentials['password'] = app_configuration['production'].PASSWORD
-            self.credentials['host'] = app_configuration['production'].HOST
-            self.credentials['port'] = app_configuration['production'].PORT
-        
+            herokudb= app_configuration['production'].DATABASE_URI
+            # self.credentials['user'] = app_configuration['production'].USER
+            # self.credentials['password'] = app_configuration['production'].PASSWORD
+            # self.credentials['host'] = app_configuration['production'].HOST
+            # self.credentials['port'] = app_configuration['production'].PORT
+            # self.credentials['dbname'] = dbname
+            self.credentials = herokudb
+            
         try:
             self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
-            print(dbname)
+            
         except:
             print("failed to connect")
     def drop_table(self,tablename):
