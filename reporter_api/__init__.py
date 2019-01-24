@@ -13,10 +13,8 @@ def create_app(mode):
 
         app.config['JWT_SECRET_KEY'] = 'super-secret'
         jwt = JWTManager(app)
-        db = DatabaseConnect()
-        for command in sqlcommands:
-            db.cursor.execute(command)
-        print(f"connection successful on {db.credentials}")
+
+        # print(f"connection successful on {db.credentials}")
         from reporter_api.views.user_views import auth
         from reporter_api.views.incident_views import incident
 
