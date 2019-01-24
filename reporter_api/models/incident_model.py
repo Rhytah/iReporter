@@ -59,9 +59,15 @@ class Intervention:
         add_intervention_cmd = "INSERT INTO interventions(created_by,created_on,status, location, image, video, comment)\
         VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on,status, location, image, video, comment)
         db.cursor.execute(add_intervention_cmd)
-
     def get_intervention(self, intervention_id):
         cmd = "SELECT * FROM interventions WHERE intervention_id='{}'".format(intervention_id)
         db.cursor.execute(cmd)
         result = db.cursor.fetchone()
+
         return result
+
+    def delete_intervention(self,intervention_id):
+        del_cmd="DELETE FROM interventions WHERE intervention_id={}".format(intervention_id)
+        deleted=db.cursor.rowcount
+        db.cursor.execute(del_cmd)
+        return deleted
