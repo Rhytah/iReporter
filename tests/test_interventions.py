@@ -155,25 +155,3 @@ class IncidentTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("intervention out of range, use valid id",
                       str(response_out['error']))
-    def test_modify_intervention_location(self):
-        self.test_client.post('/api/v2/auth/signup/',
-                              data=json.dumps(self.user),
-                              content_type='application/json')
-
-        response = self.test_client.post('/api/v2/auth/login/',
-                                         data=json.dumps(self.user),
-                                         content_type='application/json')
-        response_out = json.loads(response.data.decode())
-        token = response_out['token']
-        headers = {'Authorization': f'Bearer {token}'}
-        new_location = 15.36
-        response2 = self.test_client.patch(
-            '/api/v2/interventions/1/location',
-            headers=headers,
-            content_type='application/json',
-            data=json.dumps(new_location))
-        response_out = json.loads(response2.data.decode())
-        self.assertEqual(response_out['status'], 200)
-        self.assertIsInstance(response_out, dict)
-        self.assertIn("You have changed intervention's location to15.36",
-                      str(response_out['message']))

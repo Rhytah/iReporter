@@ -78,8 +78,9 @@ class IncidentsController:
         })
 
     def edit_location(self,location,redflag_id):
-        data = request.get_json()
-        location = data.get('location')
+        request_data = request.data
+        data=json.loads(request_data)
+        location = data['location']
         invalid_location = validator.validate_location(location)
         location = redflag_obj.modify_location(location,redflag_id)
 
@@ -189,6 +190,7 @@ class IncidentsController:
     def edit_interventionlocation(self,intervention_id):
         data = request.get_json()
         location = data.get('location')
+        
         invalid_location = validator.validate_location(location)
 
         if invalid_location:
