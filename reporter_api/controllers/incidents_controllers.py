@@ -199,8 +199,10 @@ class IncidentsController:
 
         if location:
             return jsonify({
-                "message":f"You have changed intervention's location to{location}"
-            }),200
+                "status":200,
+                "data":intervention_id,
+                "message":"You have changed intervention's location"
+            })
         return jsonify({
             "status":404,
             "message":"Invalid id, try again"})
@@ -216,7 +218,9 @@ class IncidentsController:
         comment = intervention_obj.modify_interventioncomment(comment,intervention_id)
         if comment:
             return jsonify({
-                "message":f"You have changed intervention's comment to{comment}"
+                "status":200,
+                "data":intervention_id,
+                "message":"You have changed intervention's comment"
             }),200
         return jsonify({
             "status":404,

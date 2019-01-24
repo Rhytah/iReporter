@@ -155,3 +155,55 @@ class IncidentTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("intervention out of range, use valid id",
                       str(response_out['error']))
+
+    def test_modify_interventionlocation(self):
+        self.test_client.post('/api/v2/auth/signup/',
+                              data=json.dumps(self.user),
+                              content_type='application/json')
+
+        response = self.test_client.post('/api/v2/auth/login/',
+                                         data=json.dumps(self.user),
+                                         content_type='application/json')
+        response_out = json.loads(response.data.decode())
+        token = response_out['token']
+        headers = {'Authorization': f'Bearer {token}'}
+
+        response = self.test_client.post(
+            '/api/v2/interventions/',
+            data=json.dumps(self.incident),
+            headers=headers,
+            content_type='application/json'
+        )
+        new_value=dict(location=15.369)
+        response = self.test_client.patch('/api/v2/interventions/1/location',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("You have changed intervention's location",response_out['message'])
+    
+    def test_modify_interventioncomment(self):
+        self.test_client.post('/api/v2/auth/signup/',
+                              data=json.dumps(self.user),
+                              content_type='application/json')
+
+        response = self.test_client.post('/api/v2/auth/login/',
+                                         data=json.dumps(self.user),
+                                         content_type='application/json')
+        response_out = json.loads(response.data.decode())
+        token = response_out['token']
+        headers = {'Authorization': f'Bearer {token}'}
+
+        response = self.test_client.post(
+            '/api/v2/interventions/',
+            data=json.dumps(self.incident),
+            headers=headers,
+            content_type='application/json'
+        )
+        new_value=dict(comment="new_comment")
+        response = self.test_client.patch('/api/v2/interventions/1/comment',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("You have changed intervention's comment",response_out['message'])
