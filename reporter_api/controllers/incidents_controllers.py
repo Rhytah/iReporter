@@ -55,7 +55,7 @@ class IncidentsController:
         if not redflag:
             return jsonify({
                 "status":404,
-                "message":"Out of range red-flag id,Try again with a valid id"
+                "message":"Redflag not found."
             })
         return jsonify({
             "status":200,
@@ -74,7 +74,7 @@ class IncidentsController:
             })
         return jsonify({
             "status":404,
-            "message":"redflag out of range, use valid id"
+            "message":"Redflag not found."
         })
 
     def edit_location(self,location,redflag_id):
@@ -92,7 +92,7 @@ class IncidentsController:
             }),200
         return jsonify({
             "status":404,
-            "message":"Invalid id, try again"})
+            "message":"Redflag not found."})
 
     def edit_comment(self,comment,redflag_id):
         data = request.get_json()
@@ -109,7 +109,7 @@ class IncidentsController:
             }),200
         return jsonify({
             "status":404,
-            "message":"Invalid id, try again"})
+            "message":"Redflag not found."})
 
     def edit_status(self,status,redflag_id):
         response = redflag_obj.modify_location(status,redflag_id)
@@ -123,7 +123,7 @@ class IncidentsController:
             }),200
         return jsonify({
             "status":404,
-            "message":"Invalid id, try again"})
+            "message":"Redflag not found."})
 
     # interventions controllers
     def add_intervention(self,*args):
@@ -142,7 +142,7 @@ class IncidentsController:
         if invalid_intervention:
             return invalid_intervention
         new_intervention= intervention_obj.create_intervention(created_by,created_on,status, location, image, video, comment)
-    
+        
         return jsonify ({
             "status":201,
             "data":new_intervention,
@@ -171,7 +171,7 @@ class IncidentsController:
             })
         return jsonify({
             "status":404,
-            "error":"Invalid id. Try again with valid id"
+            "error":"Intervention record not found."
         })
 
     def delete_specific_intervention(self,intervention_id):
@@ -185,7 +185,7 @@ class IncidentsController:
             })
         return jsonify({
             "status":404,
-            "error":"intervention out of range, use valid id"
+            "error":"Intervention record not found."
         })
     def edit_interventionlocation(self,intervention_id):
         data = request.get_json()
@@ -205,7 +205,7 @@ class IncidentsController:
             })
         return jsonify({
             "status":404,
-            "message":"Invalid id, try again"})
+            "error":"Intervention record not found."})
 
     def edit_interventioncomment(self,intervention_id):
         
@@ -224,4 +224,4 @@ class IncidentsController:
             }),200
         return jsonify({
             "status":404,
-            "message":"Invalid id, try again"})
+            "error":"Intervention record not found."})

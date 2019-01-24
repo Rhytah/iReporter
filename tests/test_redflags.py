@@ -130,7 +130,7 @@ class RedflagTestCase(BaseTestCase):
                                            content_type='application/json')
         response_out = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 200)
-        self.assertIn("redflag out of range, use valid id",
+        self.assertIn("Redflag not found.",
                       str(response_out['message']))
     def test_modify_location(self):
         self.test_client.post('/api/v2/auth/signup/',
@@ -183,3 +183,29 @@ class RedflagTestCase(BaseTestCase):
         response_out = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 200)
         self.assertIn("You have changed red flag's comment to1",response_out['message'])
+
+    def test_modify_status(self):
+        self.test_client.post('/api/v2/auth/signup/',
+                              data=json.dumps(self.admin_user),
+                              content_type='application/json')
+ 
+        response = self.test_client.post('/api/v2/auth/login/',
+                                         data=json.dumps(self.admin_user),
+                                         content_type='application/json')
+        response_out = json.loads(response.data.decode())
+        token = response_out['token']
+        headers = {'Authorization': f'Bearer {token}'}
+
+        response = self.test_client.post(
+            '/api/v2/red-flags/',
+            data=json.dumps(self.incident),
+            headers=headers,
+            content_type='application/json'
+        )
+        new_value=dict(status="resolved")
+        response = self.test_client.patch('/api/v2/red-flags/1/status',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 401)
+        self.assertIn('Missing Authorization Header',response_out['msg'])
