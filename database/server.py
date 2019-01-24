@@ -30,15 +30,6 @@ class DatabaseConnect:
             dbname = app_configuration['testing'].DATABASE
             self.credentials['dbname'] = dbname
 
-        
-        if app.config.get('ENV') == 'production':
-            dbname = app_configuration['production'].DATABASE_URI
-            self.credentials['host'] = app_configuration['production'].HOST
-            self.credentials['user'] = app_configuration['production'].USER
-            self.credentials['password'] = app_configuration['production'].PASSWORD
-            self.credentials['dbname'] = app_configuration['production'].DATABASE
-
-            
         try:
             self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
             self.conn.autocommit = True
