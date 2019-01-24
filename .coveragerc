@@ -13,3 +13,4 @@ omit =
     venv/
     tests/
     reporter_api/models/
+    config.py
