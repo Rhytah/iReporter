@@ -51,8 +51,8 @@ def edit_comment(redflag_id):
     return incidents_controller.edit_comment(comment,redflag_id)
 
 
-@incident.route('/api/v2/red-flags/<int:redflag_id>/status/', methods=['PATCH'])
-@incident.route('/api/v2/red-flags/<int:redflag_id>/status', methods=['PATCH'])
+@incident.route('/api/v2/interventions/<int:redflag_id>/status/', methods=['PATCH'])
+@incident.route('/api/v2/interventions/<int:redflag_id>/status', methods=['PATCH'])
 @jwt_required
 def edit_status(redflag_id):
     current_user = get_jwt_identity()
@@ -89,3 +89,17 @@ def fetch_intervention(intervention_id):
 @incident.route('/api/v2/interventions/<int:intervention_id>', methods=['DELETE'])
 def delete_intervention(intervention_id):
     return incidents_controller.delete_specific_intervention(intervention_id)
+
+@incident.route('/api/v2/interventions/<int:intervention_id>/location/', methods=['PATCH'])
+@incident.route('/api/v2/interventions/<int:intervention_id>/location', methods=['PATCH'])
+def edit_interventionlocation(intervention_id):
+
+
+    return incidents_controller.edit_interventionlocation(intervention_id)
+
+
+@incident.route('/api/v2/interventions/<int:intervention_id>/comment/', methods=['PATCH'])
+@incident.route('/api/v2/interventions/<int:intervention_id>/comment', methods=['PATCH'])
+def edit_interventioncomment(intervention_id):
+ 
+    return incidents_controller.edit_interventioncomment(intervention_id)

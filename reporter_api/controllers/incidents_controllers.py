@@ -30,7 +30,7 @@ class IncidentsController:
             return invalid_redflag
         
         new_redflag=redflag_obj.create_redflag(created_by,created_on,status, location, image,video,comment)
-        print(new_redflag)
+   
         return jsonify ({
             "status":201,
             "data":new_redflag,
@@ -78,9 +78,12 @@ class IncidentsController:
         })
 
     def edit_location(self,location,redflag_id):
-        location = redflag_obj.modify_location(location,redflag_id)
-        
+        request_data = request.data
+        data=json.loads(request_data)
+        location = data['location']
         invalid_location = validator.validate_location(location)
+        location = redflag_obj.modify_location(location,redflag_id)
+
         if invalid_location:
             return invalid_location
         if location:
@@ -92,10 +95,14 @@ class IncidentsController:
             "message":"Invalid id, try again"})
 
     def edit_comment(self,comment,redflag_id):
-        comment = redflag_obj.modify_comment(comment,redflag_id)
+        data = request.get_json()
+        comment = data.get('comment')
+
         invalid_comment = validator.validate_comment(comment)
         if invalid_comment:
             return invalid_comment
+        comment = redflag_obj.modify_comment(comment,redflag_id)
+
         if comment:
             return jsonify({
                 "message":f"You have changed red flag's comment to{comment}"
@@ -180,3 +187,37 @@ class IncidentsController:
             "status":404,
             "error":"intervention out of range, use valid id"
         })
+    def edit_interventionlocation(self,intervention_id):
+        data = request.get_json()
+        location = data.get('location')
+        
+        invalid_location = validator.validate_location(location)
+
+        if invalid_location:
+            return invalid_location
+        location = intervention_obj.modify_interventionlocation(location,intervention_id)
+
+        if location:
+            return jsonify({
+                "message":f"You have changed intervention's location to{location}"
+            }),200
+        return jsonify({
+            "status":404,
+            "message":"Invalid id, try again"})
+
+    def edit_interventioncomment(self,intervention_id):
+        
+        data = request.get_json()
+        comment = data.get('comment')
+
+        invalid_comment = validator.validate_comment(comment)
+        if invalid_comment:
+            return invalid_comment
+        comment = intervention_obj.modify_interventioncomment(comment,intervention_id)
+        if comment:
+            return jsonify({
+                "message":f"You have changed intervention's comment to{comment}"
+            }),200
+        return jsonify({
+            "status":404,
+            "message":"Invalid id, try again"})

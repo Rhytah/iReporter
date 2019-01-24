@@ -33,10 +33,15 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
+        if not isinstance(location, float):
+            return jsonify({
+                "status": 400,
+                "error": "location must be a float value"
+            })
 
 
     def validate_comment(self, comment):
-        if not comment:
+        if not comment or comment.isspace():
             return jsonify({
                 "status": 400,
                 "error": "comment is missing"})

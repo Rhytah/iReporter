@@ -19,23 +19,24 @@ class DatabaseConnect:
         self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
         self.conn.autocommit = True
         self.cursor = self.conn.cursor()
+        
 
         if app.config.get('ENV') == 'development':
             dbname = app_configuration['development'].DATABASE
             self.credentials['dbname'] = dbname
-            self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
-            self.conn.autocommit = True
-            self.cursor = self.conn.cursor()
+
             
         if app.config.get('ENV') == 'testing':
             dbname = app_configuration['testing'].DATABASE
             self.credentials['dbname'] = dbname
+
+        try:
             self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
+        except:
 
-
-        print("error:Failed to connect ")
+            print("error:Failed to connect ")
 
     def drop_table(self,tablename):
         command = f"""

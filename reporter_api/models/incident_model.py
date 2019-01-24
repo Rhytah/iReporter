@@ -13,7 +13,7 @@ class Redflag:
 
     def create_redflag (self, created_by,created_on,status, location, image, video, comment):
         add_cmd ="INSERT INTO redflags(created_by,created_on,status, location, image, video, comment)\
-        VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on, status, location, image, video, comment)
+        VALUES ('{}','{}','{}','{}','{}','{}','{}') RETURNING redflag_id;".format(created_by,created_on, status, location, image, video, comment)
         db.cursor.execute(add_cmd)
 
     def get_redflag(self, redflag_id):
@@ -60,7 +60,7 @@ class Intervention:
         VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on,status, location, image, video, comment)
         db.cursor.execute(add_intervention_cmd)
     def get_intervention(self, intervention_id):
-        cmd = "SELECT * FROM interventions WHERE intervention_id='{}'".format(intervention_id)
+        cmd = "SELECT * FROM interventions WHERE intervention_id='{}';".format(intervention_id)
         db.cursor.execute(cmd)
         result = db.cursor.fetchone()
 
@@ -71,3 +71,17 @@ class Intervention:
         deleted=db.cursor.rowcount
         db.cursor.execute(del_cmd)
         return deleted
+
+    def modify_interventionlocation(self,location,intervention_id):
+        sql = "UPDATE interventions SET location = '{}' WHERE intervention_id = '{}' RETURNING location;".format(location,intervention_id)
+        updated_rows = 0    
+        db.cursor.execute(sql)
+        updated_rows = db.cursor.rowcount
+        return updated_rows
+
+    def modify_interventioncomment(self,comment,intervention_id):
+        sql = "UPDATE interventions SET comment = '{}' WHERE intervention_id = '{}' RETURNING comment;".format(comment,intervention_id)
+        updated_rows = 0    
+        db.cursor.execute(sql)
+        updated_rows = db.cursor.rowcount
+        return updated_rows

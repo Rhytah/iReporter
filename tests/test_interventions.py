@@ -28,7 +28,6 @@ class IncidentTestCase(BaseTestCase):
             content_type='application/json'
         )
         response_out = json.loads(response2.data.decode())
-        print(response_out)
         self.assertEqual(response_out['status'], 201)
         self.assertIsInstance(response_out, dict)
         self.assertIn("Successfully added intervention",
