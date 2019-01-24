@@ -10,7 +10,7 @@ class DatabaseConnect:
     def __init__(self):
         
         self.credentials ="""
-            dbname='report_db' user= 'postgres' host='localhost' port = '5432' password = 'mine' 
+            dbname='' user= 'postgres' host='localhost' port = '5432' password = 'mine' 
             """
         self.credentials_test ="""
             dbname='reporttest_db' user= 'postgres' host='localhost' port = '5432' password = 'mine' 
@@ -20,7 +20,7 @@ class DatabaseConnect:
             dbname='degbph26bv6m4i' user= 'wkmnrsrpffhfpr' host='ec2-54-227-246-152.compute-1.amazonaws.com' port = '5432' password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' 
             """
             
-        self.conn = psycopg2.connect(self.credentials)
+        self.conn = psycopg2.connect()
         self.conn.autocommit = True
         self.cursor = self.conn.cursor(cursor_factory=RealDictCursor)
         
