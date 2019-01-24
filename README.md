@@ -109,8 +109,15 @@ This is version one"v2" of the API
 |     PATCH  api/v2/red-flags/<int:intervention_Id>/status      |             Edit red-flag status               |
 
 
+## Run app in postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a0c27385b8d5855dcd14)
 
 ## Hosted application link
 ```
 https://rhytah-ireporter.herokuapp.com/
+```
+## API Documentation link
+```
+https://documenter.getpostman.com/view/4755480/RzthQB82
 ```
