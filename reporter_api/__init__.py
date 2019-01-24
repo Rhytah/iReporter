@@ -23,7 +23,7 @@ def create_app(mode):
 
     return app
 
-app = create_app(mode='development')
+app = create_app(mode='testing')
 
 @app.route('/')
 def index():
