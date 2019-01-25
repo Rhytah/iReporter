@@ -182,6 +182,34 @@ class IncidentTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("You have changed intervention's location",response_out['message'])
     
+    def test_modify_interventionlocation_out_of_range(self):
+        new_value=dict(location=12.3548)
+        response = self.test_client.patch('/api/v2/interventions/1/location',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Intervention record not found.",response_out['error']) 
+
+    def test_modify_interventionlocation_invalid_data(self):
+        new_value=dict(location="12.3548")
+        response = self.test_client.patch('/api/v2/interventions/1/location',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('location must be a float value',response_out['error']) 
+    
+    def test_modify_interventionlocation_missing_data(self):
+        new_value=dict(location="")
+        response = self.test_client.patch('/api/v2/interventions/1/location',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('location is missing',response_out['error']) 
+
+
     def test_modify_interventioncomment(self):
         self.test_client.post('/api/v2/auth/signup/',
                               data=json.dumps(self.user),
@@ -207,3 +235,32 @@ class IncidentTestCase(BaseTestCase):
         response_out = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 200)
         self.assertIn("You have changed intervention's comment",response_out['message'])
+
+
+    def test_modify_interventioncomment_invalid_datatype(self):
+        new_value=dict(comment="roads")
+        response = self.test_client.patch('/api/v2/interventions/1/comment',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Intervention record not found.',response_out['error']) 
+
+    def test_modify_interventioncomment_invalid_data(self):
+        new_value=dict(comment=456)
+        response = self.test_client.patch('/api/v2/interventions/1/comment',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('comment must be a string',response_out['error']) 
+    
+    def test_modify_interventioncomment_missing_data(self):
+        new_value=dict(comment="")
+        response = self.test_client.patch('/api/v2/interventions/1/comment',
+                                        content_type='application/json',
+                                        data=json.dumps(new_value))
+        response_out = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('comment is missing',response_out['error']) 
+
