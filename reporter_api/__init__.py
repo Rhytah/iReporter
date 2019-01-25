@@ -26,7 +26,7 @@ def create_app(mode):
 
     return app
 
-app = create_app(mode='production')
+app = create_app(mode='development')
 
 @app.route('/')
 def index():
