@@ -36,6 +36,9 @@ class DatabaseConnect:
             dbname = app_configuration['testing'].DATABASE_URI
             self.credentials['dbname'] = dbname
     
+        if app.config.get('ENV') == 'production':
+ 
+            self.credentials
         
         try:
             self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
