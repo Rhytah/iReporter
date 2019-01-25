@@ -54,17 +54,19 @@ class User_controller:
                 "error" : "Provide password"})
         
         if username==returned_user.get('username') and password==returned_user.get('password'):
-            # token_expiry = datetime.timedelta(days=1)
-            userid=returned_user['userid']
+            token_expiry = datetime.timedelta(days=1)
+            user_identity=dict(
+                userid=returned_user.get('userid'),
+                isadmin=returned_user.get('isadmin')
+)
 
-            token=create_access_token(identity=userid)
+            token=create_access_token(identity=user_identity,expires_delta=token_expiry)
             return jsonify({
                 'token': token,
                 'message': 'You have successfully logged in',
                 'isadmin': returned_user['isadmin'],
                 'status': 200 })
                     
-
         return jsonify({
             'error': "invalid credentials. \
             Use a registered email and password",

@@ -17,9 +17,10 @@ class IncidentsController:
 
     def add_redflag(self,*args):
         current_user = get_jwt_identity()
+        userid = current_user['userid']
         data = request.get_json()
         status = "draft"
-        created_by = current_user
+        created_by = userid
         created_on =datetime.datetime.now()
         location = data.get('location')
         image = data.get ('image')
@@ -112,36 +113,27 @@ class IncidentsController:
             "message":"Redflag not found."})
 
     def edit_status(self,redflag_id):
-        current_user=get_jwt_identity()
-        isadmin = current_user['isadmin']
-        isadmin=json.load(isadmin.decode())
-        request_data = request.get_json()
-        
-        if isadmin:
-            status = request_data.get('status')
-            invalid_status = validator.validate_status(status)
-            if invalid_status:
-                return invalid_status
-            status = redflag_obj.modify_location(status,redflag_id)
-            if status:
-                return jsonify({
-                    "message":f"You have changed red flag's status to{status}"
-                }),200
+        status_data = request.get_json()
+        status = status_data['status']
+        invalid_status = validator.validate_status(status)
+        if invalid_status:
+            return invalid_status
+        status = redflag_obj.modify_status(status,redflag_id)
+        if status:
             return jsonify({
-                "status":404,
-                "message":"Redflag not found."})
+                "message":f"You have changed red flag's status to{status}"
+            }),200
         return jsonify({
-            "status": 401,
-            "message": "Only admins can change status of a red-flag"
-            })
+            "status":404,
+            "message":"Redflag not found."})
 
     # interventions controllers
     def add_intervention(self,*args):
         current_user = get_jwt_identity()
+        userid = current_user['userid']
         data = request.get_json()
-        created_by = current_user
-        print (f"CURRENT USER{current_user}")
-
+        status = "draft"
+        created_by = userid
         created_on =datetime.datetime.now()
         status = "draft"
         location = data.get('location')
