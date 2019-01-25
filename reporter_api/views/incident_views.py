@@ -56,10 +56,10 @@ def edit_comment(redflag_id):
 @jwt_required
 def edit_status(redflag_id):
     current_user = get_jwt_identity()
-    isadmin = current_user.get('isadmin')
+    isadmin = current_user['isadmin']
     request_data = request.get_json()
     status = request_data.get('status')
-    if isadmin is True:
+    if isadmin:
         return incidents_controller.edit_status(status,redflag_id)
 
     return jsonify({

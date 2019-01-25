@@ -35,7 +35,7 @@ class User:
                             "data": (email),
                             "error": "User already exists"})
     def login_search_user(self, username):
-        cmd = "SELECT * FROM users WHERE username='{}'".format(username)
+        cmd = "SELECT * FROM users WHERE username='{}';".format(username)
         db.cursor.execute(cmd)
         result = db.cursor.fetchone()
         return result

@@ -45,9 +45,9 @@ class Redflag:
         return result
     def modify_status(self,status,redflag_id):
         sql = "UPDATE redflags SET status = '{}' WHERE redflag_id = '{}'  RETURNING status;".format(status,redflag_id)
-        updated_rows = 0    
+        # updated_rows = 0    
         db.cursor.execute(sql)
-        updated_rows = db.cursor.rowcount
+        # updated_rows = db.cursor.rowcount
         result=db.cursor.fetchone()
         return result 
 

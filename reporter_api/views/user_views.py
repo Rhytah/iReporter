@@ -21,7 +21,7 @@ def signup():
 @jwt_required
 def fetch_users():
     current_user = get_jwt_identity()
-    isadmin = current_user.get("isadmin")
+    isadmin = current_user["isadmin"]
     if isadmin is True:
         return user_controller.fetch_users()
     return jsonify({

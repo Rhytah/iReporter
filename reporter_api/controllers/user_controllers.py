@@ -41,14 +41,17 @@ class User_controller:
         data = request.get_json()
         username  = data.get('username')
         password = data.get('password')
-        user_id = data.get('user_id')
+        # user_id = data.get('user_id')
         returned_user = user_obj.login_search_user(username)
         print(f"RETURNED USER{returned_user}")
         if not username:
-            return jsonify({"msg" : "Provide Valid username"}),400
+            return jsonify({"status":400,
+                "error" : "Provide Valid username"})
 
         if not password:
-            return jsonify({"msg" : "Provide password"}),400
+            return jsonify({
+                "status":400,
+                "error" : "Provide password"})
         
         if username==returned_user.get('username') and password==returned_user.get('password'):
             # token_expiry = datetime.timedelta(days=1)
@@ -59,7 +62,7 @@ class User_controller:
                 'token': token,
                 'message': 'You have successfully logged in',
                 'isadmin': returned_user['isadmin'],
-                'status': 200})
+                'status': 200 })
                     
 
         return jsonify({
