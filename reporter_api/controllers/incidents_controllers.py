@@ -111,19 +111,29 @@ class IncidentsController:
             "status":404,
             "message":"Redflag not found."})
 
-    def edit_status(self,status,redflag_id):
-        response = redflag_obj.modify_location(status,redflag_id)
-        invalid_status = validator.validate_status(status)
-        if invalid_status:
-            return invalid_status
-        status=json.dumps(response)
-        if status:
+    def edit_status(self,redflag_id):
+        current_user=get_jwt_identity()
+        isadmin = current_user['isadmin']
+        isadmin=json.load(isadmin.decode())
+        request_data = request.get_json()
+        
+        if isadmin:
+            status = request_data.get('status')
+            invalid_status = validator.validate_status(status)
+            if invalid_status:
+                return invalid_status
+            status = redflag_obj.modify_location(status,redflag_id)
+            if status:
+                return jsonify({
+                    "message":f"You have changed red flag's status to{status}"
+                }),200
             return jsonify({
-                "message":f"You have changed red flag's status to{status}"
-            }),200
+                "status":404,
+                "message":"Redflag not found."})
         return jsonify({
-            "status":404,
-            "message":"Redflag not found."})
+            "status": 401,
+            "message": "Only admins can change status of a red-flag"
+            })
 
     # interventions controllers
     def add_intervention(self,*args):

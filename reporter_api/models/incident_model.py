@@ -45,9 +45,9 @@ class Redflag:
         return result
     def modify_status(self,status,redflag_id):
         sql = "UPDATE redflags SET status = '{}' WHERE redflag_id = '{}'  RETURNING status;".format(status,redflag_id)
-        # updated_rows = 0    
+        updated_rows = 0    
         db.cursor.execute(sql)
-        # updated_rows = db.cursor.rowcount
+        updated_rows = db.cursor.rowcount
         result=db.cursor.fetchone()
         return result 
 
@@ -74,6 +74,7 @@ class Intervention:
         del_cmd="DELETE FROM interventions WHERE intervention_id={}".format(intervention_id)
         deleted=db.cursor.rowcount
         db.cursor.execute(del_cmd)
+        
         return deleted
 
     def modify_interventionlocation(self,location,intervention_id):
@@ -81,11 +82,13 @@ class Intervention:
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount
-        return updated_rows
+        result = db.cursor.fetchone()
+        return result
 
     def modify_interventioncomment(self,comment,intervention_id):
         sql = "UPDATE interventions SET comment = '{}' WHERE intervention_id = '{}' RETURNING comment;".format(comment,intervention_id)
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount
-        return updated_rows
+        result_comment = db.cursor.fetchone()
+        return result_comment
