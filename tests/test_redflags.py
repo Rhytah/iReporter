@@ -99,7 +99,7 @@ class RedflagTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 401)
         self.assertIn("Missing Authorization Header", str(response.data))
 
-    def test_delete_redflag(self):
+    def test_remove_redflag(self):
         self.test_client.post('/api/v2/auth/signup/',
                               data=json.dumps(self.user),
                               content_type='application/json')
