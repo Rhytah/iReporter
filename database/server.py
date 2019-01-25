@@ -41,7 +41,7 @@ class DatabaseConnect:
             #  port =5432 ,
             #  password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' )
             # self.credentials =self.credentials_heroku
-            dbname= app_configuration['production'].DATABASE_URI
+            dbname= app_configuration['production'].DATABASE
             self.credentials['user'] = app_configuration['production'].USER
             self.credentials['password'] = app_configuration['production'].PASSWORD
             self.credentials['host'] = app_configuration['production'].HOST
