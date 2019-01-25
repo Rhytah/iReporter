@@ -15,7 +15,8 @@ class Redflag:
         add_cmd ="INSERT INTO redflags(created_by,created_on,status, location, image, video, comment)\
         VALUES ('{}','{}','{}','{}','{}','{}','{}') RETURNING redflag_id;".format(created_by,created_on, status, location, image, video, comment)
         db.cursor.execute(add_cmd)
-
+        result=db.cursor.fetchone()
+        return result
     def get_redflag(self, redflag_id):
         cmd = "SELECT * FROM redflags WHERE redflag_id='{}';".format(redflag_id)
         db.cursor.execute(cmd)
@@ -29,23 +30,26 @@ class Redflag:
         return deleted
 
     def modify_location(self,location,redflag_id):
-        sql = "UPDATE redflags SET location = '{}' WHERE redflag_id = '{}';".format(location,redflag_id)
+        sql = "UPDATE redflags SET location = '{}' WHERE redflag_id = '{}' RETURNING location;".format(location,redflag_id)
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount
-        return updated_rows
+        result=db.cursor.fetchone()
+        return result
     def modify_comment(self,comment,redflag_id):
-        sql = "UPDATE redflags SET comment = '{}' WHERE redflag_id = '{}';".format(comment,redflag_id)
+        sql = "UPDATE redflags SET comment = '{}' WHERE redflag_id = '{}'  RETURNING comment;".format(comment,redflag_id)
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount
-        return updated_rows
+        result=db.cursor.fetchone()
+        return result
     def modify_status(self,status,redflag_id):
-        sql = "UPDATE redflags SET status = '{}' WHERE redflag_id = '{}';".format(status,redflag_id)
+        sql = "UPDATE redflags SET status = '{}' WHERE redflag_id = '{}'  RETURNING status;".format(status,redflag_id)
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount
-        return updated_rows
+        result=db.cursor.fetchone()
+        return result 
 
 class Intervention:
     

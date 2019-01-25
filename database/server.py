@@ -41,6 +41,7 @@ class DatabaseConnect:
             self.conn =  psycopg2.connect(**self.credentials, cursor_factory=RealDictCursor)
             self.conn.autocommit = True
             self.cursor = self.conn.cursor()
+            print(self.credentials)
         except:
             print("failed to connect")
     def drop_table(self,tablename):

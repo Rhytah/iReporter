@@ -8,7 +8,7 @@ import datetime
 
 validator = UserValidator()
 user_obj = User()
-
+JWT_ACCESS_TOKEN_EXPIRES = False
 class User_controller:
       
     def add_reporter(self, *args):
@@ -41,7 +41,7 @@ class User_controller:
         data = request.get_json()
         username  = data.get('username')
         password = data.get('password')
-        # user_id = data.get('user_id')
+        user_id = data.get('user_id')
         returned_user = user_obj.login_search_user(username)
         print(f"RETURNED USER{returned_user}")
         if not username:

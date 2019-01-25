@@ -20,8 +20,10 @@ class User:
 
     def create_user(self,firstname, lastname, username, password, email, phone_number):
         add_user_cmd = "INSERT INTO users(firstname,lastname, username, password, email,phone_number)\
-       VALUES ('{}','{}','{}','{}','{}','{}');".format( firstname, lastname, username, password, email, phone_number)
+       VALUES ('{}','{}','{}','{}','{}','{}') RETURNING email;".format( firstname, lastname, username, password, email, phone_number)
         db.cursor.execute(add_user_cmd)
+        result=db.cursor.fetchone()
+        return result
 
 
     def signup_search_user(self, email):

@@ -17,7 +17,7 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG=True
     ENV = 'development'
-    DATABASE_URI = 'postgres://postgres:psql@localhost:5432/report_db'
+    DATABASE_URI = 'report_db'
     TESTING = False
 
 
