@@ -106,7 +106,7 @@ This is version one"v2" of the API
 |     DELETE api/v2/interventions/<int:intervention_Id>         |             Fetch a intervention               |
 |     PATCH  api/v2/interventions/<int:intervention_Id>/location|             Edit intervention location         |
 |     PATCH  api/v2/interventions/<int:intervention_Id>/comment |             Edit intervention comment          |
-|     PATCH  api/v2/red-flags/<int:intervention_Id>/status      |             Edit red-flag status               |
+
 
 
 ## Run app in postman
