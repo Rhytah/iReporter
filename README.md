@@ -36,14 +36,14 @@ clone the github repo to your computer:
 ### Usage
 * launch <a href="https://rhytah.github.io/iReporter/UI/index.htm">Index</a>  to access Sign Up/ Sign In options
 * On successful login, you will be redirected to webpage that contains information relevant to your logged in account(either user or Admin).
-* <a href="https://rhytah.github.io/iReporter/UI/forum.htm">User interface</a> ;
-        ** click `create red-flag` tab to display input fields.
-        ** click `create intervention record` tab to display input fields.
-        ** click `My records` tab to display past records.
-        ** click `Logout` tab to leave page.
-        ** top right corner contains brief user profile information.
-* <a href="https://rhytah.github.io/iReporter/UI/admin.htm">Admin interface</a> ;
-       ** click on status to display options to change status of a record
+* <a href="https://rhytah.github.io/iReporter/UI/forum.htm">User interface</a> 
+  - click `create red-flag` tab to display input fields.
+  - click `create intervention record` tab to display input fields.
+  - click `My records` tab to display past records.
+  - click `Logout` tab to leave page.
+  - top right corner contains brief user profile information.
+* <a href="https://rhytah.github.io/iReporter/UI/admin.htm">Admin interface</a> 
+  - click on status to display options to change status of a record
 
 ## GH-Pages.
 my site is published at https://rhytah.github.io/iReporter/UI/index.htm
@@ -87,7 +87,7 @@ $pytest
 ```
 ## Versioning
 ```
-This is version one"v2" of the API
+This is version two "v2" of the API
 ```
 ## End Points(Required Features)
 |           End Point                                           |            Functionality                       |
@@ -115,9 +115,11 @@ This is version one"v2" of the API
 
 ## Hosted application link
 ```
+[Heroku hosted link](https://rhytah-ireporterv2.herokuapp.com/)
 https://rhytah-ireporterv2.herokuapp.com/
 ```
 ## API Documentation link
 ```
+[Documentation](https://documenter.getpostman.com/view/4755480/RzthQB82)
 https://documenter.getpostman.com/view/4755480/RzthQB82
 ```
