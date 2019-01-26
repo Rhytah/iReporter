@@ -37,21 +37,28 @@ def index():
         <title> iReporter API</title>
 
         </head>
+
         <body>
         <div class=maincontent>
             <h2>iReporter-API<h2>
-            Currently supported endpoints
+              <p>
+              Corruption is a huge bane to Africa’s development.<br>
+              African countries must develop novel and localised solutions that will curb this menace, hence the birth of iReporter. <br>
+              iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. <br>
+              Users can also report on things that needs government intervention.
+              </p>            
+            A few of the currently supported endpoints
             <br>
 
-            <a href='https://rhytah-ireporter.herokuapp.com/api/v2/red-flags'>
+            <a href='https://rhytah-ireporterv2.herokuapp.com/api/v2/red-flags'>
             Fetch all red-flags data
             </a>
             <br>
-            <a href='https://rhytah-ireporter.herokuapp.com/api/v2/auth/users'>
+            <a href='https://rhytah-ireporterv2.herokuapp.com/api/v2/auth/users'>
             Fetch users
             </a>
             <br>
-            <a href='https://rhytah-ireporter.herokuapp.com/api/v2/red-flags'>
+            <a href='https://rhytah-ireporterv2.herokuapp.com/api/v2/interventions'>
             Fetch all intervention records
             </a>
             <br>
