@@ -114,12 +114,11 @@ This is version two "v2" of the API
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a0c27385b8d5855dcd14)
 
 ## Hosted application link
-```
+
 [Heroku hosted link](https://rhytah-ireporterv2.herokuapp.com/)
 https://rhytah-ireporterv2.herokuapp.com/
-```
+
 ## API Documentation link
-```
+
 [Documentation](https://documenter.getpostman.com/view/4755480/RzthQB82)
 https://documenter.getpostman.com/view/4755480/RzthQB82
-```
