@@ -9,24 +9,17 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(
-                location,
-                list) or not len(location) == 2 or not isinstance(
-                location[0],
-                float) or not isinstance(
-                location[1],
-                float):
+        if not isinstance(location,float):
             return jsonify({
                 "status": 400,
-                "error": "use proper format as float values,  [,] "
+                "error": "use proper format as float values, 12.368 "
             })
-
-        if not image or image.isspace():
+        if not image :
             return jsonify({
                 "status": 400,
                 "error": "image is missing"})
 
-        if not video or video.isspace():
+        if not video :
             return jsonify({
                 "status": 400,
                 "error": "video is missing"})
@@ -40,20 +33,15 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(
-                location,
-                list) or not len(location) == 2 or not isinstance(
-                location[0],
-                float) or not isinstance(
-                location[1],
-                float):
+        if not isinstance(location, float):
             return jsonify({
                 "status": 400,
-                "error": "use proper format as float values,  [,] "
+                "error": "location must be a float value"
             })
 
+
     def validate_comment(self, comment):
-        if not comment or comment.isspace():
+        if not comment:
             return jsonify({
                 "status": 400,
                 "error": "comment is missing"})
@@ -69,7 +57,7 @@ class Validation:
             'rejected',
             'resolved'
         ]
-        if not status or status.isspace():
+        if not status:
             return jsonify({
                 "status": 400,
                 "error": "status is missing"})
