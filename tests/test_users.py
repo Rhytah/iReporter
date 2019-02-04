@@ -44,14 +44,6 @@ class UserTestcase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('lastname is missing', str(response_out['error']))
 
-    def test_add_user_without_othernames(self):
-        response = self.test_client.post('/api/v2/auth/signup/',
-                                         data=json.dumps(self.testuser3),
-                                         content_type='application/json')
-        response_out = json.loads(response.data.decode())
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('othernames is missing', str(response_out['error']))
-
     def test_add_user_with_invalid_email(self):
         response = self.test_client.post('/api/v2/auth/signup/',
                                          data=json.dumps(self.testuser4),
