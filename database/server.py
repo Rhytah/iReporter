@@ -10,7 +10,7 @@ class DatabaseConnect:
     def __init__(self):
         
         self.credentials = dict(
-                dbname ='report_db',
+                dbname ='',
                 user = 'postgres',
                 password='mine',
                 host='localhost',
