@@ -5,9 +5,9 @@ const url = 'http://127.0.0.1:5000/api/v2/auth/signup/';
 let firstname = document.getElementById('firstname');
 let lastname = document.getElementById('lastname');
 let username = document.getElementById('username');
-let email = document.getElementById('email');
+let email = document.getElementById('email_signup');
 let password = document.getElementById('password');
-let phone = document.getElementById('phone');
+let phone_number = document.getElementById('phone_number');
 let invalid = document.getElementById('invalid')
 
 
@@ -19,8 +19,8 @@ function signUp(event){
         lastname:lastname.value,
         username:username.value,
         password: password.value,
-        email : email.value,
-        phone : phone.value
+        email : email_signup.value,
+        phone_number : phone_number.value
         }
     const options={
         method: 'POST',
