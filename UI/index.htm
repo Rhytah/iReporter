@@ -37,19 +37,20 @@
       
         <div class="panel" id="login">
           <form action="forum.htm">
-              <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="Enter Email" id="email" required ="required"/>
+                <p id="invalid_login"></p>
+              <label for="login_username"><b>Username</b></label>
+              <input type="text" placeholder="Enter Valid username" id="login_username" required ="required"/>
         
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" id="psw" required="required"/>
-          <button>Login</button> 
+          <button type="submit">Login</button> 
           <button id="adminbtn" onclick="document.getElementById('admin_login').style.display='block';document.getElementById('login').style.display='none';" > Admin Login</button>
           <br>
           <button id="signupbtn" onclick="document.getElementById('signup').style.display='block'" style="width:50%;">Don't have an account? Signup here</button>
       </form>
       
     </div>
-
+    <script src="../static/js/login.js"></script>
     
     <div id="signup" class="modal">
       <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
