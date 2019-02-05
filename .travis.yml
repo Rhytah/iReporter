@@ -1,0 +1,18 @@
+language: python
+python:
+  - "3.6"
+services:
+  - postgresql
+env:
+  global:
+  - APP_SETTINGS=testing
+install:
+  - pip install -r requirements.txt 
+  
+virtualenv:
+before_script:
+  - "psql -c 'create database reporttest_db;' -U postgres"
+script: 
+  - nosetests --with-coverage
+after_success:
+- coveralls

@@ -1,0 +1,17 @@
+[report]
+omit =
+    */python?.?/*
+    */site-packages/nose/*
+    */__pycache__/*
+    *.pyc
+    */venv/*
+    */home/travis/virtualenv/*
+    bin/
+    lib/
+    share/
+    include/
+    venv/
+    tests/*
+    reporter_api/models/
+    config.py
+    database/

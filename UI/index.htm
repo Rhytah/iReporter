@@ -27,57 +27,67 @@
   <div class="panel" id="admin_login">
     <form action="admin.htm">
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" id="email" required ="required"/>
+        <input type="text" placeholder="Enter Email" id="adminemail" required ="required"/>
   
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" id="psw" required="required"/>
+        <input type="password" placeholder="Enter Password" id="adminpsw" required="required"/>
     <button>Login</button> 
     </form>
 </div>
       
         <div class="panel" id="login">
           <form action="forum.htm">
-              <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="Enter Email" id="email" required ="required"/>
+                <p id="invalid_login"></p>
+              <label for="login_username"><b>Username</b></label>
+              <input type="text" placeholder="Enter Valid username" id="login_username" required ="required"/>
         
               <label for="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" id="psw" required="required"/>
-          <button>Login</button> 
+          <button type="submit">Login</button> 
           <button id="adminbtn" onclick="document.getElementById('admin_login').style.display='block';document.getElementById('login').style.display='none';" > Admin Login</button>
           <br>
           <button id="signupbtn" onclick="document.getElementById('signup').style.display='block'" style="width:50%;">Don't have an account? Signup here</button>
       </form>
       
     </div>
-
+    <script src="../static/js/login.js"></script>
     
     <div id="signup" class="modal">
       <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <p id="invalid"></p>
       <form class="modal-content animate">
         
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
           <hr>
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required="">
-    
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required="">
-    
-          <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+          <label for="fistname"><b>Firstname</b></label>
+          <input type="text" placeholder="Enter your firstname" name="firstname" required="" id="firstname">
+
+          <label for="lastname"><b>Lastname</b></label>
+          <input type="text" placeholder="Enter your lastname" name="lastname" required="" id="lastname">
           
-         
-        
+          <label for="fistname"><b>Username</b></label>
+          <input type="text" placeholder="Enter what you would like to display" name="username" required="" id="username">
+
+          <label for="email"><b>Email</b></label>
+          <input type="email" id="email_signup" placeholder="Enter Email"  required="" >
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id="password" required="">
+
+          <label for="phone"><b>PhoneNumber</b></label>
+          <input type="tel" placeholder="Enter PhoneNumber" name="phone" required="" id="phone_number">
+
           <div class="clearfix">
             <button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn" onclick="href='#login'">Sign Up</button>
+            <button type="submit" class="signupbtn" id="submit" value="Register">Sign Up</button>
           </div>
         </div>
       </form>
   
 <!-- <button onclick="document.getElementById('login').style.display='block'" style="width:auto;">Already have an account</button> -->
 </div>
+<script src="../static/js/signup.js"></script>
 
 
 </body> 
