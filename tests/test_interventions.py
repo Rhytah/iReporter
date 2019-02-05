@@ -114,7 +114,8 @@ class IncidentTestCase(BaseTestCase):
             content_type='application/json',
             data=json.dumps(dict(
                 createdBy="sankyu",
-                location='123.01.56.78',
+                lat='01.556',
+                long = '12.589',
                 image="image goes here",
                 video="video goes here",
                 comment="Policeman asked for something something"
@@ -174,7 +175,7 @@ class IncidentTestCase(BaseTestCase):
             headers=headers,
             content_type='application/json'
         )
-        new_value=dict(location=15.369)
+        new_value=dict(lat=15.369,long=25.695)
         response = self.test_client.patch('/api/v2/interventions/1/location',
                                         content_type='application/json',
                                         data=json.dumps(new_value))
@@ -183,7 +184,7 @@ class IncidentTestCase(BaseTestCase):
         self.assertIn("You have changed intervention's location",response_out['message'])
     
     def test_modify_interventionlocation_out_of_range(self):
-        new_value=dict(location=12.3548)
+        new_value=dict(lat=15.369,long=25.695)
         response = self.test_client.patch('/api/v2/interventions/1/location',
                                         content_type='application/json',
                                         data=json.dumps(new_value))
@@ -192,7 +193,7 @@ class IncidentTestCase(BaseTestCase):
         self.assertIn("Intervention record not found.",response_out['error']) 
 
     def test_modify_interventionlocation_invalid_data(self):
-        new_value=dict(location="12.3548")
+        new_value=dict(lat="15.369",long="25.695")
         response = self.test_client.patch('/api/v2/interventions/1/location',
                                         content_type='application/json',
                                         data=json.dumps(new_value))
@@ -201,7 +202,7 @@ class IncidentTestCase(BaseTestCase):
         self.assertIn('location must be a float value',response_out['error']) 
     
     def test_modify_interventionlocation_missing_data(self):
-        new_value=dict(location="")
+        new_value=dict(lat=15.369,long="")
         response = self.test_client.patch('/api/v2/interventions/1/location',
                                         content_type='application/json',
                                         data=json.dumps(new_value))
