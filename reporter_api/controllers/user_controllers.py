@@ -15,14 +15,13 @@ class User_controller:
         user_data = request.get_json()
         firstname = user_data.get('firstname')
         lastname = user_data.get('lastname')
-        othernames = user_data.get('othernames')
         email = user_data.get('email')
         phone_number = user_data.get('phone_number')
         username = user_data.get('username')
         password = user_data.get('password')
         invalid_user = validator.validate_add_user(
             firstname, lastname, username, email, password,
-            phone_number, othernames)
+            phone_number)
         if invalid_user:
             return invalid_user
         existent_reporter = user_obj.signup_search_user(email)
@@ -42,8 +41,7 @@ class User_controller:
         username  = data.get('username')
         password = data.get('password')
         # user_id = data.get('user_id')
-        returned_user = user_obj.login_search_user(username)
-        print(f"RETURNED USER{returned_user}")
+
         if not username:
             return jsonify({"status":400,
                 "error" : "Provide Valid username"})
@@ -52,7 +50,9 @@ class User_controller:
             return jsonify({
                 "status":400,
                 "error" : "Provide password"})
-        
+        returned_user = user_obj.login_search_user(username)
+        print(f"RETURNED USER{returned_user}")
+
         if username==returned_user.get('username') and password==returned_user.get('password'):
             token_expiry = datetime.timedelta(days=1)
             user_identity=dict(
