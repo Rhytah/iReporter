@@ -9,11 +9,7 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        # if not isinstance(location,float):
-        #     return jsonify({
-        #         "status": 400,
-        #         "error": "use proper format as float values, 12.368 "
-        #     })
+    
         if not image :
             return jsonify({
                 "status": 400,
