@@ -125,6 +125,7 @@ button {
   width:60%;
   float:right;
 
+
 }
 
 .tab{
@@ -139,9 +140,11 @@ button {
     font-size:14px;
 }
 .tabcontent input[type=submit]{
-  width:30%;
+  width:fit-content;
+  height:25px;
+
 }
-#upload{
+#upload #vid{
   float: right;
 }
 textarea{
@@ -151,6 +154,15 @@ textarea{
     font-size: 14px;
 }
 
+#completeintervention{
+  height: 30px;
+  width:40%;
+  font-size:20px;
+  align-content: center;
+  margin-inline-start: 30%;
+  text-emphasis: bold;
+  background: #e68200;
+}
 
 #intervention input[type=text], select {
   width: 100%;
@@ -161,11 +173,17 @@ textarea{
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-
+#intervention input[type=file] {
+  width: fit-content;
+  height:25px;
+  
+}
+#interventions[type=submit]{
+  float: right;
+}
 input[type=submit]:hover {
   background-color: #45a049;
-
+  text-emphasis-color: #6e800b;
 }
 
 .container {
@@ -421,7 +439,7 @@ h2 {
       padding: 0;      
   }
   label{
-      font-size:14px;
+      font-size:12px;
   }
   input[type=text], input[type=password] {
       width: 100%;

@@ -35,7 +35,7 @@ function signUp(event){
         .then((data) => {
             if (data.status == "OK"){
                 invalid.textContent = '' + data.message
-                window.location.reload('./index.htm')
+                window.location.reload('../index.htm')
             }else{
                 invalid.textContent = ''+data.message
             }

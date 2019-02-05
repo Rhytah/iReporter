@@ -45,14 +45,13 @@
                 <input type="text" placeholder="add video" id="video">
                 <input type="submit" value='SUBMIT' id="add_redflag">   
             </form>
-            <script src="../static/js/incident.js"></script>
         </div>   
         <div class="tabcontent" id="intervention">
 
                 <div>
-                        <form>
+                        <form id="addintervention" onload="initCoords();">
                           <label >Issue</label>
-                          <input type="text" id="issue"  placeholder="What issue are you referring to?">
+                          <input type="text" id="intervention_comment"  placeholder="What issue are you referring to?">
                       <br>
                           <label>Region </label>
                          
@@ -66,8 +65,8 @@
                           <label>Geolocation</label>
                           <span onclick="show('map-block');">Pick cordinates</span>
 
-                          <input type="text" placeholder="Write Latitude here" id="lat" >
-                          <input type="text" placeholder="Write Longitude here" id="long"> 
+                          <input type="number" step="0.001" placeholder="Write Latitude here" id="lat" >
+                          <input type="text" placeholder="Write Longitude here" onclick="showPosition();" id="long"> 
                           
                           <br>
                           <label>Agency</label>
@@ -79,17 +78,29 @@
                           <br>
                         
                           <label>
-                          Attach Image/Video
+                          Attach Image
                           </label>
-                        
                             <div>
-                          <input type="file" name="pic" accept="image/*">
+                          <input type="file" name="pic" accept="image/*" id="image_path">
+                          <span></span>
                           <input type="submit" id="upload" value="Upload">
-                      </div>
-                  
+                          <br>
+                        <p>
+                          <label>
+                          Attach Video
+                          </label>
+                        <div>
+                            <input type="file" name="pic" accept="image/*" id="video_path">
+                            <span></span>
+                            <input type="submit" id='vid' value="Upload"></div>
+                          
+                          </p>
+         
+                          <input type="submit" value="Submit" id="completeintervention">
+
                         </form>
-                        <input type="submit" value="Submit">
-                      </div> 
+                      </div>
+
         </div>
 
         <div class="container" id="map-block">  
@@ -245,5 +256,7 @@
                         
         </div>
     </div>
+    <script src="../static/js/incident.js"></script>
+
     </body>
     </html>
