@@ -34,16 +34,20 @@
 
         <div class="tabcontent" id="red-flag">
             <form id="usrform">
+
               <p id="invalid"></p>
+
                 <label>Report an Incident linked to corruption</label>
                 <br>
-                <label>Title:</label>
+                <label>Title:</label><br>
                 <input type="text" id="issue" placeholder="Write title here">
+
                 <textarea type="text" placeholder="Detailed report" id="comment"></textarea>
                 <input type="number" step="0.001" placeholder="Location you are reporting from" id="location"/>
                 <input type="text" placeholder="add image" id="image"/>
                 <input type="text" placeholder="add video" id="video">
                 <input type="submit" value='SUBMIT' id="add_redflag">   
+
             </form>
         </div>   
         <div class="tabcontent" id="intervention">
@@ -81,6 +85,7 @@
                           Attach Image
                           </label>
                             <div>
+
                           <input type="file" name="pic" accept="image/*" id="image_path">
                           <span></span>
                           <input type="submit" id="upload" value="Upload">
