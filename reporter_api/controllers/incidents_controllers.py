@@ -131,7 +131,7 @@ class IncidentsController:
     def add_intervention(self,*args):
         current_user = get_jwt_identity()
         userid = current_user['userid']
-        data = request.get_json()
+        data = request.get_json(force=True)
         status = "draft"
         created_by = userid
         created_on =datetime.datetime.now()

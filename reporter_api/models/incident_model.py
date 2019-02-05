@@ -61,8 +61,11 @@ class Intervention:
 
     def create_intervention(self,created_by,created_on,status, location, image, video, comment):
         add_intervention_cmd = "INSERT INTO interventions(created_by,created_on,status, location, image, video, comment)\
-        VALUES ('{}','{}','{}','{}','{}','{}','{}');".format(created_by,created_on,status, location, image, video, comment)
+        VALUES ('{}','{}','{}','{}','{}','{}','{}') RETURNING intervention_id;".format(created_by,created_on,status, location, image, video, comment)
         db.cursor.execute(add_intervention_cmd)
+        result = db.cursor.fetchone()
+
+        return result
     def get_intervention(self, intervention_id):
         cmd = "SELECT * FROM interventions WHERE intervention_id='{}';".format(intervention_id)
         db.cursor.execute(cmd)
