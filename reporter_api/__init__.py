@@ -4,6 +4,7 @@ from flask_jwt_extended import (JWTManager, create_access_token,
                                 get_jwt_identity, jwt_required)
 from database.relations_commands import sqlcommands
 from database.server import DatabaseConnect
+from flask_cors import CORS
 
 
 def create_app(mode):
@@ -13,6 +14,8 @@ def create_app(mode):
 
         app.config['JWT_SECRET_KEY'] = 'super-secret'
         jwt = JWTManager(app)
+        CORS(app)
+
         db=DatabaseConnect()
         for command in sqlcommands:
             db.cursor.execute(command)

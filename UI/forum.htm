@@ -1,5 +1,4 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +10,7 @@
 </head>
 <body>
         
-        <div id="profile"class="card">
+         <div id="profile"class="card">
           <div class="dropdown">
             <h2 class="dropbtn">Rhytah Namono</h2>
             <div class="dropdown-content">
@@ -33,23 +32,30 @@
          
         </div>
 
-
         <div class="tabcontent" id="red-flag">
             <form id="usrform">
+
+              <p id="invalid"></p>
+
                 <label>Report an Incident linked to corruption</label>
                 <br>
-                <label>Title:</label>
+                <label>Title:</label><br>
                 <input type="text" id="issue" placeholder="Write title here">
-                <textarea type="text" placeholder="Detailed report"></textarea>
-                <input type="submit" value='SUBMIT'>   
+
+                <textarea type="text" placeholder="Detailed report" id="comment"></textarea>
+                <input type="number" step="0.001" placeholder="Location you are reporting from" id="location"/>
+                <input type="text" placeholder="add image" id="image"/>
+                <input type="text" placeholder="add video" id="video">
+                <input type="submit" value='SUBMIT' id="add_redflag">   
+
             </form>
         </div>   
         <div class="tabcontent" id="intervention">
 
                 <div>
-                        <form>
+                        <form id="addintervention">
                           <label >Issue</label>
-                          <input type="text" id="issue"  placeholder="What issue are you referring to?">
+                          <input type="text" id="intervention_comment"  placeholder="What issue are you referring to?">
                       <br>
                           <label>Region </label>
                          
@@ -61,11 +67,13 @@
                             <option value="Southern">Southern Region</option>
                           </select>
                           <label>Geolocation</label>
-                          <span onclick="show('map-block');">Pick cordinates</span>
+                          <span onclick="getLocation();">Pick cordinates</span>
+                          <p type="text" id="intervention_combined_location"> </p>
+                          <!-- <input type="number" step="0.001" placeholder="Write Latitude here" id="lat" > -->
+                          <!-- <input type="text" placeholder="Write Longitude here" onclick="showPosition();" id="long">  -->
+                          <input type="text" pattern="-?\d{1,3}\.\d+" id="intervention_location_latitude">
+                          <input type="text" pattern="-?\d{1,3}\.\d+" id="intervention_location_longitude">
 
-                          <input type="text" placeholder="Write Latitude here" id="lat" >
-                          <input type="text" placeholder="Write Longitude here" id="long"> 
-                          
                           <br>
                           <label>Agency</label>
                           <select id="agency">
@@ -76,17 +84,30 @@
                           <br>
                         
                           <label>
-                          Attach Image/Video
+                          Attach Image
                           </label>
-                        
                             <div>
-                          <input type="file" name="pic" accept="image/*">
+
+                          <input type="file" name="pic" accept="image/*" id="image_path">
+                          <span></span>
                           <input type="submit" id="upload" value="Upload">
-                      </div>
-                  
+                          <br>
+                        <p>
+                          <label>
+                          Attach Video
+                          </label>
+                        <div>
+                            <input type="file" name="pic" accept="image/*" id="video_path">
+                            <span></span>
+                            <input type="submit" id='vid' value="Upload"></div>
+                          
+                          </p>
+         
+                          <input type="submit" value="Submit" id="completeintervention">
+
                         </form>
-                        <input type="submit" value="Submit">
-                      </div> 
+                      </div>
+
         </div>
 
         <div class="container" id="map-block">  
@@ -242,5 +263,7 @@
                         
         </div>
     </div>
+    <script src="../static/js/incident.js"></script>
+
     </body>
     </html>

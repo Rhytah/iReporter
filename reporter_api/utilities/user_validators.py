@@ -10,8 +10,7 @@ class UserValidator:
             username,
             email,
             password,
-            phone_number,
-            othernames):
+            phone_number):
         if not re.match(
             r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
                 email):
@@ -27,10 +26,7 @@ class UserValidator:
             return jsonify({
                 "status": 400,
                 "error": "lastname is missing"})
-        if not othernames or othernames.isspace():
-            return jsonify({
-                "status": 400,
-                "error": "othernames is missing"})
+
         if not re.match(
                 r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$",
                 firstname) or not isinstance(
@@ -68,15 +64,5 @@ class UserValidator:
             return jsonify({
                 "status": 400,
                 "error": "lastname cannot be integers, \
-                have white spaces or symbols"
-            })
-        if not re.match(
-                r"^([a-zA-Z\d]+[-_])*[a-zA-Z\d*]+$",
-                othernames) or not isinstance(
-                othernames,
-                str):
-            return jsonify({
-                "status": 400,
-                "error": "othernames cannot be integers, \
                 have white spaces or symbols"
             })
