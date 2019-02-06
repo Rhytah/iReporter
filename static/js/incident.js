@@ -1,6 +1,6 @@
 const form = document.getElementById('usrform');
 form.addEventListener('submit', addRedflag)
-const redflag_url = 'https://rhytah-ireporter.herokuapp.com/api/v2/red-flags/'
+const redflag_url = 'https://rhytah-ireporterv2.herokuapp.com/api/v2/red-flags/'
 let authorization_header = 'Bearer '.concat(localStorage.getItem('token'));
 let redflag_location  = document.getElementById('location')
 let image  = document.getElementById('image')
@@ -47,7 +47,7 @@ let intervention_video = document.getElementById('video_path')
 let intervention_location_latitude = document.getElementById('intervention_location_latitude')
 let intervention_location_longitude = document.getElementById('intervention_location_longitude')
 
-const intervention_url = 'http:/https://rhytah-ireporter.herokuapp.com/api/v2/interventions/'
+const intervention_url = 'https://rhytah-ireporterv2.herokuapp.com/api/v2/interventions/'
 
 var x = document.getElementById('intervention_combined_location');
 
