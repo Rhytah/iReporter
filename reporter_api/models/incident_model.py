@@ -11,9 +11,9 @@ class Redflag:
         all_users = db.cursor.fetchall()
         return all_users
 
-    def create_redflag (self, created_by,created_on,status, location, image, video, comment):
-        add_cmd ="INSERT INTO redflags(created_by,created_on,status, location, image, video, comment)\
-        VALUES ('{}','{}','{}','{}','{}','{}','{}') RETURNING redflag_id;".format(created_by,created_on, status, location, image, video, comment)
+    def create_redflag (self,created_by,created_on,status, lat,long, image, video, comment):
+        add_cmd ="INSERT INTO redflags(created_by,created_on,status, lat,long, image, video, comment)\
+        VALUES ('{}','{}','{}','{}','{}','{}','{}','{}') RETURNING redflag_id;".format(created_by,created_on, status, lat,long, image, video, comment)
         db.cursor.execute(add_cmd)
         result=db.cursor.fetchone()
         return result
@@ -29,8 +29,8 @@ class Redflag:
         db.cursor.execute(del_cmd)
         return deleted
 
-    def modify_location(self,location,redflag_id):
-        sql = "UPDATE redflags SET location = '{}' WHERE redflag_id = '{}' RETURNING location;".format(location,redflag_id)
+    def modify_location(self,lat,long,redflag_id):
+        sql = "UPDATE redflags SET lat= '{}',long='{}' WHERE redflag_id = '{}' RETURNING lat, long;".format(lat,long,redflag_id)
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount
@@ -59,9 +59,9 @@ class Intervention:
         all_users = db.cursor.fetchall()
         return all_users
 
-    def create_intervention(self,created_by,created_on,status, location, image, video, comment):
-        add_intervention_cmd = "INSERT INTO interventions(created_by,created_on,status, location, image, video, comment)\
-        VALUES ('{}','{}','{}','{}','{}','{}','{}') RETURNING intervention_id;".format(created_by,created_on,status, location, image, video, comment)
+    def create_intervention(self,created_by,created_on,status, lat,long, image, video, comment):
+        add_intervention_cmd = "INSERT INTO interventions(created_by,created_on,status, lat,long, image, video, comment)\
+        VALUES ('{}','{}','{}','{}','{}','{}','{}','{}') RETURNING intervention_id;".format(created_by,created_on,status, lat,long, image, video, comment)
         db.cursor.execute(add_intervention_cmd)
         result = db.cursor.fetchone()
 
@@ -80,8 +80,8 @@ class Intervention:
         
         return deleted
 
-    def modify_interventionlocation(self,location,intervention_id):
-        sql = "UPDATE interventions SET location = '{}' WHERE intervention_id = '{}' RETURNING location;".format(location,intervention_id)
+    def modify_interventionlocation(self,lat,long,intervention_id):
+        sql = "UPDATE interventions SET lat = '{}', long='{}' WHERE intervention_id = '{}' RETURNING lat,long".format(lat,long,intervention_id)
         updated_rows = 0    
         db.cursor.execute(sql)
         updated_rows = db.cursor.rowcount

@@ -22,15 +22,16 @@ class IncidentsController:
         status = "draft"
         created_by = userid
         created_on =datetime.datetime.now()
-        location = data.get('location')
+        lat = data.get('lat')
+        long =data.get('long')
         image = data.get ('image')
         video = data.get('video')
         comment = data.get('comment')
-        invalid_redflag= validator.validate_incident(location,image,video,comment)
+        invalid_redflag= validator.validate_incident(lat,long,image,video,comment)
         if invalid_redflag:
             return invalid_redflag
         
-        new_redflag=redflag_obj.create_redflag(created_by,created_on,status, location, image,video,comment)
+        new_redflag=redflag_obj.create_redflag(created_by,created_on,status,lat,long, image,video,comment)
    
         return jsonify ({
             "status":201,
@@ -78,12 +79,14 @@ class IncidentsController:
             "message":"Redflag not found."
         })
 
-    def edit_location(self,location,redflag_id):
+    def edit_location(self,lat,long,redflag_id):
         request_data = request.data
         data=json.loads(request_data)
-        location = data['location']
-        invalid_location = validator.validate_location(location)
-        location = redflag_obj.modify_location(location,redflag_id)
+        lat = data['lat']
+        long = data['long']
+
+        invalid_location = validator.validate_location(lat,long)
+        location = redflag_obj.modify_location(lat,long,redflag_id)
 
         if invalid_location:
             return invalid_location
@@ -136,14 +139,15 @@ class IncidentsController:
         created_by = userid
         created_on =datetime.datetime.now()
         status = "draft"
-        location = data.get('location')
+        lat = data.get('lat')
+        long = data.get('long')
         image = data.get ('image')
         video = data.get('video')
         comment = data.get('comment')
-        invalid_intervention= validator.validate_incident(location,image,video,comment)
+        invalid_intervention= validator.validate_incident(lat,long,image,video,comment)
         if invalid_intervention:
             return invalid_intervention
-        new_intervention= intervention_obj.create_intervention(created_by,created_on,status, location, image, video, comment)
+        new_intervention= intervention_obj.create_intervention(created_by,created_on,status, lat,long, image, video, comment)
         
         return jsonify ({
             "status":201,
@@ -191,13 +195,13 @@ class IncidentsController:
         })
     def edit_interventionlocation(self,intervention_id):
         data = request.get_json()
-        location = data.get('location')
-        
-        invalid_location = validator.validate_location(location)
+        lat = data.get('lat')
+        long = data.get('long')        
+        invalid_location = validator.validate_location(lat,long)
 
         if invalid_location:
             return invalid_location
-        location = intervention_obj.modify_interventionlocation(location,intervention_id)
+        location = intervention_obj.modify_interventionlocation(lat,long,intervention_id)
 
         if location:
             return jsonify({

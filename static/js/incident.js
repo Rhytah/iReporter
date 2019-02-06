@@ -1,6 +1,6 @@
 const form = document.getElementById('usrform');
 form.addEventListener('submit', addRedflag)
-const redflag_url = 'http://127.0.0.1:5000/api/v2/red-flags/'
+const redflag_url = 'https://rhytah-ireporter.herokuapp.com/api/v2/red-flags/'
 let authorization_header = 'Bearer '.concat(localStorage.getItem('token'));
 let redflag_location  = document.getElementById('location')
 let image  = document.getElementById('image')
@@ -8,30 +8,6 @@ let video  = document.getElementById('video')
 let comment  = document.getElementById('comment')
 
 let invalid = document.getElementById('invalid')
-
-// var x = document.getElementById("location");
-function initCoords(position){
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
-    if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(initialize, locatioError);
-
-    }else{
-        showError("Your browser does not support Geolocation!");
-    }
-}
-// function getLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(showPosition);
-//   } else { 
-//     location.innerHTML = "Geolocation is not supported by this browser.";
-//   }
-// }
-
-function showPosition(position) {
- location.innerHTML = "Latitude: " + lat + 
-  "<br>Longitude: " + long;
-}
 
 function addRedflag(event){
     event.preventDefault()
@@ -65,16 +41,35 @@ fetch(redflag_url,{
 const intervention_form= document.getElementById('addintervention');
 intervention_form.addEventListener('submit',addIntervention)
 let intervention_comment = document.getElementById('intervention_comment')
-let intervention_location = document.getElementById('lat')
+
 let intervention_image = document.getElementById('image_path')
 let intervention_video = document.getElementById('video_path')
+let intervention_location_latitude = document.getElementById('intervention_location_latitude')
+let intervention_location_longitude = document.getElementById('intervention_location_longitude')
 
-const intervention_url = 'http://127.0.0.1:5000/api/v2/interventions/'
+const intervention_url = 'http:/https://rhytah-ireporter.herokuapp.com/api/v2/interventions/'
+
+var x = document.getElementById('intervention_combined_location');
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
 
 function addIntervention(event){
     event.preventDefault()
     let intervention = {
-        location:intervention_location.value,
+        lat:intervention_location_latitude.value,
+        long:intervention_location_longitude.value,
         image: intervention_image.value,
         video: intervention_video.value,
         comment: intervention_comment.value

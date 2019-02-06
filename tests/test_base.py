@@ -15,7 +15,8 @@ class BaseTestCase(unittest.TestCase):
             self.db = DatabaseConnect()
             self.incident = dict(
                 created_on="2019-01-23 12:21:56.983689",
-                location=123.01,
+                lat=3.01,
+                long=12.64,
                 image="image",
                 video="image",
                 comment="Policeman asked for something something"
