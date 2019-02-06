@@ -49,6 +49,6 @@ function opentab(evt, tabName ){
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true
         };
-        map = new google.maps.Map(document.getElementById("map-block"), myOptions);
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
     }
     

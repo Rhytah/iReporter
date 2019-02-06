@@ -4,17 +4,16 @@ from flask import jsonify
 
 class Validation:
 
-    def validate_incident(self, lat, long,image, video, comment):
-        if not lat:
+    def validate_incident(self, location, image, video, comment):
+        if not location:
             return jsonify({
                 "status": 400,
-                "error": "latitude is missing"})
-    
-        if not long:
+                "error": "location is missing"})
+        if not isinstance(location,float):
             return jsonify({
                 "status": 400,
-                "error": "longitude is missing"})
-    
+                "error": "use proper format as float values, 12.368 "
+            })
         if not image :
             return jsonify({
                 "status": 400,
@@ -29,12 +28,12 @@ class Validation:
                 "status": 400,
                 "error": "comment is missing"})
 
-    def validate_location(self, lat,long):
-        if not lat or not long:
+    def validate_location(self, location):
+        if not location:
             return jsonify({
                 "status": 400,
                 "error": "location is missing"})
-        if not isinstance(lat, float) or not isinstance(long,float):
+        if not isinstance(location, float):
             return jsonify({
                 "status": 400,
                 "error": "location must be a float value"

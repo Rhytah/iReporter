@@ -1,7 +1,7 @@
 // const modal = document.querySelector(".modal");
 document.getElementById('signup').addEventListener('submit',signUp)
 // const signup = document.querySelector(".signup");
-const url = 'https://rhytah-ireporterv2.herokuapp.com/api/v2/auth/signup/';
+const url = 'https://rhytah-ireporter.herokuapp.com/api/v2/auth/signup/';
 let firstname = document.getElementById('firstname');
 let lastname = document.getElementById('lastname');
 let username = document.getElementById('username');
@@ -35,7 +35,7 @@ function signUp(event){
         .then((data) => {
             if (data.status == "OK"){
                 invalid.textContent = '' + data.message
-                window.location.reload('../index.htm')
+                window.location.replace('./index.htm')
             }else{
                 invalid.textContent = ''+data.message
             }
