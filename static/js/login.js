@@ -1,6 +1,6 @@
 document.getElementById('login').addEventListener('submit',signinUser)
 
-const login_url = 'https://rhytah-ireporter.herokuapp.com/api/v2/auth/login/';
+const login_url = 'https://rhytah-ireporterv2.herokuapp.com/api/v2/auth/login/';
 
 function signinUser(event) {
     event.preventDefault()
