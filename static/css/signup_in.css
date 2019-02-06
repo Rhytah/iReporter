@@ -116,10 +116,10 @@ hr {
 }
 .panel{
     position:center;
-    width:50%;
+    width:40%;
     height:fit-content;
     padding: 30px;
-    margin:auto;
+    margin-left: 300px;
     
 }
 #adminbtn{
