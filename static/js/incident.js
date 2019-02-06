@@ -2,7 +2,8 @@ const form = document.getElementById('usrform');
 form.addEventListener('submit', addRedflag)
 const redflag_url = 'https://rhytah-ireporterv2.herokuapp.com/api/v2/red-flags/'
 let authorization_header = 'Bearer '.concat(localStorage.getItem('token'));
-let redflag_location  = document.getElementById('location')
+let redflag_lat  = document.getElementById('lat')
+let redflag_long  = document.getElementById('long')
 let image  = document.getElementById('image')
 let video  = document.getElementById('video')
 let comment  = document.getElementById('comment')
@@ -12,7 +13,8 @@ let invalid = document.getElementById('invalid')
 function addRedflag(event){
     event.preventDefault()
     let redflag ={
-        location:redflag_location.value,
+        lat:redflag_lat.value,
+        long:redflag_long.value,
         image: image.value,
         video: video.value,
         comment: comment.value
