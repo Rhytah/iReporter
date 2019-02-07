@@ -139,7 +139,22 @@ button {
     font-size:14px;
 }
 .tabcontent input[type=submit]{
-  width:30%;
+  width:fit-content;
+  height:25px;
+
+}
+#red-flag input[type=file] {
+  width: fit-content;
+  height:25px;  
+}
+#red-flag input[type=text]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 #upload{
   float: right;

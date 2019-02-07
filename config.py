@@ -1,5 +1,6 @@
 import os
 
+
 class Config:
     DEBUG = False
     TESTING = False
@@ -15,32 +16,31 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    DEBUG=True
+    DEBUG = True
     ENV = 'development'
     DATABASE_URI = 'report_db'
     TESTING = False
 
 
 class TestingConfig(Config):
-    DEBUG=True
+    DEBUG = True
     ENV = 'testing'
     DATABASE_URI = 'reporttest_db'
     TESTING = True
 
+
 class ProductionConfig(Config):
-    DEBUG=False
+    DEBUG = False
     ENV = 'production'
-    DATABASE_URI= 'postgres://wkmnrsrpffhfpr:dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125@ec2-54-227-246-152.compute-1.amazonaws.com:5432/degbph26bv6m4i'
-    DB = 'degbph26bv6m4i'
-    HOST = 'ec2-54-227-246-152.compute-1.amazonaws.com'
-    USER = 'wkmnrsrpffhfpr'
-    PASSWORD='dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125'
-    
+    DATABASE_URI = 'postgres://srwsecjayzimxz:75cfbe00ffc5c2424d5662afa29f31b7c8ce2e4a8b2fb77ac7297ca1253389c5@ec2-174-129-226-234.compute-1.amazonaws.com:5432/daih072tt5nqcp'
+    DB = 'daih072tt5nqcp'
+    HOST = 'ec2-174-129-226-234.compute-1.amazonaws.com'
+    USER = 'srwsecjayzimxz'
+    PASSWORD = '75cfbe00ffc5c2424d5662afa29f31b7c8ce2e4a8b2fb77ac7297ca1253389c5'
 
 
 app_configuration = {
-    "development":DevelopmentConfig,
-    "testing":TestingConfig,
-    "production":ProductionConfig
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "production": ProductionConfig
 }
-

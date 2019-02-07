@@ -1,11 +1,11 @@
-from flask import Flask, json, jsonify, request,Blueprint,current_app as app
+from flask import Flask, json, jsonify, request, Blueprint, current_app as app
 from flask_jwt_extended import (JWTManager, create_access_token,
                                 get_jwt_identity, jwt_required)
 
 
 from reporter_api.controllers.user_controllers import User_controller
 
-auth = Blueprint("auth",__name__)
+auth = Blueprint("auth", __name__)
 user_controller = User_controller()
 
 
@@ -25,9 +25,8 @@ def fetch_users():
     if isadmin is True:
         return user_controller.fetch_users()
     return jsonify({
-        "status": 401,
         "error": "Only admins can see users"
-    })
+    }),403
 
 
 @auth.route('/api/v2/auth/login/', methods=['POST'])
@@ -35,6 +34,7 @@ def fetch_users():
 def login():
     user_data = request.get_json()
     return user_controller.signin(user_data)
+
 
 @auth.route('/api/v2/auth/users/<int:userid>/', methods=['GET'])
 @auth.route('/api/v2/auth/users/<int:userid>', methods=['GET'])
