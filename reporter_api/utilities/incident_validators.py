@@ -9,20 +9,10 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "latitude is missing"})
-        if not isinstance(lat,float):
-            return jsonify({
-                "status": 400,
-                "error": "use proper format as float values, 0.368 "
-            })
         if not long :
             return jsonify({
                 "status": 400,
                 "error": "longitude is missing"})
-        if not isinstance(lat,float):
-            return jsonify({
-                "status": 400,
-                "error": "use proper format as float values, 32.368 "
-            })
         if not image :
             return jsonify({
                 "status": 400,
@@ -42,22 +32,12 @@ class Validation:
             return jsonify({
                 "status": 400,
                 "error": "latitude is missing"})
-        if not isinstance(lat, float):
-            return jsonify({
-                "status": 400,
-                "error": "latitute must be a float value"
-            })
+        
         if not long:
             return jsonify({
                 "status": 400,
                 "error": "longitude is missing"})
-        if not isinstance(long, float):
-            return jsonify({
-                "status": 400,
-                "error": "longitude must be a float value"
-            })
-
-
+        
     def validate_comment(self, comment):
         if not comment:
             return jsonify({
