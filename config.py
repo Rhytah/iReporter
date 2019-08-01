@@ -30,11 +30,11 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     DEBUG=False
     ENV = 'production'
-    DATABASE_URI= 'postgres://wkmnrsrpffhfpr:dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125@ec2-54-227-246-152.compute-1.amazonaws.com:5432/degbph26bv6m4i'
-    DB = 'degbph26bv6m4i'
-    HOST = 'ec2-54-227-246-152.compute-1.amazonaws.com'
-    USER = 'wkmnrsrpffhfpr'
-    PASSWORD='dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125'
+    DATABASE_URI= 'postgres://kuzegimbnbuwlw:858f7dd5363a48d534a4184fbe9c3ee5daeadfaf88b73c3267b2aceb92f915b0@ec2-50-16-197-244.compute-1.amazonaws.com:5432/dfktg48dd4p22l'
+    DB = 'dfktg48dd4p22l'
+    HOST = 'ec2-50-16-197-244.compute-1.amazonaws.com'
+    USER = 'kuzegimbnbuwlw'
+    PASSWORD='858f7dd5363a48d534a4184fbe9c3ee5daeadfaf88b73c3267b2aceb92f915b0'
     
 
 
