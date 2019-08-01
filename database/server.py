@@ -33,7 +33,7 @@ class DatabaseConnect:
         if app.config.get('ENV') == 'production':
  
             self.credentials_heroku ="""
-            dbname='degbph26bv6m4i' user= 'wkmnrsrpffhfpr' host='ec2-54-227-246-152.compute-1.amazonaws.com' port =5432 password = 'dde675f7f5af4dc53de4bbac1c7109921fa99454935ce281b3e94798c98eb125' 
+            dbname='dfktg48dd4p22l' user= 'kuzegimbnbuwlw' host='ec2-50-16-197-244.compute-1.amazonaws.com' port =5432 password = '858f7dd5363a48d534a4184fbe9c3ee5daeadfaf88b73c3267b2aceb92f915b0' 
             """
             self.credentials =self.credentials_heroku
         
