@@ -33,5 +33,5 @@ pytest-cov==2.5.1
 pytz==2018.5
 six==1.11.0
 virtualenv==16.0.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 wrapt==1.10.11
